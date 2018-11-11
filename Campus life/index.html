@@ -1,0 +1,292 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>校园生活网-首页</title>
+    <link rel="stylesheet" href="Campus life/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="Campus life/images/logo.gif">
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <link href="Campus life/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link rel="stylesheet" href="Campus life/css/reset.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script>
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
+        function hideURLbar(){
+            window.scrollTo(0,1);
+        }
+    </script>
+
+    <!-- start-smoth-scrolling -->
+    <script>
+        jQuery(document).ready(function($) {
+            $(".scroll").click(function(event){
+                event.preventDefault();
+                $('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+            })})
+    </script>
+    <!-- //end-smoth-scrolling -->
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+<!--header start here-->
+<div class="banner">
+    <div class="container1">
+        <div class="header">
+            <div class="col-md-7 logo">
+                <a href="index.html"><img src="images/logo.jpg" ></a>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="top-nav">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
+                    <li><a href="transaction.html"><span class="glyphicon glyphicon-tag"></span> 二手信息</a></li>
+                    <li><a href="lost.html"><span class="glyphicon glyphicon-search"></span> 寻物启示</a></li>
+                    <li><a href="found.html"><span class="glyphicon glyphicon-hand-right"></span> 失物招领</a></li>
+                    <li><a href="contact.html"><span class="glyphicon glyphicon-book"></span> 联系我们</a></li>
+                    <li style="float: right" ><a data-toggle="modal" data-target="#myModal" href="#" ><span class="glyphicon glyphicon-user"></span> 尚未登录</a></li>
+                    <li style="float: right"><a href="#"><?=$_SESSION['username']?>尚未登陆</a></li>
+                </ul>
+            </div>
+        </div>
+        <!--登陆框模态框声明 用show先将其置为显示状态-->
+        <div class="modal fade" id="myModal">
+        <!--窗口声明-->
+        <div class="modal-dialog modal-sm modal-lg">
+            <!--内容声明-->
+            <div class="modal-content">
+                <div class="modal-header bg-info">
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <h3 class="modal-title">欢迎登录</h3>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input type="text" placeholder="用户名" class="center-block"><br>
+                        <input type="password" placeholder="密码" class="center-block">
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-default btn-success">登录</button>
+                            <button class="btn btn-default btn-info"  data-toggle="modal" data-dismiss="modal" data-target="#myRegModal">注册</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!--注册模态框声明 用show先将其置为显示状态-->
+        <div class="modal fade" id="myRegModal">
+            <!--窗口声明-->
+            <div class="modal-dialog modal-lg">
+                <!--内容声明-->
+                <div class="modal-content">
+                    <div class="modal-header bg-info">
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                        <h3 class="modal-title">个人注册</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container center-block">
+                            <form>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-4"></div>
+                                <div class="col-md-9 col-sm-8"><input type="text" placeholder="用户名"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-4"></div>
+                                <div class="col-md-9 col-sm-8"><input type="password" placeholder="密码"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-4"></div>
+                                <div class="col-md-9 col-sm-8"><input type="password" placeholder="确认密码"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-4"></div>
+                                <div class="col-md-9 col-sm-8"><input type="tel" placeholder="电话"></div>
+                            </div>
+
+                            </form>
+                        </div>
+
+                        <div class="modal-footer">
+                            /*不是表单的按钮 居然会影响页面宽度 mmmp*/
+                            <button type="submit" class="btn btn-default btn-info">注册</button>
+                            <button type="reset" class="btn btn-default btn-success">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--轮播图-->
+        <div id="myCarousel" class="carousel slide">
+            <ol class="carousel-indicators">
+                <li class="active" data-target="#myCarousel" data-slide-to="0"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active" style="background:#C3C4B9"><img style="margin: 0 auto" src="images/slide1_1.png" alt="第一张">
+                    <div class="carousel-caption">
+                        <h3>一身轻松</h3>
+                        <p>将你不需要或者还没有用过的东西交给我们、让你轻松走上社会!</p>
+                    </div>
+                </div>
+                <div class="item" style="background:#C3C4B9"><img src="images/slide2_1.png" alt="第二张">
+                    <div class="carousel-caption">
+                        <h3>课堂</h3>
+                        <p>池塘边的榕树上知了在声声的叫着夏天!</p>
+                    </div>
+                </div>
+                <div class="item" style="background:#C3C4B9"><img src="images/slide3_1.png" alt="第三张">
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p>读越多的书、你眼中所看到的风景也不一样！</p>
+                    </div>
+                </div>
+            </div>
+            <!--另一种自带的居中方法-->
+            <!--<a href="#myCarousel" data-slide="prev" class="carousel-control left">&lsaquo;</a>-->
+            <!--<a href="#myCarousel" data-slide="next" class="carousel-control right">&rsaquo;</a>-->
+            <a href="#myCarousel" data-slide="prev" class="carousel-control left">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a href="#myCarousel" data-slide="next" class="carousel-control right">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+    </div>
+</div>
+<!--header strat here-->
+<!--welcome start here-->
+<div class="welcome">
+    <div class="container">
+        <div class="wel-main">
+            <div class="wel-top">
+                <h3>欢迎来到校园生活网</h3>
+            </div>
+            <div class="wel-bottom">
+                <div class="col-md-6 wel-left">
+                    <div class="wel-block">
+                        <div class="wel-img">
+                            <img src="images/w6.jpg" alt="" class="img-responsive">
+                        </div>
+                        <div class="wel-text">
+                            <h4>寻物启示&失物招领</h4>
+                            <p>在这里你可以找到你丢失的宝贝，也可以发布你拾得的宝贝帮它找到主人</p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="wel-block">
+                        <div class="wel-img">
+                            <img src="images/w2.jpg" alt="" class="img-responsive">
+                        </div>
+                        <div class="wel-text">
+                            <h4>二手信息发布&查找</h4>
+                            <p>发布闲置物品，寻找你需要的二手物品</p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="col-md-6 wel-right">
+                    <div class="wel-block">
+                        <div class="wel-img">
+                            <img src="images/w3.jpg" alt="" class="img-responsive">
+                        </div>
+                        <div class="wel-text">
+                            <h4><a href="SchoolActivity.html">校园热点&活动</a></h4>
+                            <p>近期热点，爆炸新闻，吐槽大会，活动推广</p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="wel-block">
+                        <div class="wel-img">
+                            <img src="images/w5.jpg" alt="" class="img-responsive">
+                        </div>
+                        <div class="wel-text">
+                            <h4>学习资料分享</h4>
+                            <p>学习视频，读书笔记，网站推荐，聊天交友</p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--welcome end here-->
+
+<!--testimonial start here-->
+<div class="testimo">
+    <div class="container">
+        <div class="testimo-main">
+            <h3>为校园生活增添更多乐趣</h3>
+            <p>浏览新鲜事 发布失物和二手需求 参加校园活动 分享学习经验 </p>
+        </div>
+    </div>
+</div>
+<!--testimonial end here-->
+<!--our admissions start here-->
+<div class="admission">
+    <div class="container">
+        <div class="admissions-main">
+            <div class="admission-top">
+                <h3>建站者心声</h3>
+            </div>
+            <div class="admission-bottom">
+                <div class="col-md-6 admission-left">
+                    <span class="quot1"> </span>
+                    <div class="quot-text">
+                        <p>我一直都在寻找这样的一个平台，在学校这个小圈子里，能够发布我的闲置及失物招领的信息.</p>
+                        <h4>软件学院 15级 杨雪晋</h4>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="col-md-6 admission-left">
+                    <span class="quot1"> </span>
+                    <div class="quot-text">
+                        <p>我希望能有一个地方，我可以分享我的学习经验，记录我的学习笔记，也能看看别的同学是如何学习的.</p>
+                        <h4>软件学院 15级 张旺</h4>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--our admissions end here-->
+<div class="course">
+    <div class="col-md-6 course-left">
+
+    </div>
+    <div class="col-md-6 course-right">
+        <h6>校园生活网</h6>
+        <h3>关于我们</h3>
+        <p>我们是15级软件学院第五组，一个致力于打造高品质网站的团队，校园生活网从学生的角度出发，为大学校园生活带来便利和乐趣。希望在这里，你会有意想不到的收获！</p>
+        <a href="contact.html">联系我们</a>
+    </div>
+    <div class="clearfix"> </div>
+</div>
+
+<!--copy right-->
+<div class="copy-rights">
+    <div class="container">
+        <div class="copy-rights-main">
+            <p>网站管理 | 合作事宜 | 版权投诉</p>
+            <p>赣 ICP 备 12345678. © 2005-2018 无与伦比. Powered by ECUT.</p>
+        </div>
+    </div>
+</div>
+<!--/copy rights-->
+</body>
+</html>

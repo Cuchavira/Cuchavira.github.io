@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>联系我们</title>
+<link href="Campus life/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+<link rel="shortcut icon" href="Campus life/images/logo.ico">
+<script src="js/jquery-1.11.0.min.js"></script>
+<link href="Campus life/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<script>
+	jQuery(document).ready(function($) {
+
+		$(".scroll").click(function(event){
+
+			event.preventDefault();
+
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+
+		});
+
+	});
+</script>
+<!-- //end-smoth-scrolling -->
+<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+<!--header start here-->
+<div class="banner1">
+	<div class="container1">
+		<div class="header">
+			<div class="col-md-7 logo">
+				<a href="index.html"><img src="images/logo.jpg" ></a>
+			</div>
+		  <div class="clearfix"> </div>
+		</div>
+		<div class="top-nav">
+			<div class="navbar-header">
+	   			 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	                <span class="sr-only">Toggle navigation</span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+                </button>
+              </div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="index.html"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
+					<li><a href="transaction.html"><span class="glyphicon glyphicon-tag"></span> 二手信息</a></li>
+					<li><a href="lost.html"><span class="glyphicon glyphicon-search"></span> 寻物启示</a></li>
+					<li><a href="found.html"><span class="glyphicon glyphicon-hand-right"></span> 失物招领</a></li>
+					<li><a href="contact.html"><span class="glyphicon glyphicon-book"></span> 联系我们</a></li>
+					<li style="float: right" ><a data-toggle="modal" data-target="#myModal" href="#" ><span class="glyphicon glyphicon-user"></span> 登录</a></li>
+
+				</ul>
+			</div>
+			</div>
+	</div>
+</div>
+<!--header strat here-->
+<div class="modal fade" id="myModal">
+	<!--窗口声明-->
+	<div class="modal-dialog modal-sm modal-lg">
+		<!--内容声明-->
+		<div class="modal-content">
+			<div class="modal-header bg-info">
+				<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+				<h3 class="modal-title">欢迎登录</h3>
+			</div>
+			<div class="modal-body">
+				<form>
+					<input type="text" placeholder="用户名" class="center-block"><br>
+					<input type="password" placeholder="密码" class="center-block">
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-default btn-success">登录</button>
+						<button class="btn btn-default btn-info"  data-toggle="modal" data-dismiss="modal" data-target="#myRegModal">注册</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!--注册模态框声明 用show先将其置为显示状态-->
+<div class="modal fade" id="myRegModal">
+	<!--窗口声明-->
+	<div class="modal-dialog modal-lg">
+		<!--内容声明-->
+		<div class="modal-content">
+			<div class="modal-header bg-info">
+				<button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+				<h3 class="modal-title">个人注册</h3>
+			</div>
+			<div class="modal-body">
+				<div class="container center-block">
+					<form>
+						<div class="row">
+							<div class="col-md-3 col-sm-4"></div>
+							<div class="col-md-9 col-sm-8"><input type="text" placeholder="用户名"></div>
+						</div>
+						<div class="row">
+							<div class="col-md-3 col-sm-4"></div>
+							<div class="col-md-9 col-sm-8"><input type="password" placeholder="密码"></div>
+						</div>
+						<div class="row">
+							<div class="col-md-3 col-sm-4"></div>
+							<div class="col-md-9 col-sm-8"><input type="password" placeholder="确认密码"></div>
+						</div>
+						<div class="row">
+							<div class="col-md-3 col-sm-4"></div>
+							<div class="col-md-9 col-sm-8"><input type="tel" placeholder="电话"></div>
+						</div>
+
+					</form>
+				</div>
+
+				<div class="modal-footer">
+					/*不是表单的按钮 居然会影响页面宽度 mmmp*/
+					<button type="submit" class="btn btn-default btn-info">注册</button>
+					<button type="reset" class="btn btn-default btn-success">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--contact start here-->
+<div class="contact">
+	<div class="container">
+		<div class="contact-main">
+			<div class="col-md-6 contact-left">
+				<div class="contact-top">
+					<h2>联系方式</h2>
+					<p>希望与你一起促进网站的持久运营，你的反馈是我们的最好的进步阶梯</p>
+			    </div>
+				<div class="conta-1">
+					<div class="con-phone">
+						<span class="con-ph"> </span>
+						<div class="con-para">
+							<h6>电话</h6>
+							<p>+838 981234</p>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="conta-2">
+					<div class="con-address">
+						<span class="con-location"> </span>
+						<div class="con-para">
+							<h6>地址</h6>
+							<p>东华理工大学研究生一栋</p>
+						</div>
+					</div>
+				</div>
+			 </div>
+			<div class="col-md-6 contact-right">
+				<div class="contact-top">
+					<h3>提交反馈信息</h3>
+					<p>每一条信息都会被认真阅读</p>
+				</div>
+				<form>
+						<input type="text" class="shart" value="姓名" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}">
+					 	<input type="text" class="shart" value="邮箱" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
+					 	<input type="text" class="long" value="标题" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Subject';}">
+				         <textarea value="具体内容" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message';}">Message</textarea>
+                        <input type="submit" value="提交">
+				</form>
+				</div>
+		  <div class="clearfix"> </div>
+		</div>
+	</div>
+</div>
+<!--contact end here-->
+<!--footer start here-->
+<div class="footer">
+	<div class="container">
+		<div class="footer-main">
+			<h3>Newsletter Sign Up</h3>
+			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+		    <form>
+		    	<input type="text" value="Enter your email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your email';}">
+		    	<input type="submit" value="Subscribe">
+		    </form>
+		</div>
+	</div>
+</div>
+<!--footer end here-->
+<!--copy right-->
+<div class="copy-rights">
+	<div class="container">
+		<div class="copy-rights-main">
+			<p>网站管理 | 合作事宜 | 版权投诉</p>
+			<p>赣 ICP 备 12345678. © 2005-2018 无与伦比. Powered by ECUT.</p>
+		</div>
+	</div>
+</div>
+<!--/copy rights-->
+</body>
+</html>
