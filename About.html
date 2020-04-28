@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Hongni Ye- Interaction Designer</title>
+		<meta name="description" content="Portfolio of Hongni Ye." />
+		<meta name="keywords" content="interaction,design,ux,digital" />
+		<meta name="author" content="Hongni" />
+		<link rel="shortcut icon" href="favicon.ico">
+		<link href="https://fonts.googleapis.com/css?family=Prata|Nunito+Sans" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/aboutbase.css" />
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+	</head>
+
+	<body class="about">
+		<main>
+
+			<div class="frame">
+				<div class="frame__title-wrap">
+					<h1 class="frame__title"> Learn more about me </h1>
+					<div class="frame__links">
+						<a href="https://tympanus.net/Development/TextTrailEffect/">Dribble</a>
+						<a href="https://tympanus.net/codrops/?p=38971">Instagram</a>
+						<a href="https://github.com/codrops/SVGImageHover/">GitHub</a>
+					</div>
+				</div>
+
+		<!--	<div class="frame__demos">
+					<a href="About.html" class="frame__demo frame__demo--current">About Me</a>
+					<a href="index.html" class="frame__demo">Portfolio</a>
+
+				</div> -->
+
+			</div>
+
+			<div class="content">
+				<svg class="distort" width="350" height="450" viewBox="0 0 350 450">
+					<filter id="distortionFilter">
+						<feTurbulence type="fractalNoise" baseFrequency="0.1" numOctaves="5" seed="2" stitchTiles="noStitch" x="0%" y="0%" width="100%" height="100%" result="noise"/>
+						<feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="B" x="0%" y="0%" width="100%" height="100%" filterUnits="userSpaceOnUse"/>
+					</filter>
+					<g filter="url(#distortionFilter)">
+						<image class="distort__img" x="50" y="50" xlink:href="img/9.png" height="350" width="250"/>
+						<image class="distort__img" x="50" y="50" xlink:href="img/10.jpg" height="350" width="250"/>
+						<image class="distort__img" x="50" y="50" xlink:href="img/11.jpg" height="350" width="250"/>
+						<image class="distort__img" x="50" y="50" xlink:href="img/12.jpg" height="350" width="250"/>
+						<image class="distort__img" x="50" y="50" xlink:href="img/13.jpg" height="350" width="250"/>
+					</g>
+				</svg>
+				<blockquote class="quote">
+					Hey, I am <a href="#" class="quote__link">Hongni</a> , an <a href="index.html" class="quote__link">Interaction </a> designer, with the ability of user <a href="#" class="quote__link"> research </a>, <a href="#" class="quote__link"> prototyping</a> and <a href="#" class="quote__link">Coding </a> .
+
+				</blockquote>
+			</div>
+		</main>
+
+		<script src="js/charming.min.js"></script>
+		<script src="js/TweenMax.min.js"></script>
+		<script src="js/About.js"></script>
+	</body>
+</html>
