@@ -4,10 +4,11 @@
 *
 * Licensed under the MIT license.
 * http://www.opensource.org/licenses/mit-license.php
-* 
+*
 * Copyright 2019, Codrops
 * http://www.codrops.com
 */
+
 {
     // helper functions
     const MathUtils = {
@@ -21,14 +22,14 @@
 
     // body element
     const body = document.body;
-    
+
     // calculate the viewport size
     let winsize;
     const calcWinsize = () => winsize = {width: window.innerWidth, height: window.innerHeight};
     calcWinsize();
     // and recalculate on resize
     window.addEventListener('resize', calcWinsize);
-    
+
     // scroll position
     let docScroll;
     // for scroll speed calculation
@@ -55,9 +56,9 @@
                 // we interpolate between the previous and current value to achieve a smooth effect
                 imageScale: {
                     // interpolated value
-                    previous: 0, 
+                    previous: 0,
                     // current value
-                    current: 0, 
+                    current: 0,
                     // amount to interpolate
                     ease: 0.1,
                     // current value setter
@@ -69,8 +70,8 @@
                     }
                 },
                 titleTranslationY: {
-                    previous: 0, 
-                    current: 0, 
+                    previous: 0,
+                    current: 0,
                     ease: 0.1,
                     fromValue: Number(MathUtils.getRandomFloat(30,400)),
                     setValue: () => {
@@ -126,7 +127,7 @@
                 this.renderedStyles[key].current = this.renderedStyles[key].setValue();
                 this.renderedStyles[key].previous = MathUtils.lerp(this.renderedStyles[key].previous, this.renderedStyles[key].current, this.renderedStyles[key].ease);
             }
-            
+
             // and apply changes
             this.layout();
         }
@@ -156,9 +157,9 @@
             this.renderedStyles = {
                 translationY: {
                     // interpolated value
-                    previous: 0, 
+                    previous: 0,
                     // current value
-                    current: 0, 
+                    current: 0,
                     // amount to interpolate
                     ease: 0.1,
                     // current value setter
@@ -180,8 +181,8 @@
         update() {
             // sets the initial value (no interpolation) - translate the scroll value
             for (const key in this.renderedStyles ) {
-                this.renderedStyles[key].current = this.renderedStyles[key].previous = this.renderedStyles[key].setValue();   
-            }   
+                this.renderedStyles[key].current = this.renderedStyles[key].previous = this.renderedStyles[key].setValue();
+            }
             // translate the scrollable element
             this.layout();
         }
@@ -194,7 +195,7 @@
         }
         style() {
             // the <main> needs to "stick" to the screen and not scroll
-            // for that we set it to position fixed and overflow hidden 
+            // for that we set it to position fixed and overflow hidden
             this.DOM.main.style.position = 'fixed';
             this.DOM.main.style.width = this.DOM.main.style.height = '100%';
             this.DOM.main.style.top = this.DOM.main.style.left = 0;
@@ -209,15 +210,15 @@
             // Update lastScroll
             scrollingSpeed = Math.abs(docScroll - lastScroll);
             lastScroll = docScroll;
-            
+
             // update the current and interpolated values
             for (const key in this.renderedStyles ) {
                 this.renderedStyles[key].current = this.renderedStyles[key].setValue();
-                this.renderedStyles[key].previous = MathUtils.lerp(this.renderedStyles[key].previous, this.renderedStyles[key].current, this.renderedStyles[key].ease);    
+                this.renderedStyles[key].previous = MathUtils.lerp(this.renderedStyles[key].previous, this.renderedStyles[key].current, this.renderedStyles[key].ease);
             }
             // and translate the scrollable element
             this.layout();
-            
+
             // for every item
             for (const item of this.items) {
                 // if the item is inside the viewport call it's render function
@@ -235,7 +236,7 @@
                     item.insideViewport = false;
                 }
             }
-            
+
             // loop..
             requestAnimationFrame(() => this.render());
         }
@@ -250,7 +251,7 @@
             imagesLoaded(document.querySelectorAll('.content__item-img'), {background: true}, resolve);
         });
     };
-    
+
     // And then..
     preloadImages().then(() => {
         // Remove the loader
