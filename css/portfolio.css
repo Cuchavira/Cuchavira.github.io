@@ -17,7 +17,7 @@ body {
 	--text-color: #a6f36b;
 	--background-color: #6915d2;
 	--background-color-2: #6915d2;
-	--background-color-3: #6915d2;
+	--background-color-3: #a6f36b;
 	--link-color: #03b9f1;
 	--link-hover-color: #fff;
 	font-family: 'Montserrat', monospace;
@@ -279,7 +279,7 @@ a:focus {
 }
 
 .content--layout-2 .content__img {
-	grid-column: 3 / 5;
+	grid-column: 3 / 4;
 	grid-row: 1 / 3;
 }
 
@@ -332,6 +332,7 @@ a:focus {
 }
 
 /* Header */
+
 .codrops-header {
 	position: relative;
 	display: flex;

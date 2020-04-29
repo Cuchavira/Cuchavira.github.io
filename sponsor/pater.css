@@ -18,7 +18,7 @@
 
 .pater::after {
 	letter-spacing: 0.05em;
-	content: 'Sponsor';
+	content: '';
 	text-transform: uppercase;
 	font-size: 0.7em;
 	position: absolute;
@@ -30,6 +30,7 @@
 
 .pater__deco {
 	display: none;
+
 }
 
 .pater__img {
