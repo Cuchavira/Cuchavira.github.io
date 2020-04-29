@@ -11,14 +11,14 @@
 body {
 	margin: 0;
 	--color-text: #1c1b1b;
-	--color-bg: #efe6e1;
-	--color-link: #b07656;
+	--color-bg: #fff;
+	--color-link: #2940B0;
 	--color-link-hover: #000;
-	--color-deco: #a6f36b;
+	--color-deco: #2940B0;
 	color: var(--color-text);
 	background-color: var(--color-bg);
-	font-family: paralucent, sans-serif;
-	font-family: quiroh, sans-serif;
+	font-family: Montserrat, sans-serif;
+	font-family: Futura, sans-serif;
 	font-family: mr-eaves-xl-sans, sans-serif;
 }
 
@@ -80,7 +80,7 @@ a:focus {
 }
 
 .frame__title {
-	font-size: 1rem;
+	font-size:2rem;
 	margin: 0 0 2.5rem;
 }
 
@@ -103,6 +103,13 @@ a:focus {
 
 .frame__demos {
 	margin: 1rem 0;
+}
+
+.frame__nav {
+	margin: 1rem 0;
+	font-size: 1rem;
+	font-weight: bold;
+	font-family: Futura;
 }
 
 .frame__demo--current,
@@ -152,52 +159,52 @@ a:focus {
 
 .item:first-child .item__img-wrap {
 	--aspect-ratio: 8/10;
-	--image: url(../img/project/1.jpg);
+	--image: url(../img/project/wyse/1.jpg);
 }
 
 .item:nth-child(2) .item__img-wrap {
 	width: 1000px;
 	--aspect-ratio: 120/76;
-	--image: url(../img/project/2.jpg);
+	--image: url(../img/project/wyse/2.jpg);
 }
 
 .item:nth-child(3) .item__img-wrap {
 	--aspect-ratio: 60/75;
-	--image: url(../img/project/3.jpg);
+	--image: url(../img/project/wyse/3.jpg);
 }
 
 .item:nth-child(4) .item__img-wrap {
 	width: 800px;
 	--aspect-ratio: 900/505;
-	--image: url(../img/project/4.jpg);
+	--image: url(../img/project/wyse/4.jpg);
 }
 
 .item:nth-child(5) .item__img-wrap {
 	--aspect-ratio: 6/8;
-	--image: url(../img/project/5.jpg);
+	--image: url(../img/project/wyse/5.jpg);
 }
 
 .item:nth-child(6) .item__img-wrap {
 	width: calc(100vw - 2rem);
 	--aspect-ratio: 1500/844;
-	--image: url(../img/project/6.jpg);
+	--image: url(../img/project/wyse/6.jpg);
 }
 
 .item:nth-child(7) .item__img-wrap {
 	width: 900px;
 	--aspect-ratio: 1000/749;
-	--image: url(../img/project/7.jpg);
+	--image: url(../img/project/wyse/7.jpg);
 }
 
 .item:nth-child(8) .item__img-wrap {
 	width: 900px;
 	--aspect-ratio: 1000/562;
-	--image: url(../img/project/8.jpg);
+	--image: url(../img/project/wyse/8.jpg);
 }
 
 .item:nth-child(9) .item__img-wrap {
 	--aspect-ratio: 60/75;
-	--image: url(../img/project/9.jpg);
+	--image: url(../img/project/wyse/9.jpg);
 }
 
 .item__img {
