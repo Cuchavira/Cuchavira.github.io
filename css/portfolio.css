@@ -417,15 +417,15 @@ a:focus {
 	--background-color: #6915d2;
 	--background-color-2: #282faf;
 	--background-color-3: #202692;
-	--text-color: #fff;
-	--link-color: #fff;
-	--link-hover-color: #a6f36b;
+	--text-color: #a6f36b;
+	--link-color: #a6f36b;
+	--link-hover-color: #fff;
 }
 
 .demo-3 .morph {
 	fill: none;
 	stroke-width: 12px;
-	stroke: #a6f36b;
+	stroke: #9157D9;
 }
 
 @media screen and (max-width: 50em) {
