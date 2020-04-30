@@ -12,6 +12,7 @@ body {
 	margin: 0;
 	--color-text: #dc6e25;
 	--color-bg: #fff;
+	--background-color-3:#282faf;
 	--color-link: #000;
 	--color-link-hover: #dc6e25;
 	--aspect-ratio: 1/1.5;
@@ -21,7 +22,7 @@ body {
 	color: var(--color-text);
 	background-color: var(--color-bg);
 	font-family: turquoise, serif;
-	font-size: 1.5rem;
+	font-size: 0.5rem;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -29,9 +30,9 @@ body {
 .demo-1 {
 	--color-text: #111;
 	--color-bg: #fff;
-	--color-link-hover: #5c4541;
+	--color-link-hover: #F4552D;
 	--aspect-ratio: 32/17;
-	font-size: 1.25rem;
+	font-size: 1rem;
 	font-family: Montserrat, sans-serif;
 	--size-title: 4vw;
 }

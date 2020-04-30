@@ -10,30 +10,33 @@ article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,su
 }
 
 body {
-	--color-text: #a6f36b;
+	--color-text: #F4552D;
 	--color-bg: #faf6f1;
-	--color-link: #e2af68;
+	--background-color-3:#282faf;
+	--color-link: #F4552D;
 	--color-link-hover: #333;
-	--color-content-link: #000;
-	--color-content-link-hover: #000;
-	--color-heading: #d1cfcf;
-	--font-content: Cardo;
+	--color-content-link: #282faf;
+	--color-content-link-hover: #282faf;
+	--color-heading: #F4552D;
+	--font-content: Montserrat;
 	color: var(--color-text);
 	background-color: var(--color-bg);
 	font-family: Futura, 'Nunito Sans', sans-serif;
 }
 
 .about {
-	--color-text: #a6f36b;
-    --color-bg: #6915d2;
-    --color-link: #a6f36b;
-    --color-link-hover: #191b1b;
-    --color-content-text: #a6f36b;
-    --color-content-link: #a6f36b;
-    --color-content-link-hover: #191b1b;
-   	--color-content-secondary: #dec9d0;
+	--color-text: #F4552D;
+    --color-bg: #DFE4E8;
+    --color-link: #F4552D;
+    --color-link-hover: #F9FC5B;
+    --color-content-text: #F4552D;
+    --color-content-link: #F4552D;
+    --color-content-link-hover: #F9FC5B;
+   	--color-content-secondary: #F4552D;
     --font-content: Montserrat;
 }
+
+
 
 /* Page Loader */
 .js .loading::before {

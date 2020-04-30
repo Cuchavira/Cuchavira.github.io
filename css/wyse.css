@@ -12,6 +12,7 @@ body {
 	margin: 0;
 	--color-text: #1c1b1b;
 	--color-bg: #fff;
+	--background-color-3:#282faf;
 	--color-link: #2940B0;
 	--color-link-hover: #000;
 	--color-deco: #2940B0;
@@ -20,6 +21,8 @@ body {
 	font-family: Montserrat, sans-serif;
 	font-family: Futura, sans-serif;
 	font-family: mr-eaves-xl-sans, sans-serif;
+	font-family: 'Montserrat', monospace;
+  font-weight: 500;
 }
 
 /* Page Loader */
@@ -80,7 +83,7 @@ a:focus {
 }
 
 .frame__title {
-	font-size:2rem;
+	font-size:1rem;
 	margin: 0 0 2.5rem;
 }
 
@@ -220,7 +223,7 @@ a:focus {
 }
 
 .item__img--t1 {
-	--overflow: 60px;
+	--overflow: 0px;
 }
 
 .item__img--t2 {
