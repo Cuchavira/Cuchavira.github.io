@@ -20,7 +20,7 @@ body {
 	--background-color-3: #a6f36b;
 	--link-color: #03b9f1;
 	--link-hover-color: #F9FC5B;
-	font-family: 'Montserrat', monospace;
+	font-family: 'Lexend', monospace;
 	font-weight: 500;
 	color: #fff;
 	color: var(--text-color);
@@ -197,10 +197,10 @@ a:focus {
 
 .content__title {
 	grid-area: title;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Lexend', sans-serif;
   color:#F4552D;
 	letter-spacing: -0.025em;
-	font-size: 8em;
+	font-size: 96px;
 	line-height: 160px;
 	margin: 0;
 	text-transform: lowercase;
