@@ -21,7 +21,6 @@ body {
 	--link-color: #03b9f1;
 	--link-hover-color: #F9FC5B;
 	font-family: 'Lexend', monospace;
-	font-weight: 500;
 	color: #fff;
 	color: var(--text-color);
 	background-color: #6915d2;
@@ -78,6 +77,12 @@ a:hover,
 a:focus {
 	color: var(--link-hover-color);
 	outline: none;
+}
+
+h3{
+	font-family: "Lexend", sans-serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+  font-size: 1.25rem;
+	font-weight: normal;
 }
 
 .hidden {
