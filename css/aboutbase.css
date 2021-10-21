@@ -246,6 +246,7 @@ a {
   text-decoration: none;
   color: var(--color-link);
   outline: none;
+  
 }
 
 a:hover,
@@ -365,7 +366,8 @@ a:focus {
   margin-top: 2rem;
   font-size: 3rem;
   z-index: 0;
-  font-weight: normal;
+  font-weight: 340;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 .quote__author {
