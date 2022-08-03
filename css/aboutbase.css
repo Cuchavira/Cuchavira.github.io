@@ -181,14 +181,14 @@ table {
 }
 
 body {
-  --color-text: #F4552D;
+  --color-text: #F72585;
   --color-bg: #faf6f1;
-  --background-color-3: #282faf;
-  --color-link: #F4552D;
-  --color-link-hover: #333;
-  --color-content-link: #282faf;
-  --color-content-link-hover: #282faf;
-  --color-heading: #F4552D;
+  --background-color-3: #F72585;
+  --color-link: #F72585;
+  --color-link-hover: #324376;
+  --color-content-link: #F72585;
+  --color-content-link-hover: #F72585;
+  --color-heading: #F72585;
   --font-content: Lexend;
   color: var(--color-text);
   background-color: var(--color-bg);
@@ -196,14 +196,14 @@ body {
 }
 
 .about {
-  --color-text: #F4552D;
+  --color-text: #F72585;
   --color-bg: #DFE4E8;
-  --color-link: #F4552D;
-  --color-link-hover: #323031 ;
-  --color-content-text: #F4552D;
-  --color-content-link: #F4552D;
-  --color-content-link-hover: #323031 ;
-  --color-content-secondary: #F4552D;
+  --color-link: #F72585;
+  --color-link-hover: #697a21;
+  --color-content-text: #F72585;
+  --color-content-link: #F72585;
+  --color-content-link-hover: #697a21;
+  --color-content-secondary: #F72585;
   --font-content: Lexend;
 }
 
@@ -246,7 +246,7 @@ a {
   text-decoration: none;
   color: var(--color-link);
   outline: none;
-  
+
 }
 
 a:hover,

@@ -19,7 +19,7 @@ body {
 	--background-color-2: #6915d2;
 	--background-color-3: #a6f36b;
 	--link-color: #03b9f1;
-	--link-hover-color: #F9FC5B;
+	--link-hover-color: #FFFFFF;
 	font-family: 'Lexend', monospace;
 	color: #fff;
 	color: var(--text-color);
@@ -203,7 +203,7 @@ h3{
 .content__title {
 	grid-area: title;
 	font-family: 'Lexend', sans-serif;
-  color:#F4552D;
+  color:#F72585;
 	letter-spacing: -0.025em;
 	font-size: 96px;
 	line-height: 160px;
@@ -420,18 +420,18 @@ h3{
 
 
 .demo-3 {
-	--background-color: #faf6f1;
-	--background-color-2: #282faf;
-	--background-color-3: #202692;
-	--text-color: #F4552D;
+	--background-color: #F2EFE9;
+	--background-color-2: #F72585;
+	--background-color-3: #F72585;
+	--text-color: #F72585;
 	--link-color: #a6f36b;
-	--link-hover-color: #F9FC5B;
+	--link-hover-color: #FFFFFF;
 }
 
 .demo-3 .morph {
 	fill: none;
 	stroke-width: 12px;
-	stroke: #F9FC5B;
+	stroke: #FFFFFF;
 }
 
 @media screen and (max-width: 50em) {
