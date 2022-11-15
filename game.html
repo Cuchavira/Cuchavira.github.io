@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>Hongni Ye - Portfolio</title>
+	<meta name="description" content="Portfolio of Hongni Ye" />
+	<meta name="keywords" content="Interaction, design, UX, UI" />
+	<meta name="author" content="Hongni Ye" />
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;400;500;700&family=Syne:wght@800&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<link rel="stylesheet" type="text/css" href="sponsor/pater.css" />
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-XTGF6VW0HS"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-XTGF6VW0HS');
+	</script>
+
+
+
+	<script>
+		document.documentElement.className = 'js';
+		var supportsCssVars = function() {
+			var s = document.createElement('style'),
+				support;
+
+			s.innerHTML = "root: { --tmp-var: bold; }";
+			document.head.appendChild(s);
+			support = !!(window.CSS && window.CSS.supports && window.CSS.supports('font-weight', 'var(--tmp-var)'));
+			s.parentNode.removeChild(s);
+			return support;
+		}
+		if (!supportsCssVars()) alert('Please view this demo in a modern browser that supports CSS Variables.')
+	</script>
+</head>
+
+<body class="demo-3 loading">
+	<main>
+		<div class="morph-wrap">
+			<svg class="morph" width="1400" height="770" viewBox="0 0 1400 770">
+				<polygon points="700,84.4 1047.1,685.6 352.9,685.6 352.9,685.6 352.9,685.6 352.9,685.6" />
+			</svg>
+		</div>
+
+
+		<div class="content content--fixed">
+			<header class="codrops-header">
+				<div class="codrops-links">
+				</div>
+				<!--		<p class="codrops-header__title">Hongni Ye</p> -->
+			</header>
+			<!--			<nav class="demos">
+					<a class="demo" href="1">1</a>
+					<a class="demo" href="">2</a>
+					<a class="demo" href="">3</a>
+					<a class="demo" href="">4</a>
+					<a class="demo" href="">5</a>
+				</nav>-->
+
+			<a class="pater" href="About.html">
+				<svg class="pater__deco" width="300" height="240" viewBox="0 0 1000 800">
+					<path
+						d="M27.4,171.8C73,42.9,128.6,1,128.6,1s0,0,0,0c58.5,0,368.3,0.3,873.2,0.8c38.5,211,42.1,373.5,38.9,476.7c-2.5,80.3-10.6,174.9-76.7,247.8c-15.1,16.6-37.4,41.2-72.8,53.9c-92.4,33.1-173-50.8-283.9-99.4c-224.3-98.4-334.9,51.4-472.2-45.6C-6.3,535.2-14.5,290.6,27.4,171.8z" />
+				</svg>
+				<img class="pater__img" src="img/logo.png" alt="Hongni Ye" />
+				<!--	<h4 class="pater__title">Learn More about Me</h4> -->
+				<div>
+					<h3 class="pater__desc"> Cooool As Me.</h3>
+				</div>
+			</a>
+		</div>
+
+   <div class="container">
+
+		 <div class="row fix-top">
+		 <div class="btn-group dropdown" role="group">
+			 <button type="button" class="dropbtn" aria-expanded="false">
+					Project Collection </button>
+			 <div class="dropdown-content" id="filterBtn">
+		<!--     <li> <a class="dropdown-item filter-btn 3 filter-active" onclick="filterSelection('all')"> All keywords</a></li> -->
+					<a href="vr.html" class="dropdown-item filter-btn 3 filter-active" onclick="filterSelection('VR')"> VR/AR/MR</a>
+					<a href="game.html" class="dropdown-item filter-btn" onclick="filterSelection('Games')"> Games</a>
+					 <a href="design.html" class="dropdown-item filter-btn" onclick="filterSelection('Design')">UX/UI Service Design </a>
+					 <a href="tangible.html" class="dropdown-item filter-btn" onclick="filterSelection('children')">Tangible </a>
+
+			 </div>
+		 </div>
+
+				 </div>
+
+			<!-- Project 1 Amico-->
+		<div class="content-wrap filter-row">
+
+			<div class="content content--layout content--layout-4  filter-content">
+				<img class="content__img" src="img/amico.png" alt="Some image" usemap="#amicoimg">
+
+				<map name="amicoimg">
+					<area shape="rect" coords="0,0,300,300" alt="brickpal" href="projects/amico.html">
+				</map>
+
+				<h3 class="content__title">Amico</h3>
+				<p class="content__author">2022.01-2022.12</p>
+				<p class="content__desc">Stress intervention for playing a virtual pet game with personality customization. </p>
+				<a href="projects/amico.html" class="content__link"><h3>Discover</h3></a>
+			</div>
+
+		</div>
+
+		<!-- Project 2 Redcapes-->
+
+		<div class="content-wrap">
+			<div class="content content--layout content--layout-3">
+				<img class="content__img" src="img/red.png" alt="Some image" usemap="#redimg">
+
+				<map name="redimg">
+					<area shape="rect" coords="0,0,300,300" alt="lineupimg" href="projects/red.html">
+				</map>
+
+
+				<h3 class="content__title">Redcapes</h3>
+				<p class="content__author">2022.07-2022.10</p>
+				<p class="content__desc">Educational games aimed at enhancing privacy awareness for autistic children.</p>
+				<a href="projects/red.html" class="content__link"><h3>Discover</h3></a>
+			</div>
+		</div>
+
+
+			<!-- Project 3 TR -->
+
+	<!--		<div class="content-wrap">
+				<div class="content content--layout content--layout-1">
+					<img class="content__img" src="img/Lineup.png" alt="Some image" usemap="#lineupimg">
+
+					<map name="lineupimg">
+						<area shape="rect" coords="0,0,300,300" alt="lineupimg" href="LineUp.html">
+					</map>
+
+
+					<h3 class="content__title">Tangible Food</h3>
+					<p class="content__author">2022.07-2022.12</p>
+					<p class="content__desc">Learning food relevant knowledge through playing with tangible toys.</p>
+
+				</div>
+			</div>  -->
+
+		<!-- Project 4 uGame-->
+
+		<div class="content-wrap">
+			<div class="content content--layout content--layout-1">
+				<img class="content__img" src="img/ugame.png" alt="Some image" usemap="#ugameimg">
+
+				<map name="ugameimg">
+					<area shape="rect" coords="0,0,300,300" alt="ugame" href="projects/ugame.html">
+				</map>
+
+
+				<h3 class="content__title">uGame</h3>
+				<p class="content__author">2020.10-2021.02</p>
+				<p class="content__desc">AR event-based platform that promotes groups activities.</p>
+				<a href="projects/ugame.html" class="content__link"><h3>Discover</h3></a>
+			</div>
+		</div>
+
+
+	</div>
+
+
+		<!-- Related demos -->
+		<section class="content content--related">
+
+			<div class="content content--layout content--layout-1">
+				<a href="About.html" class="content__title" class="content__link">About hongni </a>
+			</div>
+
+			<a class="content__related-item" href="https://tympanus.net/Development/ElasticSVGElements/">
+			</a>
+			<a class="content__related-item" href="https://tympanus.net/Development/ItemRevealer/">
+
+
+			</a>
+		</section>
+	</main>
+	<script src="js/imagesloaded.pkgd.min.js"></script>
+	<script src="js/anime.min.js"></script>
+	<script src="js/scrollMonitor.js"></script>
+	<script src="js/demo3.js"></script>
+	<script src="js/filter.js"></script>
+
+
+</body>
+
+</html>

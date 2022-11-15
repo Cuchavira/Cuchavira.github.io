@@ -150,6 +150,11 @@ h3{
 	display: grid;
 }
 
+.fix-top{
+	position: fixed;
+
+}
+
 .content--fixed {
 	position: fixed;
 	top: 0;
@@ -169,14 +174,15 @@ h3{
 
 .content--fixed a {
 	pointer-events: auto;
+
 }
 
 .content--layout {
 	pointer-events: auto;
 	justify-content: center;
 	align-content: center;
-	grid-template-columns: 150px 150px 150px 150px;
-	grid-template-rows: 150px 75px 75px;
+	grid-template-columns: 200px 150px 150px 150px;
+	grid-template-rows: 200px 75px 75px;
 	grid-template-areas:	"... title title title"
 							"author ... desc desc"
 							"author ... link link";
@@ -424,7 +430,7 @@ h3{
 	--background-color-2: #F72585;
 	--background-color-3: #F72585;
 	--text-color: #F72585;
-	--link-color: #a6f36b;
+	--link-color: #F72585;
 	--link-hover-color: #FFFFFF;
 }
 
@@ -482,3 +488,50 @@ h3{
 		transform: scale3d(0.5,0.5,1);
 	}
 }
+
+
+.dropbtn {
+  background-color: #F61379;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+	margin-left: 24px;
+	margin-top: 24px;
+	border-radius: 1rem;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+	margin-left: 24px;
+	margin-top: 24px;
+  display: none;
+  position: absolute;
+	border-radius: 1rem;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+	margin-top:0;
+
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: #ddd;
+
+}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #f94e9b;}

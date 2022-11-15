@@ -25,11 +25,14 @@
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-XTGF6VW0HS"></script>
 	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+		window.dataLayer = window.dataLayer || [];
 
-	  gtag('config', 'G-XTGF6VW0HS');
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-XTGF6VW0HS');
 	</script>
 
 
@@ -84,131 +87,120 @@
 					<h3 class="pater__desc"> Cooool As Me.</h3>
 				</div>
 			</a>
-
-			<!--	<div class="deco deco--title"> Hongni Ye - Digital Interaction Designer</div> -->
-		</div>
-			<!-- Project 1 BrickPal-->
-		<div class="content-wrap">
-			<div class="content content--layout content--layout-1">
-				<img class="content__img" src="img/Brickpal.png" alt="Some image" usemap="#brickimg">
-
-				<map name="brickimg">
-					<area shape="rect" coords="0,0,300,300" alt="brickpal" href="brickpal.html">
-				</map>
-
-				<h3 class="content__title">BrickPal</h3>
-				<p class="content__author">2021.06-2021.08</p>
-				<p class="content__desc">Build something different with you</p>
-				<!--	<a href="project.html" class="content__link">Discover</a> -->
-			</div>
 		</div>
 
-		<!-- Project 2 LineUp-->
+		<div class="container">
 
-		<div class="content-wrap">
-			<div class="content content--layout content--layout-1">
-				<img class="content__img" src="img/Lineup.png" alt="Some image" usemap="#lineupimg">
+			<div class="row fix-top">
+				<div class="btn-group dropdown" role="group">
+					<button type="button" class="dropbtn" aria-expanded="false">
+						Project Collection </button>
 
-				<map name="lineupimg">
-					<area shape="rect" coords="0,0,300,300" alt="lineupimg" href="LineUp.html">
-				</map>
+					<div class="dropdown-content">
+						<!--     <li> <a class="dropdown-item filter-btn 3 filter-active" onclick="filterSelection('all')"> All keywords</a></li> -->
+						<a href="vr.html" class="dropdown-item filter-btn 3 filter-active" onclick="filterSelection('VR')"> VR/AR/MR</a>
+						<a href="game.html" class="dropdown-item filter-btn" onclick="filterSelection('Games')"> Games</a>
+						<a href="design.html" class="dropdown-item filter-btn" onclick="filterSelection('Design')">UX/UI Service Design </a>
+						<a href="tangible.html" class="dropdown-item filter-btn" onclick="filterSelection('children')">Tangible </a>
 
-
-				<h3 class="content__title">LineUp</h3>
-				<p class="content__author">2021.09-2021.10</p>
-				<p class="content__desc">Projection-based AR language learning system.</p>
-
-			</div>
-		</div>
-
-
-			<!-- Project 3 Meti -->
-
-		<div class="content-wrap">
-			<div class="content content--layout content--layout-4">
-				<img class="content__img" src="img/Meti.png" alt="Some image" usemap="#metimg">
-
-				<map name="metimg">
-					<area shape="rect" coords="0,0,300,300" alt="meti" href="404.html">
-				</map>
-
-
-				<h3 class="content__title">METI</h3>
-				<p class="content__author">2020.06-2020.08</p>
-				<p class="content__desc">Milan Ecology Trash Intelligence.</p>
+					</div>
+				</div>
 
 			</div>
-		</div>
 
-		<!-- Project 4 uGame-->
+			<!-- Project 1 amico-->
+			<div class="content-wrap filter-row">
 
-		<div class="content-wrap">
-			<div class="content content--layout content--layout-1">
-				<img class="content__img" src="img/ugame.png" alt="Some image" usemap="#ugameimg">
+				<div class="content content--layout content--layout-4  filter-content">
+					<img class="content__img" src="img/amico.png" alt="Some image" usemap="#amicoimg">
 
-				<map name="ugameimg">
-					<area shape="rect" coords="0,0,300,300" alt="ugame" href="404.html">
-				</map>
+					<map name="amicoimg">
+						<area shape="rect" coords="0,0,300,300" alt="brickpal" href="projects/amico.html">
+					</map>
 
-
-				<h3 class="content__title">uGame</h3>
-				<p class="content__author">2020.10-2021.02</p>
-				<p class="content__desc">AR event-based platform that promotes groups activities.</p>
-
-			</div>
-		</div>
-
-				<!-- Project 5 Tune-->
-
-		<div class="content-wrap">
-			<div class="content content--layout content--layout-3">
-				<img class="content__img" src="img/tune.png" alt="Some image" usemap="#tuneimg">
-
-				<map name="tuneimg">
-					<area shape="rect" coords="0,0,300,300" alt="tune" href="http://tunememory.com/">
-				</map>
-
-
-				<h3 class="content__title">Tune</h3>
-				<p class="content__author">2020.09-2020.12</p>
-				<p class="content__desc">Tangible music for tangible memories to share.</p>
+					<h3 class="content__title">Amico</h3>
+					<p class="content__author">2022.01-2022.12</p>
+					<p class="content__desc">Stress intervention for playing a virtual pet game with personality customization. </p>
+					<a href="projects/amico.html" class="content__link"><h3>Discover</h3></a>
+				</div>
 
 			</div>
-		</div>
 
-		<!-- Project 6 Wyse-->
 
-		<div class="content-wrap">
-			<div class="content content--layout content--layout-1">
-				<img class="content__img" src="img/1.png" alt="Some image" usemap="#wyseimg">
+			<!-- Project 2 tr-->
 
-				<map name="wyseimg">
-					<area shape="rect" coords="0,0,300,300" alt="wyse" href="wyse.html">
-				</map>
 
-				<h3 class="content__title">Wyse</h3>
-				<p class="content__author">2019.10-2019.12</p>
-				<p class="content__desc">Sustainability made simple.</p>
-				<!--	<a href="project.html" class="content__link">Discover</a> -->
+			<div class="content-wrap">
+				<div class="content content--layout content--layout-3">
+					<img class="content__img" src="img/tr.png" alt="Some image" usemap="#trimg href="projects/twilight.html"">
+
+					<map name="trimg">
+						<area shape="rect" coords="0,0,300,300" alt="trimg" href="projects/twilight.html">
+					</map>
+
+
+					<h3 class="content__title" href="projects/twilight.html" >Twilight Rohingya</h3>
+					<p class="content__author">2021.07-2021.12</p>
+					<p class="content__desc">Enhance empathy towards refugees through VR.</p>
+					<a href="projects/twilight.html" class="content__link"><h3>Discover</h3></a>
+				</div>
 			</div>
-		</div>
 
-				<!-- Project 7 Polimi-->
+			<!-- Project 3 LineUp -->
 
-		<div class="content-wrap">
-			<div class="content content--layout content--layout-2">
-				<img class="content__img" src="img/2.png" alt="Some image" usemap="#polimimg">
+			<div class="content-wrap">
+				<div class="content content--layout content--layout-1">
+					<img class="content__img" src="img/Lineup.png" alt="Some image" usemap="#lineupimg">
 
-				<map name="polimimg">
-					<area shape="rect" coords="0,0,300,300" alt="wyse" href="polimi.html">
-				</map>
+					<map name="lineupimg">
+						<area shape="rect" coords="0,0,300,300" alt="lineupimg" href="projects/lineup.html">
+					</map>
 
 
-				<h3 class="content__title">Polimi</h3>
-				<p class="content__author">2020.03-2020-04</p>
-				<p class="content__desc">Students design for students.</p>
-
+					<h3 class="content__title">LineUp</h3>
+					<p class="content__author">2021.09-2021.10</p>
+					<p class="content__desc">Projection-based AR language learning system.</p>
+					<a href="projects/lineup.html" class="content__link"><h3>Discover</h3></a>
+				</div>
 			</div>
+
+			<!-- Project 4 BrickPal-->
+
+			<div class="content-wrap filter-row">
+				<div class=" filter-column VR">
+					<div class="content content--layout content--layout-1  filter-content">
+						<img class="content__img" src="img/Brickpal.png" alt="Some image" usemap="#brickimg">
+
+						<map name="brickimg">
+							<area shape="rect" coords="0,0,300,300" alt="brickpal" href="projects/brickpal.html">
+						</map>
+
+						<h3 class="content__title">BrickPal</h3>
+						<p class="content__author">2021.06-2021.08</p>
+						<p class="content__desc">Build something different with you</p>
+						<a href="projects/brickpal.html" class="content__link"><h3>Discover</h3></a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Project 5 Meti-->
+
+			<div class="content-wrap">
+				<div class="content content--layout content--layout-4">
+					<img class="content__img" src="img/Meti.png" alt="Some image" usemap="#metimg">
+
+					<map name="metimg">
+						<area shape="rect" coords="0,0,300,300" alt="meti" href="projects/meti.html">
+					</map>
+
+
+					<h3 class="content__title">METI</h3>
+					<p class="content__author">2020.06-2020.08</p>
+					<p class="content__desc">Milan Ecology Trash Intelligence.</p>
+					<a href="projects/meti.html" class="content__link"><h3>Discover</h3></a>
+				</div>
+			</div>
+
 		</div>
 
 
@@ -231,6 +223,7 @@
 	<script src="js/anime.min.js"></script>
 	<script src="js/scrollMonitor.js"></script>
 	<script src="js/demo3.js"></script>
+	<script src="js/filter.js"></script>
 
 
 </body>
