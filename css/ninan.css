@@ -24,7 +24,7 @@ body{
   --background-color-3: #fdf2bc;
   --link-color: #000000;
   --link-hover-color: #ffffff;
-  background-color: #86a99a;
+  background-color: #121212;
 }
 
 section{
@@ -34,7 +34,7 @@ section{
 }
 
 h1,h2,h3,h4,h5{
-  color: #fdf2bc;
+  color: #ffffff;
 }
 
 h1{
@@ -226,10 +226,10 @@ a:focus {
  */
 .blog-footer {
   padding: 2.5rem 0;
-  color: #727272;
+  color: #121212;
   text-align: center;
-  background-color: #86a99a;
-  border-top: .05rem solid #e5e5e5;
+  background-color: #121212;
+  border-top: .05rem solid #121212;
 }
 .blog-footer p:last-child {
   margin-bottom: 0;
