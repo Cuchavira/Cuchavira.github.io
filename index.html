@@ -2,229 +2,427 @@
 <html lang="en" class="no-js">
 
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<title>Hongni Ye - Portfolio</title>
-	<meta name="description" content="Portfolio of Hongni Ye" />
-	<meta name="keywords" content="Interaction, design, UX, UI" />
-	<meta name="author" content="Hongni Ye" />
-	<link rel="shortcut icon" href="favicon.ico">
 
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700" rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&display=swap" rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;400;500;700&family=Syne:wght@800&display=swap" rel="stylesheet">
+  <!--- basic page needs
+    ================================================== -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hongni Ye</title>
 
-	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
-	<link rel="stylesheet" type="text/css" href="css/index.css" />
-	<link rel="stylesheet" type="text/css" href="sponsor/pater.css" />
+  <script>
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
 
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-XTGF6VW0HS"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
+  <!-- CSS
+    ================================================== -->
+  <link rel="stylesheet" href="css/vendor.css">
+  <link rel="stylesheet" href="css/styles.css">
 
-		function gtag() {
-			dataLayer.push(arguments);
-		}
-		gtag('js', new Date());
+  <!-- favicons
+    ================================================== -->
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
 
-		gtag('config', 'G-XTGF6VW0HS');
-	</script>
-
-
-
-	<script>
-		document.documentElement.className = 'js';
-		var supportsCssVars = function() {
-			var s = document.createElement('style'),
-				support;
-
-			s.innerHTML = "root: { --tmp-var: bold; }";
-			document.head.appendChild(s);
-			support = !!(window.CSS && window.CSS.supports && window.CSS.supports('font-weight', 'var(--tmp-var)'));
-			s.parentNode.removeChild(s);
-			return support;
-		}
-		if (!supportsCssVars()) alert('Please view this demo in a modern browser that supports CSS Variables.')
-	</script>
 </head>
 
-<body class="demo-3 loading">
-	<main>
-		<div class="morph-wrap">
-			<svg class="morph" width="1400" height="770" viewBox="0 0 1400 770">
-				<polygon points="700,84.4 1047.1,685.6 352.9,685.6 352.9,685.6 352.9,685.6 352.9,685.6" />
-			</svg>
-		</div>
+
+<body id="top">
 
 
-		<div class="content content--fixed">
-			<header class="codrops-header">
-				<div class="codrops-links">
-				</div>
-				<!--		<p class="codrops-header__title">Hongni Ye</p> -->
-			</header>
-			<!--			<nav class="demos">
-					<a class="demo" href="1">1</a>
-					<a class="demo" href="">2</a>
-					<a class="demo" href="">3</a>
-					<a class="demo" href="">4</a>
-					<a class="demo" href="">5</a>
-				</nav>-->
-
-			<a class="pater" href="About.html">
-				<svg class="pater__deco" width="300" height="240" viewBox="0 0 1000 800">
-					<path
-						d="M27.4,171.8C73,42.9,128.6,1,128.6,1s0,0,0,0c58.5,0,368.3,0.3,873.2,0.8c38.5,211,42.1,373.5,38.9,476.7c-2.5,80.3-10.6,174.9-76.7,247.8c-15.1,16.6-37.4,41.2-72.8,53.9c-92.4,33.1-173-50.8-283.9-99.4c-224.3-98.4-334.9,51.4-472.2-45.6C-6.3,535.2-14.5,290.6,27.4,171.8z" />
-				</svg>
-				<img class="pater__img" src="img/logo.png" alt="Hongni Ye" />
-				<!--	<h4 class="pater__title">Learn More about Me</h4> -->
-				<div>
-					<h3 class="pater__desc"> Cooool As Me.</h3>
-				</div>
-			</a>
-		</div>
-
-		<div class="container">
-
-			<div class="row fix-top">
-				<div class="btn-group dropdown" role="group">
-					<button type="button" class="dropbtn" aria-expanded="false">
-						Project Collection </button>
-
-					<div class="dropdown-content">
-						<!--     <li> <a class="dropdown-item filter-btn 3 filter-active" onclick="filterSelection('all')"> All keywords</a></li> -->
-						<a href="vr.html" class="dropdown-item filter-btn 3 filter-active" onclick="filterSelection('VR')"> VR/AR/MR</a>
-						<a href="game.html" class="dropdown-item filter-btn" onclick="filterSelection('Games')"> Games</a>
-						<a href="design.html" class="dropdown-item filter-btn" onclick="filterSelection('Design')">UX/UI Service Design </a>
-						<a href="tangible.html" class="dropdown-item filter-btn" onclick="filterSelection('children')">Tangible </a>
-
-					</div>
-				</div>
-
-			</div>
-
-			<!-- Project 1 amico-->
-			<div class="content-wrap filter-row">
-
-				<div class="content content--layout content--layout-4  filter-content">
-					<img class="content__img" src="img/amico.png" alt="Some image" usemap="#amicoimg">
-
-					<map name="amicoimg">
-						<area shape="rect" coords="0,0,300,300" alt="brickpal" href="projects/amico.html">
-					</map>
-
-					<h3 class="content__title">Amico</h3>
-					<p class="content__author">2022.01-2022.12</p>
-					<p class="content__desc">Stress intervention for playing a virtual pet game with personality customization. </p>
-					<a href="projects/amico.html" class="content__link"><h3>Discover</h3></a>
-				</div>
-
-			</div>
+  <!-- preloader
+    ================================================== -->
+  <div id="preloader">
+    <div id="loader" class="line"></div>
+  </div>
 
 
-			<!-- Project 2 tr-->
+  <!-- page wrap
+    ================================================== -->
+  <div id="page" class="s-pagewrap">
 
 
-			<div class="content-wrap">
-				<div class="content content--layout content--layout-3">
-					<img class="content__img" src="img/tr.png" alt="Some image" usemap="#trimg href="projects/twilight.html"">
+    <!-- # site header
+        ================================================== -->
+    <header id="masthead" class="s-header">
 
-					<map name="trimg">
-						<area shape="rect" coords="0,0,300,300" alt="trimg" href="projects/twilight.html">
-					</map>
+      <div class="s-header__block">
+        <div class="s-header__branding">
+          <p class="site-title">
+            <a href="index.html" rel="home">Hongni Ye</a>
+          </p>
+        </div>
 
+        <a class="s-header__menu-toggle" href="#0"><span>Menu</span></a>
+      </div> <!-- end s-header__block -->
 
-					<h3 class="content__title" href="projects/twilight.html" >Twilight Rohingya</h3>
-					<p class="content__author">2021.07-2021.12</p>
-					<p class="content__desc">Enhance empathy towards refugees through VR.</p>
-					<a href="projects/twilight.html" class="content__link"><h3>Discover</h3></a>
-				</div>
-			</div>
+      <div class="row s-header__nav-wrap">
 
-			<!-- Project 3 LineUp -->
+        <nav class="s-header__nav">
+          <ul>
+            <li class="current"><a href="#intro" class="smoothscroll"></a></li>
+            <li><a href="#about" class="smoothscroll">About</a></li>
+            <li><a href="#publications" class="smoothscroll">Publications</a></li>
+        <!--    <li><a href="#projects" class="smoothscroll">Projects</a></li> -->
+            <li><a href="#colophon" class="smoothscroll">Contact</a></li>
+          </ul>
+        </nav> <!-- end s-header__nav -->
 
-			<div class="content-wrap">
-				<div class="content content--layout content--layout-1">
-					<img class="content__img" src="img/Lineup.png" alt="Some image" usemap="#lineupimg">
+        <ul class="s-header__social">
+          <li>
+            <a href="https://www.linkedin.com/in/hongni-ye-719716113?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                <path fill="currentColor"
+                  d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37z" />
+              </svg>
+              <span class="u-screen-reader-text">Linkedin</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/Hongniiii" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M13.808 10.469L20.88 2h-1.676l-6.142 7.353L8.158 2H2.5l7.418 11.12L2.5 22h1.676l6.486-7.765L15.842 22H21.5zm-2.296 2.748l-.752-1.107L4.78 3.3h2.575l4.826 7.11l.751 1.107l6.273 9.242h-2.574z" />
+              </svg>
+              <span class="u-screen-reader-text">X</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/Cuchavira" target="_blank">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.679-.217.679-.481 0-.237-.008-.865-.011-1.696-2.775.602-3.361-1.338-3.361-1.338-.452-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.605.069-.605 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.351-1.085.635-1.334-2.214-.251-4.542-1.107-4.542-4.93 0-1.087.389-1.979 1.024-2.675-.101-.253-.446-1.268.099-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336 9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021.545 1.372.203 2.387.099 2.64.64.696 1.024 1.587 1.024 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.334-.012 2.41-.012 2.737 0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974 22 6.465 17.535 2 12.026 2z">
+                </path>
+              </svg>
+              <span class="u-screen-reader-text">Github</span>
+            </a>
+          </li>
 
-					<map name="lineupimg">
-						<area shape="rect" coords="0,0,300,300" alt="lineupimg" href="projects/lineup.html">
-					</map>
+        </ul> <!-- end s-header__social -->
 
+      </div> <!-- end s-header__nav-wrap -->
 
-					<h3 class="content__title">LineUp</h3>
-					<p class="content__author">2021.09-2021.10</p>
-					<p class="content__desc">Projection-based AR language learning system.</p>
-					<a href="projects/lineup.html" class="content__link"><h3>Discover</h3></a>
-				</div>
-			</div>
-
-			<!-- Project 4 BrickPal-->
-
-			<div class="content-wrap filter-row">
-				<div class=" filter-column VR">
-					<div class="content content--layout content--layout-1  filter-content">
-						<img class="content__img" src="img/Brickpal.png" alt="Some image" usemap="#brickimg">
-
-						<map name="brickimg">
-							<area shape="rect" coords="0,0,300,300" alt="brickpal" href="projects/brickpal.html">
-						</map>
-
-						<h3 class="content__title">BrickPal</h3>
-						<p class="content__author">2021.06-2021.08</p>
-						<p class="content__desc">Build something different with you</p>
-						<a href="projects/brickpal.html" class="content__link"><h3>Discover</h3></a>
-					</div>
-				</div>
-			</div>
-
-			<!-- Project 5 Meti-->
-
-			<div class="content-wrap">
-				<div class="content content--layout content--layout-4">
-					<img class="content__img" src="img/Meti.png" alt="Some image" usemap="#metimg">
-
-					<map name="metimg">
-						<area shape="rect" coords="0,0,300,300" alt="meti" href="projects/meti.html">
-					</map>
+    </header> <!-- end s-header -->
 
 
-					<h3 class="content__title">METI</h3>
-					<p class="content__author">2020.06-2020.08</p>
-					<p class="content__desc">Milan Ecology Trash Intelligence.</p>
-					<a href="projects/meti.html" class="content__link"><h3>Discover</h3></a>
-				</div>
-			</div>
+    <!-- intro
+        ================================================== -->
+    <section id="intro" class="s-intro">
 
-		</div>
+      <div class="row">
+        <div class="column lg-12 s-intro__content">
+
+          <div class="s-intro__text">
+            <h1 class="s-intro__text-huge animate-on-load">
+              Hey :)
+            </h1>
+            <h3 class="animate-on-load">I'm Hongni <mark>虹霓</mark></h3>
+
+          </div>
+
+          <div class="s-intro__bg"></div>
+
+        </div>
+      </div>
+
+    </section> <!-- end s-intro -->
 
 
-		<!-- Related demos -->
-		<section class="content content--related">
+    <!-- about
+        ================================================== -->
+    <section id="about" class="s-about">
+      <div class="s-about__block s-about__intro">
 
-			<div class="content content--layout content--layout-1">
-				<a href="About.html" class="content__title" class="content__link">About hongni </a>
-			</div>
+        <div class="row">
+          <div class="column lg-12">
+            <h2 class="text-pretitle animate-on-load">About Me</h2>
 
-			<a class="content__related-item" href="https://tympanus.net/Development/ElasticSVGElements/">
-			</a>
-			<a class="content__related-item" href="https://tympanus.net/Development/ItemRevealer/">
+            <p class="attention-getter animate-on-load">
+              I am set to embark on a journey as a PhD candidate, joining the team
+              of  <a href="https://www.inf.uni-hamburg.de/en/inst/ab/hci/people/steinicke.html" target="_blank"> Prof. Dr. Frank Steinicke </a> at Hamburg University.
+              Previously, I served as a research assistant at <a href="https://dkuhcigroup.github.io/" target="_blank">DKU HCI Lab </a>,
+              under the supervision of <a href="https://xintong.ca/" target="_blank">Prof. Dr. Xin Tong </a>.
+              I earned my master's degree in Digital and Interaction from Politecnico di Milano,
+               where I completed my thesis under the supervision of Prof. Dr. Xin Tong, <a href="https://raylc.org/ " target="_blank">Prof. Dr. Ray LC </a>,
+               and <a href="https://www.mecc.polimi.it/en/research/faculty/prof-mario-covarrubias-rodriguez" target="_blank">Prof. Mario Covarrubias Rodriguez</a>. My research interests encompass Extended Reality (XR),
+               generative AI, and embodied interaction design. For instance,
+               I specialize in developing dynamic prototypes such as projection-based AR for language learning
+               and AI-driven virtual pets. If you share a passion for these areas,
+               I'm enthusiastic about connecting to exchange ideas and collaborate.
+
+                  </p>
+          </div>
+        </div>
+      </div> <!-- end s-about__intro -->
+    </section>
+
+    <section id="publications" class="s-about">
+      <div class="s-about__block s-about__career">
+
+        <div class="row s-about__career-header">
+          <div class="column lg-12">
+            <h2 class="text-pretitle">Publications</h2>
+          </div>
+        </div>
+
+        <div class="row s-about__timeline" data-animate-block>
+          <div class="column lg-4 stack-on-900 pub-img" data-animate-el>
+            <img src="web2022/img/amico.png" sizes="(max-width: 1000px) 100vw, 1000px" alt="">
+          </div>
+
+          <div class="column lg-8 stack-on-900 s-about__timeline-section" data-animate-el>
+            <h2 class="text-subtitle">
+              Year 2023
+            </h2>
+            <div class="timeline">
+
+              <div class="timeline__block">
+                <div class="timeline__bullet"> </div>
+                <div class="timeline__header">
+                  <h4 class="timeline__title">“I Keep Sweet Cats In Real Life, But What I Need In The Virtual World Is A Neurotic Dragon": Virtual Pet Designs With Personality Patterns. </h4>
+                  <h5 class="timeline__meta"> <b>Hongni Ye</b>, Ruoxin You, Kaiyuan Lou, Yili Wen, Xin Yi and Xin Tong</h5>
+                  <p class="timeline__timeframe">In processing of Chinese CHI 2023</p>
+                  <div class="timeline__desc">
+                    <p>We designed the virtual pets' visual appearances by following the design guidelines from the Five Factor Model (FFM) in voxel format. We conducted a study to investigate people’s perceptions of virtual pets’ personalities and
+                      appearances through two user studies.</p>
+                  </div>
+                  <a class="btn btn--primary btn--small " href="https://dl.acm.org/doi/10.1145/3629606.3629626" target="_blank">DOI</a>
+                  <a class="btn btn--primary btn--small " href="pdf/chchi2023-20.pdf" target="_blank">PDF</a>
+                <!--  <a class="btn btn--primary btn--small " href="#0" target="_blank">Project Page</a> -->
+                </div>
+              </div>
+
+            </div>
+            <!--- try to cut it -->
+          </div>
 
 
-			</a>
-		</section>
-	</main>
-	<script src="js/imagesloaded.pkgd.min.js"></script>
-	<script src="js/anime.min.js"></script>
-	<script src="js/scrollMonitor.js"></script>
-	<script src="js/demo3.js"></script>
-	<script src="js/filter.js"></script>
+        </div> <!-- end of the row-->
 
+        <div class="row s-about__timeline" data-animate-block>
+          <div class="column lg-4 stack-on-900 pub-img" data-animate-el>
+            <img src="images/publications/redcapes.png" sizes="(max-width: 1000px) 100vw, 1000px" alt="">
+          </div>
+
+          <div class="column lg-8 stack-on-900 s-about__timeline-section" data-animate-el>
+            <div class="timeline">
+
+              <div class="timeline__block">
+                <div class="timeline__bullet"> </div>
+                <div class="timeline__header">
+                  <h4 class="timeline__title"> RedCapes: Design and Evaluation of a Game Towards Improving Autistic Children's Privacy Awareness.</h4>
+                  <h5 class="timeline__meta">Xiaowen Yuan, <b> Hongni Ye</b>, Ziheng Tang, Xiangrong Zhu, Yaxing Yao and Xin Tong</h5>
+                  <p class="timeline__timeframe">In processing of Chinese CHI 2023</p>
+                </div>
+                <div class="timeline__desc">
+                  <p>Research on typical development (TD) children's privacy learning often neglects autistic children's unique needs. Therefore, our study aims to understand their challenges in learning privacy and design an effective privacy
+                    education game for them. We designed a serious game, RedCapes, and recruited 9 autistic children and 6 TD children to evaluate the game. </p>
+                </div>
+               <a class="btn btn--primary btn--small " href="https://dl.acm.org/doi/10.1145/3629606.3629618" target="_blank">DOI</a>
+                <a class="btn btn--primary btn--small " href="pdf/chchi2023-12.pdf" target="_blank">PDF</a>
+              <!--  <a class="btn btn--primary btn--small " href="#0" target="_blank">Project Page</a> -->
+
+              </div>
+            </div> <!-- end of the timelie -->
+          </div>
+        </div> <!-- end of the row -->
+
+        <div class="row s-about__timeline" data-animate-block>
+          <div class="column lg-4 stack-on-900 pub-img " data-animate-el>
+            <img src="images/publications/woogu.png" sizes="(max-width: 1000px) 100vw, 1000px" alt="">
+          </div>
+
+          <div class="column lg-8 stack-on-900 s-about__timeline-section" data-animate-el>
+            <div class="timeline">
+
+              <div class="timeline__block">
+                <div class="timeline__bullet"> </div>
+                <div class="timeline__header">
+                  <h4 class="timeline__title">WooGu: Exploring an Embodied Tangible User Interface for supporting children to learn farm-to-table food knowledge.</h4>
+                  <h5 class="timeline__meta"><b> Hongni Ye</b>, Tong Wu, Lawrence H Kim, Min Fan, Xin Tong</h5>
+                  <p class="timeline__timeframe">Proceedings of the 22nd Annual ACM Interaction Design and Children Conference</p>
+                </div>
+                <div class="timeline__desc">
+                  <p>Explored the design of a prototype named WooGu with tangible user interfaces (TUI) and embodied interactions,
+                    which aims to improve young children’s food literacy. WooGu presents three design features:
+                    a cube displaying user interfaces, step-by-step tasks guiding children to learn food from farm to table,
+                    and hands-on props made by cardboard empowering embodied interactions.</p>
+                </div>
+                <a class="btn btn--primary btn--small " href="https://doi.org/10.1145/3585088.3593876" target="_blank">DOI</a>
+                <a class="btn btn--primary btn--small " href="pdf/woogu.pdf" target="_blank">PDF</a>
+              <!--  <a class="btn btn--primary btn--small " href="#0" target="_blank">Project Page</a> -->
+              </div>
+            </div> <!-- end of the timelie -->
+          </div>
+        </div> <!-- end of the row -->
+
+        <div class="row s-about__timeline" data-animate-block>
+          <div class="column lg-4 stack-on-900 pub-img " data-animate-el>
+            <img src="images/publications/petgen.gif" sizes="(max-width: 1000px) 100vw, 1000px" alt="">
+          </div>
+
+          <div class="column lg-8 stack-on-900 s-about__timeline-section" data-animate-el>
+            <div class="timeline">
+
+              <div class="timeline__block">
+                <div class="timeline__bullet"></div>
+                <div class="timeline__header">
+                  <h4 class="timeline__title">PetGen: Design and Generation of Virtual Pets</h4>
+                  <h5 class="timeline__meta"><b> Hongni Ye</b>, Ruoxin You, Kaiyuan Lou, Yili Wen, Xin Yi, Xin Tong</h5>
+                  <p class="timeline__timeframe">2023 IEEE International Conference on Multimedia and Expo Workshops (ICMEW)</p>
+                </div>
+                <div class="timeline__desc">
+                  <p>In this work, we propose PetGen, an application that can generate varying virtual pets' appearances following the Five-Factor Model (FFM) based on AI algorithms.
+                    The 3D voxel virtual pets' appearances were initialized under four initial archetypes and then underwent recombination, dyeing, and texturing stages, where AI algorithms were applied as filters. </p>
+                </div>
+                <a class="btn btn--primary btn--small " href="https://ieeexplore.ieee.org/abstract/document/10222091" target="_blank">DOI</a>
+                <a class="btn btn--primary btn--small " href="pdf/PetGen.pdf" target="_blank">PDF</a>
+              <!--  <a class="btn btn--primary btn--small " href="#0" target="_blank">Project Page</a> -->
+              </div>
+            </div> <!-- end of the timelie -->
+          </div>
+        </div> <!-- end of the row -->
+
+  </div> <!-- end s-about__timeline-section -->
+
+  <div class="row s-about__timeline" data-animate-block>
+    <div class="column lg-4 stack-on-900 pub-img" data-animate-el>
+      <img src="images/publications/tr.png" sizes="(max-width: 1000px) 100vw, 1000px" alt="">
+    </div>
+    <div class="column lg-8 stack-on-900 s-about__timeline-section" data-animate-el>
+
+      <h2 class="text-subtitle">
+        Year 2022
+      </h2>
+
+      <div class="timeline">
+
+        <div class="timeline__block">
+          <div class="timeline__bullet"></div>
+          <div class="timeline__header">
+            <h4 class="timeline__title">Twilight Rohingya: The Design and Evaluation of Different Navigation Controls in a Refugee VR Environment</h4>
+            <h5 class="timeline__meta"><b> Hongni Ye</b>, Chaoyu Zhang, Hongsheng Xu, LC Ray, Xin Tong</h5>
+            <p class="timeline__timeframe">2022 International Conference on Cyberworlds (CW)</p>
+          </div>
+          <div class="timeline__desc">
+            <p>In this research, we designed a 360° VR video-based prototype environment to depict real-life scenarios of a refugee camp in Southern Bangladesh. Our study consists of 2 conditions: active (i.e., selecting thematic video clips
+              freely) and passive (i.e., watching sequence-determined clips passively). </p>
+          </div>
+          <a class="btn btn--primary btn--small " href="https://ieeexplore.ieee.org/abstract/document/9937404" target="_blank">DOI</a>
+          <a class="btn btn--primary btn--small " href="pdf/Twilight.pdf" target="_blank">PDF</a>
+        <!--  <a class="btn btn--primary btn--small " href="#0" target="_blank">Project Page</a> -->
+        </div>
+
+      </div>
+
+    </div> <!-- end timeline -->
+
+  </div> <!-- end s-about__timeline-section -->
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+  <!-- # site footer
+        ================================================== -->
+  <footer id="colophon" class="s-footer">
+
+    <div class="row s-footer__contact-header">
+      <div class="column lg-12">
+        <h2 class="text-pretitle">Get In Touch</h2>
+
+        <p class="text-huge-title">
+          Feel free to reach out if you wanna collaborate with me, or simply have a chat.
+        </p>
+      </div>
+    </div> <!-- end s-footer__content -->
+
+    <div class="row s-footer__contact-content">
+
+      <div class="column lg-6 md-6 stack-on-900 ">
+        <p>
+          Currently located in China, I'm seeking collaborative opportunities.
+
+        <div class="s-footer__buttons">
+          <a href="mailto:hongni.ye@mail.polimi.it" class="btn btn--primary u-fullwidth">Say Hello</a>
+          <a href="pdf/cv2024.pdf" class="btn btn--stroke u-fullwidth">Get My CV</a>
+        </div>
+
+        </p>
+      </div>
+
+    </div> <!-- end s-footer__contact-content -->
+
+    <div class="row s-footer__bottom">
+      <div class="column ss-copyright">
+        <span>© Copyright Hongni Ye 2024</span>
+
+      </div>
+
+      <div class="ss-go-top">
+        <a class="smoothscroll" title="Back to Top" href="#top">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;">
+            <path d="M6 4h12v2H6zm5 10v6h2v-6h5l-6-6-6 6z"></path>
+          </svg>
+        </a>
+      </div>
+    </div> <!-- end s-footer__bottom-->
+
+  </footer> <!-- end s-footer -->
+
+  </div> <!-- end s-pagewrap -->
+
+
+  <!-- photoswipe background
+    ================================================== -->
+  <div aria-hidden="true" class="pswp" role="dialog" tabindex="-1">
+
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <div class="pswp__ui pswp__ui--hidden">
+        <div class="pswp__top-bar">
+          <div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button> <button class="pswp__button pswp__button--share" title="Share"></button> <button class="pswp__button pswp__button--fs"
+            title="Toggle fullscreen"></button> <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button> <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div> <!-- end photoSwipe background -->
+
+
+  <!-- Java Script
+    ================================================== -->
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
 
 </body>
 
