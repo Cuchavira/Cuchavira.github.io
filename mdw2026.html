@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MDW 2026 — Research Visit Report</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0e0e;
+    --ink-2: #3a3a3a;
+    --ink-3: #777;
+    --paper: #f5f2eb;
+    --paper-2: #ede9df;
+    --accent: #c84b2f;
+    --accent-2: #e8a030;
+    --teal: #1a6b5a;
+    --blue: #1a3f6b;
+    --purple: #4a2d7f;
+    --rule: #c8c2b4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Syne', sans-serif; background: var(--paper); color: var(--ink); font-size: 13px; line-height: 1.6; }
+  .page { max-width: 960px; margin: 0 auto; padding: 60px 60px 80px; }
+
+  /* HEADER */
+  .header {
+    border-top: 3px solid var(--ink);
+    border-bottom: 1px solid var(--rule);
+    padding: 28px 0 24px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  .eyebrow { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin-bottom: 6px; }
+  .title { font-family: 'DM Serif Display', serif; font-size: 42px; line-height: 1.05; color: var(--ink); letter-spacing: -0.01em; }
+  .title em { font-style: italic; color: var(--accent); }
+  .header-meta { text-align: right; }
+  .meta-line { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--ink-3); letter-spacing: 0.06em; line-height: 1.8; }
+
+  /* SECTION LABELS */
+  .section-label { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); border-top: 1px solid var(--rule); padding-top: 10px; margin-bottom: 20px; margin-top: 44px; }
+
+  /* LEGEND */
+  .legend { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; padding: 14px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-bottom: 44px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.06em; color: var(--ink-3); }
+  .legend-swatch { width: 16px; height: 8px; border-radius: 1px; }
+
+  /* CALENDAR */
+  .calendar { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 44px; }
+  .cal-day { background: var(--paper); padding: 12px 10px; min-height: 240px; display: flex; flex-direction: column; }
+  .cal-day-header { margin-bottom: 10px; }
+  .cal-weekday { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+  .cal-date { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--ink); line-height: 1; margin-top: 2px; }
+  .cal-district { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.08em; color: var(--accent); text-transform: uppercase; margin-bottom: 8px; border-bottom: 0.5px solid var(--rule); padding-bottom: 6px; }
+  .cal-events { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+  .cal-event { font-size: 9.5px; line-height: 1.35; padding: 4px 6px; border-radius: 2px; font-weight: 500; }
+  .ev-t1 { background: #fdf0ed; color: #8a2f1e; border-left: 2px solid var(--accent); }
+  .ev-pqe { background: #edf0f8; color: #1a3f6b; border-left: 2px solid var(--blue); font-family: 'DM Mono', monospace; font-size: 8.5px; letter-spacing: 0.04em; }
+  .cal-theme { font-family: 'DM Mono', monospace; font-size: 8px; color: var(--ink-3); letter-spacing: 0.06em; margin-top: auto; padding-top: 8px; border-top: 0.5px solid var(--rule); }
+
+  /* EVENT LIST */
+  .event-list { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .event-row { background: var(--paper); display: grid; grid-template-columns: 28px 36px 1fr 80px auto; align-items: start; gap: 0; }
+  .event-row:hover { background: var(--paper-2); }
+  .ev-num { font-family: 'DM Serif Display', serif; font-size: 13px; color: var(--accent); padding: 14px 0 14px 14px; line-height: 1; }
+  .ev-day-dot { padding: 14px 8px 14px 6px; display: flex; align-items: flex-start; justify-content: center; }
+  .dot { width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'DM Mono', monospace; font-size: 7.5px; font-weight: 500; letter-spacing: 0.02em; flex-shrink: 0; }
+  .dot-0 { background:#E1F5EE; color:#085041; }
+  .dot-1 { background:#E6F1FB; color:#0C447C; }
+  .dot-2 { background:#FBEAF0; color:#72243E; }
+  .dot-3 { background:#E1F5EE; color:#085041; }
+  .dot-4 { background:#EEEDFE; color:#3C3489; }
+  .dot-5 { background:#FAECE7; color:#712B13; }
+  .dot-6 { background:#FAEEDA; color:#633806; }
+  .ev-main { padding: 12px 12px; }
+  .ev-name { font-size: 13px; font-weight: 700; color: var(--ink); line-height: 1.35; margin-bottom: 3px; }
+  .ev-venue { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--ink-3); letter-spacing: 0.04em; margin-bottom: 4px; }
+  .ev-link-cell { padding: 12px 4px; display: flex; align-items: flex-start; justify-content: center; }
+  .ev-link { display: inline-block; font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); text-decoration: none; border: 0.5px solid var(--accent); padding: 2px 5px; border-radius: 2px; white-space: nowrap; }
+  .ev-link:hover { background: var(--accent); color: white; }
+  .ev-tags { padding: 12px 14px 12px 0; display: flex; flex-wrap: wrap; gap: 4px; align-items: flex-start; justify-content: flex-end; }
+  .tag { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 6px; border-radius: 2px; font-weight: 500; }
+  .tag-3d { background: #e1f5ee; color: #0f6e56; }
+  .tag-ai { background: #eeedfe; color: #534ab7; }
+  .tag-tui { background: #e6f1fb; color: #185fa5; }
+  .tag-proj { background: #faeeda; color: #854f0b; }
+  .tag-edu { background: #faece7; color: #993c1d; }
+  .tag-xr { background: #fbeaf0; color: #993556; }
+  .tag-neuro { background: #edf7f0; color: #0f6e56; }
+
+  /* DELIVERABLES */
+  .deliverables-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .del-card { background: var(--paper); padding: 20px 18px; }
+  .del-icon { font-size: 22px; margin-bottom: 10px; line-height: 1; }
+  .del-type { font-family: 'DM Mono', monospace; font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+  .del-title { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 8px; line-height: 1.3; }
+  .del-items { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+  .del-items li { font-size: 11px; color: var(--ink-2); padding-left: 10px; position: relative; line-height: 1.4; }
+  .del-items li::before { content: '—'; position: absolute; left: 0; color: var(--rule); font-size: 10px; }
+
+  /* EXPORT */
+  .export-bar { display: flex; align-items: center; gap: 12px; padding: 14px 0; border-top: 1px solid var(--rule); margin-top: 44px; }
+  .export-btn { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; background: var(--ink); color: var(--paper); border: none; padding: 8px 18px; border-radius: 2px; cursor: pointer; }
+  .export-btn:hover { background: var(--accent); }
+  .export-note { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--ink-3); letter-spacing: 0.06em; }
+
+  /* DISTRICT */
+  .district-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 44px; }
+  .district-card { background: var(--paper); padding: 14px 12px; }
+  .dist-name { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+  .dist-days { color: var(--accent); font-family: 'DM Serif Display', serif; font-size: 13px; margin-bottom: 6px; }
+  .dist-events { font-size: 10px; color: var(--ink-3); line-height: 1.5; }
+
+  /* FOOTER */
+  .footer { margin-top: 60px; border-top: 1px solid var(--rule); padding-top: 16px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-l { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--ink-3); letter-spacing: 0.08em; }
+  .footer-r { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 13px; color: var(--accent); }
+
+  @media print {
+    body { background: white; }
+    .page { padding: 40px 40px 60px; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="eyebrow">Research Visit Report · MDW 2026</div>
+      <div class="title">Milan Design<br><em>Week 2026</em></div>
+    </div>
+    <div class="header-meta">
+      <div class="meta-line">CS PhD Candidate</div>
+      <div class="meta-line">April 21 – 26, 2026</div>
+      <div class="meta-line">3D Printing · Tangible Interface</div>
+      <div class="meta-line">Generative AI · AR/VR · Education</div>
+      <div class="meta-line">Concurrent: PQE Preparation</div>
+    </div>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--ink-3);text-transform:uppercase;">Research tags:</span>
+    <div class="legend-item"><div class="legend-swatch" style="background:#e1f5ee;border:0.5px solid #9FE1CB;"></div>3D Printing</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#eeedfe;border:0.5px solid #AFA9EC;"></div>Generative AI</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#e6f1fb;border:0.5px solid #85B7EB;"></div>Tangible Interface</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#faeeda;border:0.5px solid #FAC775;"></div>Projection / Media</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#faece7;border:0.5px solid #F5C4B3;"></div>Education / Inclusive</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#fbeaf0;border:0.5px solid #F4C0D1;"></div>Neurodivergent</div>
+  </div>
+
+  <!-- CALENDAR — 6 days: Apr 21–26 -->
+  <div class="section-label">Weekly schedule — core events by day</div>
+  <div class="calendar">
+
+    <div class="cal-day">
+      <div class="cal-day-header">
+        <div class="cal-weekday">Mon</div>
+        <div class="cal-date">21</div>
+      </div>
+      <div class="cal-district">Brera</div>
+      <div class="cal-events">
+        <div class="cal-event ev-t1">⭐ ECAL × Google: A Message From Tomorrow</div>
+        <div class="cal-event ev-t1">Y.O.U. Your Own Universe</div>
+        <div class="cal-event ev-t1">Serotonin: Chemistry of Happiness</div>
+        <div class="cal-event ev-t1">⭐ MAD with Canva: Kaleido</div>
+        <div class="cal-event ev-pqe">PQE · Tangible Bits (Ishii & Ullmer)</div>
+      </div>
+      <div class="cal-theme">Brera core day</div>
+    </div>
+
+    <div class="cal-day">
+      <div class="cal-day-header">
+        <div class="cal-weekday">Tue</div>
+        <div class="cal-date">22</div>
+      </div>
+      <div class="cal-district">Centro</div>
+      <div class="cal-events">
+        <div class="cal-event ev-t1">⭐ Anima Mundi @ Istituto dei Ciechi</div>
+        <div class="cal-event ev-t1">Ooooh, that's EpiQ! — digital dome</div>
+        <div class="cal-event ev-t1">CUPRA: Beyond the Known</div>
+        <div class="cal-event ev-t1">Barilla × LAMÁQUINA: Edible Reveries</div>
+        <div class="cal-event ev-pqe">PQE · Multi-sensory + Inclusive TUI</div>
+      </div>
+      <div class="cal-theme">Immersive + Responsive</div>
+    </div>
+
+    <div class="cal-day">
+      <div class="cal-day-header">
+        <div class="cal-weekday">Wed</div>
+        <div class="cal-date">23</div>
+      </div>
+      <div class="cal-district">Isola</div>
+      <div class="cal-events">
+        <div class="cal-event ev-t1">Isola Design Festival — exhibitions</div>
+        <div class="cal-event ev-t1">⭐ Città delle Idee — 3D architecture</div>
+        <div class="cal-event ev-t1">Bambu Lab × Tillverka: Aura</div>
+        <div class="cal-event ev-t1">The State of New Materials @ Stecca3</div>
+        <div class="cal-event ev-t1">MAREA / TIDE — crowd-responsive</div>
+        <div class="cal-event ev-pqe">PQE · Neurodivergent co-design</div>
+      </div>
+      <div class="cal-theme">Isola deep dive</div>
+    </div>
+
+    <div class="cal-day">
+      <div class="cal-day-header">
+        <div class="cal-weekday">Thu</div>
+        <div class="cal-date">24</div>
+      </div>
+      <div class="cal-district">Centro</div>
+      <div class="cal-events">
+        <div class="cal-event ev-t1">⭐ Google Milan: 1 Qubit + design talks</div>
+        <div class="cal-event ev-t1">Common Archive — guided tours</div>
+        <div class="cal-event ev-pqe">PQE · Gamification theory (Deterding)</div>
+        <div class="cal-event ev-pqe">PQE · Intensive proposal writing</div>
+      </div>
+      <div class="cal-theme">Google event + deep work</div>
+    </div>
+
+    <div class="cal-day">
+      <div class="cal-day-header">
+        <div class="cal-weekday">Fri</div>
+        <div class="cal-date">25</div>
+      </div>
+      <div class="cal-district">Tortona</div>
+      <div class="cal-events">
+        <div class="cal-event ev-t1">Toyota T-CORE — 3D-printed seating</div>
+        <div class="cal-event ev-t1">Polypiù Cathedral @ SuperStudio Più</div>
+        <div class="cal-event ev-t1">designboom ROOM FOR DREAMS</div>
+        <div class="cal-event ev-t1">Metamorphosis in Motion — labyrinth</div>
+        <div class="cal-event ev-pqe">PQE · AI personalization papers</div>
+      </div>
+      <div class="cal-theme">Tortona + SuperStudio</div>
+    </div>
+
+    <div class="cal-day">
+      <div class="cal-day-header">
+        <div class="cal-weekday">Sat</div>
+        <div class="cal-date">26</div>
+      </div>
+      <div class="cal-district">Rho Fiera</div>
+      <div class="cal-events">
+        <div class="cal-event ev-t1">SaloneSatellite — emerging designers</div>
+        <div class="cal-event ev-t1">LAMÁQUINA — 3D ceramic facades</div>
+        <div class="cal-event ev-t1">Salone del Mobile — material halls</div>
+        <div class="cal-event ev-pqe">PQE · Final synthesis + proposal draft</div>
+      </div>
+      <div class="cal-theme">Salone del Mobile + wrap-up</div>
+    </div>
+
+  </div>
+
+  <!-- CORE EVENTS LIST -->
+  <div class="section-label">Tier 1 — Core events with direct research relevance</div>
+  <div class="event-list">
+
+    <div class="event-row">
+      <div class="ev-num">01</div>
+      <div class="ev-day-dot"><div class="dot dot-1">Apr 21</div></div>
+      <div class="ev-main">
+        <div class="ev-name">ECAL × Google: A Message From Tomorrow</div>
+        <div class="ev-venue">Spazio Orso 16, Via dell'Orso 16 · Brera · Apr 21–25</div>
+      </div>
+      <div class="ev-link-cell"><a class="ev-link" href="https://ecal.ch/en/feed/events/1885/ecal-milano-2026-exhibitions-by-alumni/" target="_blank">↗ info</a></div>
+      <div class="ev-tags">
+        <span class="tag tag-tui">Tangible Interface</span>
+        <span class="tag tag-edu">Education</span>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="ev-num">02</div>
+      <div class="ev-day-dot"><div class="dot dot-1">Apr 21</div></div>
+      <div class="ev-main">
+        <div class="ev-name">MAD with Canva: Kaleido</div>
+        <div class="ev-venue">Università degli Studi, Via Festa del Perdono 7 · Centro · Apr 21–26</div>
+      </div>
+      <div class="ev-link-cell"><a class="ev-link" href="https://www.instagram.com/p/DXKwY6wks-t/" target="_blank">↗ info</a></div>
+      <div class="ev-tags">
+        <span class="tag tag-ai">Generative AI</span>
+        <span class="tag tag-edu">Creative Learning</span>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="ev-num">03</div>
+      <div class="ev-day-dot"><div class="dot dot-3">Apr 23</div></div>
+      <div class="ev-main">
+        <div class="ev-name">Città delle Idee — Mario Cucinella Architects</div>
+        <div class="ev-venue">Solferino 28 · Brera · Apr 21–26</div>
+      </div>
+      <div class="ev-link-cell"><a class="ev-link" href="https://www.fuorisalone.it/it/2026/eventi/6456/Citt%C3%A0-delle-Idee" target="_blank">↗ info</a></div>
+      <div class="ev-tags">
+        <span class="tag tag-3d">3D Printing</span>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="ev-num">04</div>
+      <div class="ev-day-dot"><div class="dot dot-2">Apr 22</div></div>
+      <div class="ev-main">
+        <div class="ev-name">Anima Mundi. A Visionary Impulse — Dotdotdot</div>
+        <div class="ev-venue">Istituto dei Ciechi · Centro · Apr 21–26</div>
+      </div>
+      <div class="ev-link-cell"><a class="ev-link" href="https://www.fuorisalone.it/en/2026/events/6822/Anima-Mundi-A-Visionary-Impulse" target="_blank">↗ info</a></div>
+      <div class="ev-tags">
+        <span class="tag tag-proj">Projection</span>
+        <span class="tag tag-tui">Tangible</span>
+        <span class="tag tag-neuro">Inclusive</span>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="ev-num">05</div>
+      <div class="ev-day-dot"><div class="dot dot-3">Apr 23</div></div>
+      <div class="ev-main">
+        <div class="ev-name">Bambu Lab × Tillverka: Aura</div>
+        <div class="ev-venue">TreeVilla Park, Isola · Apr 21–26</div>
+      </div>
+      <div class="ev-link-cell"><a class="ev-link" href="https://isola.design/milan-design-week-2026" target="_blank">↗ info</a></div>
+      <div class="ev-tags">
+        <span class="tag tag-3d">3D Printing</span>
+        <span class="tag tag-edu">Product Design</span>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="ev-num">06</div>
+      <div class="ev-day-dot"><div class="dot dot-2">Apr 22</div></div>
+      <div class="ev-main">
+        <div class="ev-name">Barilla Artisia × LAMÁQUINA: Edible Reveries</div>
+        <div class="ev-venue">Via Melzo 34 · Porta Venezia · Apr 21–26</div>
+      </div>
+      <div class="ev-link-cell"><a class="ev-link" href="https://www.fuorisalone.it/en/2026/events/6908/ARTISIA-EDIBLE-REVERIES" target="_blank">↗ info</a></div>
+      <div class="ev-tags">
+        <span class="tag tag-3d">3D Printing</span>
+        <span class="tag tag-ai">Generative AI</span>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="ev-num">07</div>
+      <div class="ev-day-dot"><div class="dot dot-2">Apr 22</div></div>
+      <div class="ev-main">
+        <div class="ev-name">Ooooh, that's EpiQ! — Ricardo Orts</div>
+        <div class="ev-venue">Palazzo del Senato courtyard · Centro · Apr 21–26</div>
+      </div>
+      <div class="ev-link-cell"><a class="ev-link" href="https://www.fuorisalone.it/en/2026/events/6626/Ooooh-thats-EpiQ" target="_blank">↗ info</a></div>
+      <div class="ev-tags">
+        <span class="tag tag-proj">Digital Media</span>
+        <span class="tag tag-tui">Tangible</span>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="ev-num">08</div>
+      <div class="ev-day-dot"><div class="dot dot-3">Apr 23</div></div>
+      <div class="ev-main">
+        <div class="ev-name">MAREA / TIDE — HABITS Design</div>
+        <div class="ev-venue">Via Solferino 24 · Brera · Apr 21–26</div>
+      </div>
+      <div class="ev-link-cell"><a class="ev-link" href="https://www.fuorisalone.it/en/2026/events/6353/MAREA-TIDE-An-aerial-responsive-structure-shaped-by-presence" target="_blank">↗ info</a></div>
+      <div class="ev-tags">
+        <span class="tag tag-tui">Responsive Env.</span>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="ev-num">09</div>
+      <div class="ev-day-dot"><div class="dot dot-3">Apr 23</div></div>
+      <div class="ev-main">
+        <div class="ev-name">The State of New Materials — curated by Materially</div>
+        <div class="ev-venue">Stecca3 · Isola · Apr 21–26</div>
+      </div>
+      <div class="ev-link-cell"><a class="ev-link" href="https://www.materially.eu/en/milan-design-week-2026/" target="_blank">↗ info</a></div>
+      <div class="ev-tags">
+        <span class="tag tag-3d">3D Printing</span>
+        <span class="tag tag-edu">Material R&D</span>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="ev-num">10</div>
+      <div class="ev-day-dot"><div class="dot dot-4">Apr 24</div></div>
+      <div class="ev-main">
+        <div class="ev-name">Google Milan: 1 Qubit + Design Talks</div>
+        <div class="ev-venue">Google Milan · Apr 24</div>
+      </div>
+      <div class="ev-link-cell"><a class="ev-link" href="https://www.instagram.com/p/DXOBBwxj7Om/" target="_blank">↗ info</a></div>
+      <div class="ev-tags">
+        <span class="tag tag-ai">Generative AI</span>
+        <span class="tag tag-tui">Interaction</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DISTRICT OVERVIEW -->
+  <div class="section-label">Geographic strategy — districts by day</div>
+  <div class="district-row">
+    <div class="district-card">
+      <div class="dist-name">Brera</div>
+      <div class="dist-days">Apr 21</div>
+      <div class="dist-events">ECAL × Google, MAD × Canva Kaleido, Y.O.U., Serotonin</div>
+    </div>
+    <div class="district-card">
+      <div class="dist-name">Centro</div>
+      <div class="dist-days">Apr 22 · 24</div>
+      <div class="dist-events">Anima Mundi, Ooooh EpiQ!, CUPRA, Edible Reveries, Google Milan, Common Archive</div>
+    </div>
+    <div class="district-card">
+      <div class="dist-name">Isola</div>
+      <div class="dist-days">Apr 23</div>
+      <div class="dist-events">Bambu Lab Aura, Stecca3 Materials, Città delle Idee, MAREA / TIDE, Isola Festival</div>
+    </div>
+    <div class="district-card">
+      <div class="dist-name">Tortona</div>
+      <div class="dist-days">Apr 25</div>
+      <div class="dist-events">Toyota T-CORE, Polypiù Cathedral, designboom Room for Dreams, Metamorphosis in Motion</div>
+    </div>
+    <div class="district-card">
+      <div class="dist-name">Rho Fiera</div>
+      <div class="dist-days">Apr 26</div>
+      <div class="dist-events">SaloneSatellite, LAMÁQUINA ceramics, Salone del Mobile material halls</div>
+    </div>
+  </div>
+
+  <!-- DELIVERABLES -->
+  <div class="section-label">Potential takeaways — deliverables</div>
+  <div class="deliverables-grid">
+
+    <div class="del-card">
+      <div class="del-icon">📝</div>
+      <div class="del-type">Written Outputs</div>
+      <div class="del-title">Field Notes & Documentation</div>
+      <ul class="del-items">
+        <li>Daily field notes per installation — observations, questions, connections</li>
+        <li>Photo & video captures embedded within notes for each visited work</li>
+        <li>Interaction sequences — visitor engagement with responsive installations</li>
+        <li>Comparative analysis: MDW observations vs. academic TUI literature</li>
+        <li>Technical precedent notes linking installations to research gaps</li>
+        <li>PQE-linked reflections connecting each exhibit to open research questions</li>
+        <li>Draft "Related Work" section grounded in 6+ MDW case studies</li>
+      </ul>
+    </div>
+
+    <div class="del-card">
+      <div class="del-icon">🗂</div>
+      <div class="del-type">Research Artifacts</div>
+      <div class="del-title">Collected Materials</div>
+      <ul class="del-items">
+        <li>Brochures, spec sheets, and press kits from exhibitors</li>
+        <li>Contact list — designers, engineers, researchers met on site</li>
+        <li>Material samples (if available from fabrication exhibits)</li>
+        <li>Exhibition maps annotated with personal observations</li>
+        <li>QR code leads to datasets, GitHub repos, or technical papers</li>
+      </ul>
+    </div>
+
+    <div class="del-card">
+      <div class="del-icon">🧠</div>
+      <div class="del-type">Proposal Development</div>
+      <div class="del-title">PQE & Project Plan</div>
+      <ul class="del-items">
+        <li>Finalized project ideas grounded in MDW observations</li>
+        <li>Draft "Proposed Research" section with 3 research questions</li>
+        <li>PQE paper annotations — one per day across 6 days</li>
+        <li>Elevator pitch draft refined through field encounters</li>
+      </ul>
+    </div>
+
+    <div class="del-card">
+      <div class="del-icon">🎤</div>
+      <div class="del-type">Sharing & Dissemination</div>
+      <div class="del-title">Post-Trip Outputs</div>
+      <ul class="del-items">
+        <li>Lab presentation slide deck — MDW highlights for research group</li>
+        <li>Short essay / blog post: "What MDW 2026 tells us about HCI's next decade"</li>
+        <li>Social media thread — curated installation photos + commentary</li>
+        <li>Annotated bibliography of design precedents for the proposal</li>
+      </ul>
+    </div>
+
+    <div class="del-card">
+      <div class="del-icon">🔗</div>
+      <div class="del-type">Networking</div>
+      <div class="del-title">Connections & Leads</div>
+      <ul class="del-items">
+        <li>Exhibitor contacts at Bambu Lab, Dotdotdot, HABITS Design</li>
+        <li>ECAL student contacts from the Google collaboration booth</li>
+        <li>Potential collaboration leads from co-design-oriented installations</li>
+        <li>Google Milan industry network contacts</li>
+        <li>Follow-up: Digital Design Days (May 7–9, SuperStudio) if in Milan</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- EXPORT -->
+  <div class="export-bar">
+    <button class="export-btn" onclick="exportXLS()">⬇ Export all events (.xls)</button>
+    <span class="export-note">All tiers · 20 events · includes date, venue, district, tags</span>
+  </div>
+
+  <script>
+  function exportXLS() {
+    const events = [
+      // Tier 1
+      ["1","Apr 21","Mon","Brera","ECAL × Google: A Message From Tomorrow","Spazio Orso 16, Via dell'Orso 16","https://ecal.ch/en/feed/events/1885/ecal-milano-2026-exhibitions-by-alumni/","Tangible Interface; Education"],
+      ["1","Apr 21","Mon","Centro","MAD with Canva: Kaleido","Università degli Studi, Via Festa del Perdono 7","https://www.instagram.com/p/DXKwY6wks-t/","Generative AI; Creative Learning"],
+      ["1","Apr 21","Mon","Brera","Y.O.U. Your Own Universe — Numero Cromatico × glo™","Palazzo Moscova, Brera","https://www.fuorisalone.it/en/2026/events/6413/YOU-Your-Own-Universe","Digital Media; Immersive"],
+      ["1","Apr 21","Mon","Brera","Serotonin — The Chemistry of Happiness (Sara Ricciardi)","Loggia, Pinacoteca di Brera, Via Brera 28","https://breradesignweek.it/2026/en/event/2061/serotonin-the-chemistry-of-happiness","Education; Neurodivergent"],
+      ["1","Apr 22","Tue","Centro","Anima Mundi — A Visionary Impulse (Dotdotdot × Geely)","Istituto dei Ciechi, Porta Venezia","https://www.fuorisalone.it/en/2026/events/6822/Anima-Mundi-A-Visionary-Impulse","Projection; Tangible; Inclusive"],
+      ["1","Apr 22","Tue","Centro","Ooooh, that's EpiQ! — Škoda Auto","Palazzo del Senato courtyard","https://www.fuorisalone.it/en/2026/events/6626/Ooooh-thats-EpiQ","Digital Media; Tangible"],
+      ["1","Apr 22","Tue","Porta Venezia","ARTISIA × Studio Yellowdot: Edible Reveries (Barilla)","Via Melzo 34","https://www.fuorisalone.it/en/2026/events/6908/ARTISIA-EDIBLE-REVERIES","3D Printing; Generative AI"],
+      ["1","Apr 22","Tue","Centro","CUPRA: Beyond the Known","CUPRA Garage Milano, Corso Como 1","https://www.cupraofficial.it/partnerships/milano-design-week-2026","Parametric Design; AR/VR"],
+      ["1","Apr 23","Wed","Brera","Città delle Idee — Mario Cucinella Architects","Cortile Corriere della Sera, Via Solferino 28","https://www.fuorisalone.it/it/2026/eventi/6456/Citt%C3%A0-delle-Idee","3D Printing"],
+      ["1","Apr 23","Wed","Isola","Bambu Lab × Tillverka: Aura","Isola Design Festival venues","https://isola.design/milan-design-week-2026","3D Printing; Product Design"],
+      ["1","Apr 23","Wed","Isola","The New State of Materials — Materially","Stecca3, 1st floor","https://www.materially.eu/en/milan-design-week-2026/","3D Printing; Material R&D"],
+      ["1","Apr 23","Wed","Brera","MAREA / TIDE — HABITS Design","Via Solferino 24","https://www.fuorisalone.it/en/2026/events/6353/MAREA-TIDE-An-aerial-responsive-structure-shaped-by-presence","Responsive Environment; Tangible"],
+      ["1","Apr 24","Thu","Centro","Google Milan: 1 Qubit + Design Talks","Google Milan (doors 2pm)","https://www.instagram.com/p/DXOBBwxj7Om/","Generative AI; Interaction"],
+      ["1","Apr 24","Thu","Citywide","Common Archive — La Notte Bianca del Progetto","50+ Milan design archives (one-night only)","https://www.designboom.com/design/milan-hidden-archives-public-night-only-design-week-2026/","Education; Archive"],
+      // Tier 2
+      ["2","Apr 21","Mon","Isola","Isola Design Festival 2026 — TEN","Isola District (multiple venues)","https://isola.design/milan-design-week-2026","Independent Design"],
+      ["2","Apr 25","Fri","Tortona","Toyota Boshoku T-CORE — adaptive 3D-printed seating","Superstudio Più Daylight, Via Tortona","https://www.fuorisalone.it/en/2026/events/6871/T-CORE","3D Printing; Industrial"],
+      ["2","Apr 25","Fri","Tortona","Polypiù Cathedral — Studio Marco Piva","Superstudio Più, Via Tortona 27","https://www.archipanic.com/milan-design-week-2026/polypiu-cathedral-by-marco-piva-3/","Materials; Spatial; Light"],
+      ["2","Apr 25","Fri","Brera","designboom ROOM FOR DREAMS","ME Milan Il Duca, Piazza della Repubblica 13","https://www.designboom.com/design/designboom-takes-over-me-milan-il-duca-with-room-for-dreams-at-milan-design-week-2026/","Digital Media; Futures"],
+      ["2","Apr 25","Fri","Brera","Metamorphosis in Motion — Lina Ghotmeh (MoscaPartners)","Palazzo Litta, Corso Magenta 24","https://www.dezeen.com/2026/02/25/lina-ghotmeh-milan-design-week-debut-pink-labyrinth/","Immersive; Spatial"],
+      ["2","Apr 26","Sat","Rho Fiera","SaloneSatellite 2026 — emerging designers under 35","Fiera Milano Rho","https://www.salonemilano.it/en/exhibitions/salonesatellite","Emerging Design"],
+      ["2","Apr 26","Sat","Rho Fiera","LAMÁQUINA — large-scale 3D-printed ceramics","Salone del Mobile, Fiera Milano Rho","https://lamaquina.io/news","3D Printing; Materials"],
+      ["2","Apr 26","Sat","Rho Fiera","Salone del Mobile.Milano 2026","Fiera Milano Rho","https://www.salonemilano.it/en/exhibitions/salone-internazionale-del-mobile","Materials; Industry"],
+    ];
+
+    const header = ["Tier","Date","Weekday","District","Event Name","Venue","Link","Research Tags"];
+    const rows = [header, ...events];
+
+    // Build XLS (tab-separated, .xls extension — opens natively in Excel)
+    const tsv = rows.map(r => r.map(c => '"' + String(c).replace(/"/g,'""') + '"').join('\t')).join('\n');
+    const blob = new Blob([tsv], { type: 'application/vnd.ms-excel;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'MDW2026_Events.xls';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+  </script>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-l">MILAN DESIGN WEEK 2026 · RESEARCH VISIT · APRIL 21–26 · CS PHD CANDIDATE</div>
+    <div class="footer-r">Ideas in progress</div>
+  </div>
+
+</div>
+</body>
+</html>
