@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Touch-to-Meaning RQ Mapping Matrix</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#matrixPage">Skip to matrix page</a>
+
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Touch-to-Meaning</p>
+          <h1>RQ Mapping Matrix</h1>
+        </div>
+        <div class="topbar-actions">
+          <button class="ghost-button" id="resetButton" type="button">Reset</button>
+        </div>
+      </header>
+
+      <nav class="page-tabs" id="pageTabs" role="tablist" aria-label="Site sections">
+        <button class="page-tab" id="matrixTab" type="button" role="tab" data-page-tab="matrix" aria-controls="matrixPage" aria-selected="true">
+          RQ-Data Matrix
+        </button>
+        <button class="page-tab" id="personaTab" type="button" role="tab" data-page-tab="persona" aria-controls="personaPage" aria-selected="false">
+          Persona
+        </button>
+        <button class="page-tab" id="mockDataTab" type="button" role="tab" data-page-tab="mockData" aria-controls="mockDataPage" aria-selected="false">
+          Mock Data
+        </button>
+        <button class="page-tab" id="pipelineTab" type="button" role="tab" data-page-tab="analysisPipeline" aria-controls="analysisPipelinePage" aria-selected="false">
+          Analysis Pipeline
+        </button>
+      </nav>
+
+      <main class="site-main">
+        <section class="workspace page-panel" id="matrixPage" role="tabpanel" data-page-panel="matrix" aria-labelledby="matrixTab" tabindex="-1">
+          <aside class="rq-rail" aria-label="Research question navigation">
+            <section class="source-panel" aria-labelledby="source-title">
+              <h2 id="source-title">Source Scope</h2>
+              <p>
+                Uses the protocol sections
+                <span>RQ Unpacking Before Data Mapping</span>
+                and <span>Step 2 RQ-Data Mapping Matrix</span>.
+              </p>
+              <p class="source-path">plan/touch_to_meaning_complete_study_protocol_concise_2026-06-01.md</p>
+            </section>
+
+            <section class="filter-panel" aria-labelledby="filter-title">
+              <h2 id="filter-title">Questions</h2>
+              <div class="rq-tabs" id="rqTabs" role="tablist" aria-label="Filter by research question"></div>
+            </section>
+          </aside>
+
+          <section class="matrix-area" aria-labelledby="matrix-title">
+            <div class="matrix-toolbar">
+              <div>
+                <p class="eyebrow">Evidence contract</p>
+                <h2 id="matrix-title">Map each RQ to evidence, field notes, and teacher context</h2>
+              </div>
+              <label class="search-field">
+                <span>Search</span>
+                <input id="searchInput" type="search" placeholder="material, teacher, clock, uncertainty" autocomplete="off" />
+              </label>
+            </div>
+
+            <div class="column-controls" aria-label="Matrix column controls">
+              <label>
+                <input type="checkbox" data-column="elements" checked />
+                Evidence need
+              </label>
+              <label>
+                <input type="checkbox" data-column="directEvidence" checked />
+                Direct evidence
+              </label>
+              <label>
+                <input type="checkbox" data-column="fieldNotes" checked />
+                Field notes
+              </label>
+              <label>
+                <input type="checkbox" data-column="teacherContext" checked />
+                Teacher context
+              </label>
+            </div>
+
+            <div class="legend" aria-label="RQ color legend">
+              <span><b class="legend-mark rq1"></b>RQ1 tactile/material patterns</span>
+              <span><b class="legend-mark rq2"></b>RQ2 evidence-linked interpretation</span>
+              <span><b class="legend-mark rq3"></b>RQ3 engagement and learning link</span>
+            </div>
+
+            <div class="matrix-status" id="matrixStatus" role="status" aria-live="polite"></div>
+
+            <div class="matrix-shell" id="matrix">
+              <div class="matrix-grid" id="matrixGrid" role="table" aria-label="RQ evidence contract matrix"></div>
+            </div>
+
+            <section class="detail-panel" id="detailPanel" aria-live="polite"></section>
+
+            <section class="data-map-panel" aria-labelledby="data-map-title">
+              <div class="data-map-header">
+                <div>
+                  <p class="eyebrow">Step 2</p>
+                  <h2 id="data-map-title">RQ-Data Mapping Matrix</h2>
+                </div>
+                <div class="attribute-controls" id="attributeControls" aria-label="Evidence attribute filter">
+                  <button class="attribute-button" type="button" data-attribute="all" aria-pressed="true">All</button>
+                  <button class="attribute-button" type="button" data-attribute="primary" aria-pressed="false">Primary</button>
+                  <button class="attribute-button" type="button" data-attribute="support" aria-pressed="false">Support</button>
+                </div>
+              </div>
+
+              <p class="data-map-note">
+                Cells keep the protocol wording. Context cells are grouped under the support-side attribute for filtering.
+              </p>
+
+              <div class="mapping-shell">
+                <div class="mapping-grid" id="mappingGrid" role="table" aria-label="Step 2 RQ-data mapping matrix"></div>
+              </div>
+            </section>
+          </section>
+        </section>
+
+        <section class="placeholder-page page-panel" id="personaPage" role="tabpanel" data-page-panel="persona" aria-labelledby="personaTab" tabindex="-1" hidden>
+          <div class="placeholder-panel">
+            <p class="eyebrow">Study lens</p>
+            <h2>Persona</h2>
+            <p>To be updated.</p>
+          </div>
+        </section>
+
+        <section class="placeholder-page page-panel" id="mockDataPage" role="tabpanel" data-page-panel="mockData" aria-labelledby="mockDataTab" tabindex="-1" hidden>
+          <div class="placeholder-panel">
+            <p class="eyebrow">Protocol rehearsal</p>
+            <h2>Mock Data</h2>
+            <p>To be updated.</p>
+          </div>
+        </section>
+
+        <section class="placeholder-page page-panel" id="analysisPipelinePage" role="tabpanel" data-page-panel="analysisPipeline" aria-labelledby="pipelineTab" tabindex="-1" hidden>
+          <div class="placeholder-panel">
+            <p class="eyebrow">Workflow</p>
+            <h2>Analysis Pipeline</h2>
+            <p>To be updated.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
