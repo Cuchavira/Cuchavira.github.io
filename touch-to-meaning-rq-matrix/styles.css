@@ -190,8 +190,7 @@ button {
 }
 
 .workspace {
-  display: grid;
-  gap: 14px;
+  display: block;
 }
 
 .placeholder-page {
@@ -838,16 +837,6 @@ mark {
   .app-shell {
     margin-top: 24px;
     margin-bottom: 24px;
-  }
-
-  .workspace {
-    grid-template-columns: 300px minmax(0, 1fr);
-    align-items: start;
-  }
-
-  .rq-rail {
-    position: sticky;
-    top: 18px;
   }
 
   .matrix-area {

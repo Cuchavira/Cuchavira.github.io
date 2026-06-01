@@ -180,6 +180,8 @@ function getFilteredRows() {
 }
 
 function renderTabs() {
+  if (!tabsEl) return;
+
   const allCount = contractRows.length;
   const tabItems = [
     { id: "all", label: "All", shortName: `${allCount} RQs` },
