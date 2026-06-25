@@ -1,0 +1,6 @@
+<svg width="970" height="683" viewBox="0 0 970 683" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="280" cy="280" r="280" transform="matrix(0.866025 0.5 -0.866025 0.5 484.975 0)" stroke="black" stroke-width="10"/>
+<path d="M142.045 280C142.045 334.673 180.429 384.171 242.486 420V620C180.429 584.171 142.045 534.673 142.045 480V280Z" fill="#262626" stroke="black" stroke-width="10"/>
+<path d="M242.486 420C376.408 497.32 593.539 497.32 727.461 420V620C593.539 697.32 376.408 697.32 242.486 620V420Z" fill="black" stroke="black" stroke-width="10"/>
+<path d="M827.904 280C827.904 334.673 789.521 384.171 727.463 420V620C789.521 584.171 827.904 534.673 827.904 480V280Z" fill="black" stroke="black" stroke-width="10"/>
+</svg>
