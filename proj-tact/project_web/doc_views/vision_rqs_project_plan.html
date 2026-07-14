@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>vision_rqs_project_plan</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<h1 id="title">TITLE</h1>
+<p><strong>Touch-to-Meaning: Mapping Neurodivergent Learners’ Tactile
+Experiences into Semantic Vocabulary for Future Adaptive Tangible
+AI</strong></p>
+<p>Short working title: <strong>Touch-to-Meaning</strong></p>
+<h1 id="current-status">Current status</h1>
+<h2 id="overall-for-project">Overall for project</h2>
+<p>Touch-to-Meaning investigates how neurodivergent learners express
+tactile/haptic experience during hands-on learning, especially when
+visible actions such as repeating, avoiding, pausing, pressing, or
+requesting change cannot be read as direct evidence of preference or
+comfort. The project aims to build traceable ways to connect tactile
+episodes, learner expression, educator interpretation, and future
+adaptive tangible design.</p>
+<h2 id="chi-2027-proposal-direction">CHI 2027 proposal direction</h2>
+<p>This project is being developed as a CHI 2027 study proposal. The
+planned contribution is a formative HCI study and early framework, not a
+finished system paper. The proposal will position tactile/haptic
+experience as a communication and interpretation problem in
+neurodivergent learning: how can a classroom activity make tactile
+meaning visible enough to discuss, annotate, and later use in adaptive
+tangible design?</p>
+<h1 id="core-question-for-the-project">Core question for the
+project</h1>
+<p>When neurodivergent learners work with tactile materials in a
+classroom learning activity, how can their tactile responses be
+observed, expressed, and interpreted without reducing those responses to
+behavior traces alone?</p>
+<h1 id="research-goals">Research goals</h1>
+<p>Research goal: develop a grounded account of how tactile experience
+becomes meaningful in classroom interaction, then use that account to
+inform educator interpretation and future adaptive tangible design.</p>
+<p>The study will:</p>
+<ol type="1">
+<li>describe how tactile episodes unfold across material contact, body
+movement, visual scaffolding, control, and social facilitation;</li>
+<li>identify how learners express comfort, intensity, effort,
+predictability, agency, refusal, repetition, and preference;</li>
+<li>adapt micro-phenomenology through replay, artifact-anchored prompts,
+tokens, gesture, drawing, AAC, and educator-supported
+interpretation;</li>
+<li>explore icon-only physical controls for stop, pause, repeat, less,
+change, help, and done;</li>
+<li>translate tactile episodes into source-aware, uncertainty-aware,
+overrideable records for future adaptive tangible systems.</li>
+</ol>
+<p>Unresolved planning note: this goal list needs to be reconfigured
+later. Before continuing this section, ask how these study aims should
+be revised and what claims the proposal should prioritize.</p>
+<h1 id="research-questions">Research questions</h1>
+<p>These research questions move from observing tactile response
+patterns, to translating multimodal expression, to tracing educator
+interpretation, and then building a framework.</p>
+<ol type="1">
+<li><p>What tactile response patterns emerge when neurodivergent
+learners engage with tactile materials in a structured learning
+activity?</p></li>
+<li><p>How can learners’ multimodal expressions around tactile episodes
+be translated into traceable semantic descriptions of tactile
+experience?</p></li>
+<li><p>What educator knowledge is needed to interpret and respond to
+learners’ tactile expressions?</p></li>
+<li><p>How salient and stable are the semantic descriptions of tactile
+experience across multiple sessions?</p></li>
+</ol>
+<p>Working status: RQ4 remains provisional because salience and
+stability require repeated evidence across multiple sessions. RQ3 is now
+focused on educator knowledge for interpreting and responding to
+learners' tactile expressions.</p>
+<h1 id="overall-method">Overall method</h1>
+<p>Method: staged formative study using a tactile-rich classroom
+activity, educator pilot workshop, learner sessions, replay-supported
+elicitation, and educator debrief.</p>
+<p>The study first works with educators to identify likely tactile
+response patterns and adapt the partner school’s mathematics-art lesson
+into a research-ready activity. Learner sessions then use the activity
+to create observable tactile episodes, which are revisited through
+multimodal expression such as object choice, gesture, drawing, AAC,
+reenactment, or short prompts. Analysis connects episode records,
+learner expression, and educator interpretation while preserving
+uncertainty and source labels.</p>
+<h1 id="initial-setup">Initial setup</h1>
+<p>Initial setup is the preparation package for the June design probe.
+It should not repeat the full study design. This section records what
+must be ready before the educator workshop and pilot sessions.</p>
+<p>Setup scope:</p>
+<ul>
+<li>Curriculum anchor: use the Week 9-14 mathematics-art topics as the
+first activity space, with the tactile clock task as the initial
+walkthrough.</li>
+<li>Probe kit: prepare varied tactile modules, simple attachable
+mechanics, teacher-managed visual route cards, and icon-only control
+tokens.</li>
+<li>Support surface: use a tabletop mat, tray, or classroom panel only
+as a stable workspace; the board itself is not the research focus.</li>
+<li>Observation tools: prepare two sheets, one lightweight teacher sheet
+for classroom noticing and one researcher sheet for episode-level
+traceability.</li>
+<li>Data capture plan: decide whether each session uses written notes
+only, notes plus photos, or notes plus short video, based on school and
+ethics approval.</li>
+<li>Safety and access check: remove materials that are too small, sharp,
+fragile, noisy, hard to clean, or difficult for learners to handle.</li>
+<li>Research boundary: do not build live AI adaptation, full computer
+vision tracking, an automated route system, or a teacher dashboard for
+the June study.</li>
+</ul>
+<p>Setup output: a classroom-ready low-fidelity probe kit, printed
+observation sheets, a short task walkthrough, and a protocol skeleton.
+The detailed rationale and workshop plan are kept in
+<code>plan/touch_to_meaning_initial_setup_component_rationale_2026-05-25.md</code>.</p>
+<h1 id="recruiting">Recruiting</h1>
+<p>Recruitment and study access are organized through an existing
+collaboration with a local special education school.</p>
+<p>Planned participants:</p>
+<ul>
+<li>around 12 neurodivergent children from the school program;</li>
+<li>3 educators from the partner school.</li>
+</ul>
+<p>This phase does not recruit caregivers, therapists, or additional
+external stakeholders. The educator role is limited to classroom
+knowledge, curriculum alignment, practical facilitation, and
+interpretation of learner responses within the school context.</p>
+<p>Learner descriptions will use design-relevant profiles: sensory
+seeking or avoidance, tactile sensitivity, communication mode, attention
+and pacing needs, fine-motor access, gross-motor comfort, predictability
+needs, and support routines.</p>
+<h1 id="study-design">Study design</h1>
+<p>Study design: staged formative study anchored in the partner school’s
+mathematics-art curriculum.</p>
+<p>The study design is currently an outline. Learner-session protocol,
+educator debrief prompts, consent/assent process, and analysis workflow
+still need to be specified after the one-week design probe workshop.</p>
+<h2 id="one-week-design-probe-workshop">One-week design probe
+workshop</h2>
+<p>The first workshop week focuses mainly on RQ1: how to gather
+knowledge about learners’ tactile response patterns and tactile
+preferences before the in-situ formative study. The workshop uses
+educators’ classroom knowledge and a low-fidelity task walkthrough to
+decide what should be observed later with learners.</p>
+<p>The lo-fi probe contains four priority components:</p>
+<ul>
+<li>varied tactile modules;</li>
+<li>simple attachable mechanics;</li>
+<li>visual route cues connected to time and clock learning;</li>
+<li>tangible icon-only control tokens.</li>
+</ul>
+<p>The board is treated only as a support surface. The walkthrough
+scenario is a tactile clock task: make and read a tactile clock for 3
+o’clock. The learner-facing path is: choose a tactile material, place
+the number 3, place or check other clock numbers, move the clock hand to
+3 o’clock, add a tactile decoration or texture, and use a token to stop,
+pause, repeat, change, ask for help, or finish.</p>
+<p>Workshop outputs should include a tactile module inventory, educator
+tactile-preference map, seed RQ1 episode codebook, clock-task
+walkthrough script, teacher observation sheet v1, researcher observation
+sheet v1, and protocol update for the later in-situ formative study.</p>
+<p>The two observation sheets are necessary for this study: the teacher
+sheet should stay light enough for classroom use, while the researcher
+sheet should preserve episode timing, material properties, action codes,
+token use, support moves, and unresolved interpretation for later RQ1
+analysis.</p>
+<h2 id="curriculum-anchor">Curriculum anchor</h2>
+<p>Sources: original PDF
+<code>materials/26年春季数学美社教学计划</code><code>  </code><code>最新版.pdf</code>;
+English translation
+<code>materials/2026_spring_math_art_teaching_plan_en.md</code>.</p>
+<p>The collaborator’s spring mathematics-art curriculum provides the
+learning context for the tactile activity. The broader curriculum
+combines number sense, quantity, time, comparison, pattern, symmetry,
+and art-making. For this study, Weeks 9-14 are the most relevant anchor
+because they shift from number composition into time and comparison:</p>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Weeks</th>
+<th>Learning concept</th>
+<th>Classroom task</th>
+<th>Possible tactile medium</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Week 9</td>
+<td>Clock structure and time awareness</td>
+<td>Recognize clocks; identify numbers 1-12, hour hand, and minute hand;
+make a watermelon clock.</td>
+<td>Tactile clock face, placeable numbers, rotating hands, seed/stripe
+decorations.</td>
+</tr>
+<tr>
+<td>Week 10</td>
+<td>Reading whole hours</td>
+<td>Identify and read whole-hour times; connect time to daily life.</td>
+<td>Movable clock hands, time cards, picture-time matching pieces.</td>
+</tr>
+<tr>
+<td>Week 11</td>
+<td>Daily schedule and temporal order</td>
+<td>Recognize day/night and morning/noon/afternoon; plan a daily
+schedule.</td>
+<td>Sequencing cards, tactile day-plan board, activity icons.</td>
+</tr>
+<tr>
+<td>Weeks 12-14</td>
+<td>Comparison and quantity relations</td>
+<td>Compare numbers within 5, 10, and 20 using greater-than, less-than,
+and equal signs.</td>
+<td>Tactile comparison signs, countable objects, sorting trays,
+crocodile/butterfly/fruit comparison crafts.</td>
+</tr>
+</tbody>
+</table>
+<p>These curriculum topics can create structured tactile episodes
+without locking the study to one prototype. The likely first focus
+remains the Week 9-14 sequence because it provides repeated
+opportunities for placing, rotating, sorting, comparing, sequencing, and
+revising tactile objects.</p>
+<h2 id="study-stages-and-timeline">Study stages and timeline</h2>
+<p>The study timeline is framed as a week-by-week Gantt plan. Stage 3-5
+are treated as one connected fieldwork block with sub-sessions, because
+co-design, pilot adjustment, in-situ study, make-up sessions, follow-up,
+and early analysis will overlap in practice.</p>
+<figure>
+<img src="media/rId21.png" style="width:5.83333in;height:4.2549in"
+alt="Touch-to-Meaning study Gantt timeline" />
+<figcaption aria-hidden="true"><p>Touch-to-Meaning study Gantt
+timeline</p></figcaption>
+</figure>
+<p>Key milestones:</p>
+<ul>
+<li>Stage 1, due by June 1: curriculum mapping, design component
+preparation, and protocol skeleton.</li>
+<li>Stage 2, June 2-8: initial educator workshop, design probe setup,
+and protocol update.</li>
+<li>Fieldwork block, June 9-July 7: Stage 3-5 as connected
+sub-sessions.</li>
+<li>Stage 3, June 9-15: co-design, pilot study, and study design
+update.</li>
+<li>Stage 4, June 16-23: in-situ formative study.</li>
+<li>Stage 5, June 23-July 7: make-up study, follow-up, and preliminary
+data analysis.</li>
+<li>Stage 6, July 7-13: analysis consolidation and Touch-to-Meaning
+framework synthesis.</li>
+<li>Writing runs through every stage: protocol writing in Stage 1-2,
+study-design updates in Stage 3, field memos and methods logging in
+Stage 4-5, framework writing in Stage 6, and CHI paper drafting after
+July 13.</li>
+</ul>
+<p>CHI writing runway after July 13:</p>
+<ul>
+<li>July 14-20: lock paper argument, contribution framing, paper
+outline, and figure plan.</li>
+<li>July 21-31: write Study Context, Method, and Related Work update
+using the final curriculum anchor and workshop evidence.</li>
+<li>August 1-14: write Findings around tactile response patterns,
+multimodal expression, educator interpretation, and framework
+components.</li>
+<li>August 15-25: integrate full draft, build evidence tables, refine
+framework figure, and check claim-evidence alignment.</li>
+<li>August 26-September 3: internal review, supervisor revision,
+citation check, ethics/anonymization audit, and limitations
+section.</li>
+<li>September 4-9: final CHI formatting, abstract, title, captions,
+supplemental materials, and submission package.</li>
+<li>September 10, 2026 AoE: CHI 2027 full paper deadline.</li>
+</ul>
+<p>Current planning milestones: complete core field sessions by June 29,
+2026, close make-up and follow-up work by July 7, 2026, and complete the
+first framework synthesis by July 13, 2026. The official CHI 2027 full
+paper deadline is September 10, 2026 AoE.</p>
+<p>Details still needed: learner-session protocol, debrief questions,
+consent/assent process, and analysis workflow. Ask for these before
+expanding the learner-facing study design.</p>
+<h1 id="expression-of-interest-survey">Expression of Interest +
+Survey</h1>
+<p>The expression-of-interest survey collects basic safety, access,
+communication, and scheduling information.</p>
+<p>Participation options:</p>
+<ul>
+<li>educator workshop only;</li>
+<li>learner tactile exploration sessions;</li>
+<li>follow-up educator debrief;</li>
+<li>TBD based on school and ethics requirements.</li>
+</ul>
+<h1 id="survey-questions">Survey Questions</h1>
+<h1 id="semi-structured-interview-questions">Semi-structured Interview
+Questions</h1>
+<h1 id="research-contributions">Research contributions</h1>
+<ol type="1">
+<li>Descriptive account of how neurodivergent learners express
+tactile/haptic experience through multisensory tangible
+interaction.</li>
+<li>Preliminary semantic feeling vocabulary for comfort, intensity,
+effort, predictability, agency, refusal, repetition, and
+preference.</li>
+<li>Micro-phenomenology-informed elicitation protocol for
+communication-diverse learners.</li>
+<li>Design guidance for tactile materials, visual scaffold pacing,
+physical control tokens, and educator-supported interpretation.</li>
+<li>Source-aware and overrideable evidence schema for future adaptive
+Tangible AI.</li>
+</ol>
+<h1 id="literature-matrix-attachment">Literature matrix attachment</h1>
+<p>The detailed P0/P1 literature matrix is maintained as an Excel
+attachment:</p>
+<ul>
+<li><a
+href="../outputs/touch_to_meaning_rq_literature_matrix_2026-05-25.xlsx">Touch-to-Meaning
+RQ literature matrix XLSX</a></li>
+</ul>
+<p>This document keeps only the current P0/P1 reference list. Detailed
+attributes, RQ mapping, component evidence, and caveats stay in the
+Excel matrix.</p>
+<h1 id="references">References</h1>
+<p>Reference scope for this planning draft: keep only current P0 and P1
+sources. The full evidence matrix, attributes, RQ mapping, component
+evidence, and caveats are maintained in
+<code>outputs/touch_to_meaning_rq_literature_matrix_2026-05-25.xlsx</code>.</p>
+<h2 id="methods-and-elicitation">Methods and elicitation</h2>
+<p>Spiel, K., Malinverni, L., Good, J., &amp; Frauenberger, C. (2017).
+Participatory evaluation with autistic children. <em>Proceedings of the
+2017 CHI Conference on Human Factors in Computing Systems</em>,
+5755-5766. https://doi.org/10.1145/3025453.3025851</p>
+<p>Ward, V., Parsons, S., Kovshoff, H., &amp; Crump, B. (2022).
+Co-creation of research and design during a coding club with autistic
+students using multimodal participatory methods and analysis.
+<em>Frontiers in Education, 7</em>, 864362.
+https://doi.org/10.3389/feduc.2022.864362</p>
+<h2
+id="tactile-preference-and-responsiveness-in-neurodivergent-learning-contexts">Tactile
+preference and responsiveness in neurodivergent learning contexts</h2>
+<p>Foss-Feig, J. H., Heacock, J. L., &amp; Cascio, C. J. (2012). Tactile
+responsiveness patterns and their association with core features in
+autism spectrum disorders. <em>Research in Autism Spectrum Disorders,
+6</em>(1), 337-344. https://doi.org/10.1016/j.rasd.2011.06.007</p>
+<p>Feldman, J. I., Cassidy, M., Liu, Y., Kirby, A. V., Wallace, M. T.,
+&amp; Woynaroski, T. G. (2020). Relations between sensory responsiveness
+and features of autism in children. <em>Brain Sciences, 10</em>(11),
+775. https://doi.org/10.3390/brainsci10110775</p>
+<p>Cascio, C. J., Lorenzi, J., &amp; Baranek, G. T. (2016).
+Self-reported pleasantness ratings and examiner-coded defensiveness in
+response to touch in children with ASD: Effects of stimulus material and
+bodily location. <em>Journal of Autism and Developmental Disorders,
+46</em>(5), 1528-1537. https://doi.org/10.1007/s10803-013-1961-1</p>
+<p>Balasco, L., Provenzano, G., &amp; Bozzi, Y. (2020). Sensory
+abnormalities in autism spectrum disorders: A focus on the tactile
+domain, from genetic mouse models to the clinic. <em>Frontiers in
+Psychiatry, 10</em>, 1016. https://doi.org/10.3389/fpsyt.2019.01016</p>
+<p>Baranek, G. T., &amp; Berkson, G. (1994). Tactile defensiveness in
+children with developmental disabilities: Responsiveness and
+habituation. <em>Journal of Autism and Developmental Disorders,
+24</em>(4), 457-471. https://doi.org/10.1007/BF02172128</p>
+<p>Muthusamy, R., Padmanabhan, R., Ninan, B., &amp; Ganesan, S. (2021).
+Impact of sensory processing dysfunction on fine motor skills in autism
+spectrum disorders. <em>Physiotherapy Quarterly, 29</em>(2), 44-48.
+https://doi.org/10.5114/pq.2020.100277</p>
+<p>Smirni, D., Smirni, P., Carotenuto, M., Parisi, L., Quatrosi, G.,
+&amp; Roccella, M. (2019). Noli me tangere: Social touch, tactile
+defensiveness, and communication in neurodevelopmental disorders.
+<em>Brain Sciences, 9</em>(12), 368.
+https://doi.org/10.3390/brainsci9120368</p>
+<h2 id="tangible-and-structured-learning-activity-design">Tangible and
+structured learning activity design</h2>
+<p>Hornecker, E., &amp; Buur, J. (2006). Getting a grip on tangible
+interaction: A framework on physical space and social interaction.
+<em>Proceedings of the SIGCHI Conference on Human Factors in Computing
+Systems</em>, 437-446. https://doi.org/10.1145/1124772.1124838</p>
+<p>Antle, A. N. (2007). The CTI framework: Informing the design of
+tangible systems for children. <em>Proceedings of the 1st International
+Conference on Tangible and Embedded Interaction</em>, 195-202.
+https://doi.org/10.1145/1226969.1227010</p>
+<p>Falcao, T. P. (2018). Tangible representational properties:
+Implications for meaning making. <em>Multimodal Technologies and
+Interaction, 2</em>(3), 54. https://doi.org/10.3390/mti2030054</p>
+<p>Schneider, B., &amp; Blikstein, P. (2018). Tangible user interfaces
+and contrasting cases as a preparation for future learning. <em>Journal
+of Science Education and Technology, 27</em>(4), 369-384.
+https://doi.org/10.1007/s10956-018-9730-8</p>
+<p>Guneysu, A., Reis, H., Kuoppamaki, S., &amp; Sylla, C. (2024).
+Enhancing autism therapy through smart tangible-based digital
+storytelling: Co-design of activities and feasibility study.
+<em>Proceedings of the 23rd Annual ACM Interaction Design and Children
+Conference</em>, 665-669. https://doi.org/10.1145/3628516.3659371</p>
+<h2 id="visual-supports-control-tokens-and-educator-scaffolding">Visual
+supports, control tokens, and educator scaffolding</h2>
+<p>Knight, V. F., Sartini, E., &amp; Spriggs, A. D. (2015). Evaluating
+visual activity schedules as evidence-based practice for individuals
+with autism spectrum disorders. <em>Journal of Autism and Developmental
+Disorders, 45</em>(1), 157-178.
+https://doi.org/10.1007/s10803-014-2201-z</p>
+<p>Hume, K., Steinbrenner, J. R., Odom, S. L., Morin, K. L., Nowell, S.
+W., Tomaszewski, B., Szendrey, S., McIntyre, N. S., Yucesoy-Ozkan, S.,
+&amp; Savage, M. N. (2021). Evidence-based practices for children,
+youth, and young adults with autism: Third generation review.
+<em>Journal of Autism and Developmental Disorders, 51</em>, 4013-4032.
+https://doi.org/10.1007/s10803-020-04844-2</p>
+<p>Spiel, K., Frauenberger, C., Keyes, O., &amp; Fitzpatrick, G. (2019).
+Agency of autistic children in technology research: A critical
+literature review. <em>ACM Transactions on Computer-Human Interaction,
+26</em>(6), Article 38. https://doi.org/10.1145/3344919</p>
+<p>Cohn, E. G., McVilly, K. R., Harrison, M. J., &amp; Stiegler, L. N.
+(2022). Repeating purposefully: Empowering educators with functional
+communication models of echolalia in autism. <em>Autism &amp;
+Developmental Language Impairments, 7</em>.
+https://doi.org/10.1177/23969415221091928</p>
+<p>Harrop, C., Tu, N., Landa, R., Kaiser, A., &amp; Kasari, C. (2018).
+Sensory behaviors in minimally verbal children with autism spectrum
+disorder: How and when do caregivers respond? <em>American Journal on
+Intellectual and Developmental Disabilities, 123</em>(1), 1-16.
+https://doi.org/10.1352/1944-7558-123.1.1</p>
+<h2 id="multimodal-behavior-observation-and-analysis">Multimodal
+behavior observation and analysis</h2>
+<p>Goodwin, C. (2000). Action and embodiment within situated human
+interaction. <em>Journal of Pragmatics, 32</em>(10), 1489-1522.
+https://doi.org/10.1016/S0378-2166(99)00096-X</p>
+<p>Schneider, B., &amp; Blikstein, P. (2015). Unraveling students’
+interaction around a tangible interface using multimodal learning
+analytics. <em>Journal of Educational Data Mining, 7</em>(3),
+89-116.</p>
+<h2 id="future-adaptive-records-and-human-centered-ai">Future adaptive
+records and human-centered AI</h2>
+<p>Kaltenbrunner, M., &amp; Bencina, R. (2007). ReacTIVision: A
+computer-vision framework for table-based tangible interaction.
+<em>Proceedings of the 1st International Conference on Tangible and
+Embedded Interaction</em>. https://doi.org/10.1145/1226969.1226983</p>
+<p>Topali, P., Ortega-Arranz, A., Rodriguez-Triana, M. J., Er, E.,
+Khalil, M., &amp; Akcapinar, G. (2024). Designing human-centered
+learning analytics and artificial intelligence in education solutions: A
+systematic literature review. <em>Behaviour &amp; Information
+Technology</em>. https://doi.org/10.1080/0144929X.2024.2345295</p>
+<p>Barria-Pineda, J., Akhuseyinoglu, K., &amp; Brusilovsky, P. (2019).
+Explaining need-based educational recommendations using interactive open
+learner models. <em>Proceedings of the 27th ACM Conference on User
+Modeling, Adaptation and Personalization Adjunct</em>.
+https://doi.org/10.1145/3314183.3323463</p>
+</body>
+</html>

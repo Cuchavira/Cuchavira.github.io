@@ -1,0 +1,2701 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>project_protocol_template</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<h1 id="touch-to-meaning-project-protocol-template">Touch-to-Meaning
+Project Protocol Template</h1>
+<p>Working status: paper-methods scaffold. Do not treat this as a final
+school-facing, IRB, or submission-ready protocol until the decision
+fields are completed.</p>
+<h2 id="how-to-use-this-template">How to Use This Template</h2>
+<ul>
+<li>Keep all <code>[TO FILL]</code>, <code>[TO CONFIRM]</code>, and
+<code>[DECISION NEEDED]</code> markers until the information is
+confirmed with the school, advisor, or ethics process.</li>
+<li>Use this as a paper-methods protocol template for checking whether
+the collected data and analysis outputs can map back to the RQs.</li>
+<li>This version is for an observation-based classroom workshop. Do not
+add LLM-generated mock data to this stage.</li>
+<li>Keep learner expression, educator interpretation, researcher
+observation, recordings, and student work as separate evidence
+sources.</li>
+</ul>
+<h2 id="document-control">0. Document Control</h2>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr>
+<th>Field</th>
+<th>Entry</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Project title</td>
+<td><code>[TO CONFIRM: Touch-to-Meaning / Chinese project name / formal ethics title]</code></td>
+</tr>
+<tr>
+<td>Protocol version</td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Date</td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Principal researcher</td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Advisors / collaborators</td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Partner site</td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Intended use</td>
+<td>Paper methods / methods appendix; RQ-data-results mapping check</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Draft template with confirmed workshop setup and remaining
+placeholders</td>
+</tr>
+</tbody>
+</table>
+<h2 id="protocol-review-notes-from-the-supplied-rq-mapping-pdf">1.
+Protocol Review Notes From the Supplied RQ-Mapping PDF</h2>
+<p>The supplied <code>RQ_Mapping_and_Mock_Analysis_Protocol.pdf</code>
+is best treated as a design-validation method, not as the whole study
+protocol. It should be adapted into this project in the following
+way:</p>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr>
+<th>PDF component</th>
+<th>Use in this project</th>
+<th>Decision still needed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RQ-data mapping</td>
+<td>Build a matrix linking each RQ to data sources, observation fields,
+teacher interview records, recordings, student work, and analysis
+outputs.</td>
+<td>Define the exact data-source units: observation field, task phase,
+pair-level segment, video/audio segment, photo, student-work feature, or
+teacher-interview statement.</td>
+</tr>
+<tr>
+<td>Persona design</td>
+<td>Do not use generated personas in this stage. Use only ethically
+available learner-profile/context fields to support observation and
+later analysis.</td>
+<td>Decide which profile dimensions are available and ethically
+appropriate.</td>
+</tr>
+<tr>
+<td>Mock data generation</td>
+<td>Not used in this workshop stage. No LLM-generated mock data should
+be part of the paper-methods evidence.</td>
+<td>None for this stage.</td>
+</tr>
+<tr>
+<td>Mock analysis pipeline</td>
+<td>Run the planned coding and matrix workflow on real workshop
+artifacts after collection to check whether data/results answer the
+RQs.</td>
+<td>Decide whether analysis will use NVivo, spreadsheets, qualitative
+coding in Markdown, ELAN/Datavyu, or a hybrid workflow.</td>
+</tr>
+<tr>
+<td>Four-step validation</td>
+<td>Use RQ-data mapping before analysis, and use RQ-data-results mapping
+after initial coding.</td>
+<td>Decide what counts as enough evidence for each RQ.</td>
+</tr>
+</tbody>
+</table>
+<p>Key adaptation: this workshop is observation based, so the protocol
+should specify how classroom activity data become analyzable evidence
+rather than assuming direct access to student experience.</p>
+<h2 id="project-overview">2. Project Overview</h2>
+<h3 id="one-paragraph-summary">2.1 One-paragraph Summary</h3>
+<p>This protocol template describes an observation-based classroom
+workshop for Touch-to-Meaning. Eight students work in four pairs on a
+traditional handcraft activity about understanding clocks, numbers, and
+time. One main teacher, three assistant teachers, and three on-site
+researchers support and observe the workshop. Data sources include field
+notes, teacher interview, group 360 video, photos, audio, and student
+work. The protocol’s paper-methods purpose is to verify whether these
+data sources and the resulting analysis outputs can be mapped coherently
+to the study RQs.</p>
+<h3 id="current-context-anchors-to-confirm">2.2 Current Context Anchors
+to Confirm</h3>
+<p>These items are drawn from the current project folder and should be
+confirmed before being written as final facts:</p>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr>
+<th>Anchor</th>
+<th>Confirmed?</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Neuroaffirmative framing: agency, comfort, communication,
+participation, and self-defined success.</td>
+<td><code>[TO CONFIRM]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Partner context: special education school / Math-Art classroom.</td>
+<td><code>[TO CONFIRM]</code></td>
+<td></td>
+</tr>
+<tr>
+<td>Learning anchor: understanding clocks, numbers, and time.</td>
+<td>Confirmed for this workshop</td>
+<td></td>
+</tr>
+<tr>
+<td>Activity form: traditional handcraft with observation.</td>
+<td>Confirmed for this workshop</td>
+<td>No learner-facing control tokens in this stage.</td>
+</tr>
+<tr>
+<td>AI role: no LLM or live AI in this workshop stage.</td>
+<td>Confirmed for this workshop</td>
+<td>Future AI framing can be discussed outside this methods
+template.</td>
+</tr>
+<tr>
+<td>Study form: observation-based classroom workshop.</td>
+<td>Confirmed for this workshop</td>
+<td>8 students in 4 pairs.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="study-purpose-and-contribution">3. Study Purpose and
+Contribution</h2>
+<h3 id="purpose">3.1 Purpose</h3>
+<p>This protocol is designed to validate the paper-methods chain from
+RQs to collected data, analysis procedure, and result claims. It should
+show what each data source can support, where evidence is only
+contextual or supplementary, and which RQs cannot be answered by the
+current workshop data.</p>
+<h3 id="intended-contribution">3.2 Intended Contribution</h3>
+<p>Select or revise:</p>
+<ul>
+<li><code>[x]</code> Method contribution: observation and analysis
+protocol for mapping classroom handcraft activity data to RQs.</li>
+<li><code>[ ]</code> Design contribution: tactile/material activity
+design guidance.</li>
+<li><code>[ ]</code> Framework contribution: Touch-to-Meaning episode
+schema and semantic vocabulary.</li>
+<li><code>[ ]</code> System contribution: evidence schema for future
+inspectable adaptive tangible systems.</li>
+<li><code>[x]</code> Classroom contribution: teacher-informed
+interpretation of student participation during a clock/time handcraft
+activity.</li>
+<li><code>[ ]</code> Other: <code>[TO FILL]</code></li>
+</ul>
+<h3 id="non-goals">3.3 Non-goals</h3>
+<p>This workshop does not diagnose learners, rank students, prove
+learning efficacy, deploy AI, test LLM-generated data, or evaluate
+control-token use. It also does not treat video/audio alone as evidence
+of student experience without teacher context and careful
+interpretation.</p>
+<h2 id="research-questions">4. Research Questions</h2>
+<h3 id="rq-design-logic">4.1 RQ Design Logic</h3>
+<p>These research questions move from observing tactile response
+patterns, to translating multimodal expression, to tracing educator
+interpretation, and then building a framework.</p>
+<p>For this protocol version, use four research questions. RQ4 is a
+multi-session salience/stability question: the June 2 workshop can
+identify candidate semantic descriptions and test the evidence
+structure, but it cannot by itself prove salience across sessions.</p>
+<h3 id="working-primary-rqs">4.2 Working Primary RQs</h3>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>RQ ID</th>
+<th>Working wording</th>
+<th>Primary construct</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RQ1: Tactile response patterns</td>
+<td>What tactile response patterns emerge when neurodivergent learners
+engage with tactile materials in a structured learning activity?</td>
+<td>Observable material choice, touch/manipulation, task execution, and
+pair/individual variation.</td>
+<td>Working</td>
+</tr>
+<tr>
+<td>RQ2: Traceable semantic descriptions</td>
+<td>How can learners’ multimodal expressions around tactile episodes be
+translated into traceable semantic descriptions of tactile
+experience?</td>
+<td>Translation from multimodal expression to evidence-linked semantic
+description, with uncertainty preserved.</td>
+<td>Working</td>
+</tr>
+<tr>
+<td>RQ3: Educator interpretation</td>
+<td>What educator knowledge is needed to interpret and respond to
+learners’ tactile expressions?</td>
+<td>Teacher labels, classroom routines, support decisions, and
+misread-risk boundaries.</td>
+<td>Working</td>
+</tr>
+<tr>
+<td>RQ4: Salience of semantic descriptions</td>
+<td>How salient and stable are the semantic descriptions of tactile
+experience across multiple sessions?</td>
+<td>Recurrence, cross-source support, cross-session stability, and
+framework-building value.</td>
+<td>Provisional / requires multiple sessions</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rq-unpacking-for-evidence-mapping">4.2.1 RQ Unpacking for
+Evidence Mapping</h3>
+<p>Use this as the evidence contract before building the RQ-data matrix
+and before splitting the teacher interview into NVivo nodes. “Prove”
+means support with traceable evidence, not causal proof.</p>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>RQ</th>
+<th>Elements that need evidence</th>
+<th>Direct evidence to collect</th>
+<th>Field notes focus</th>
+<th>Teacher/context evidence needed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RQ1: Tactile response patterns</td>
+<td>Material choice, touch/manipulation type, task execution pattern,
+task-stage context, pair or individual variation.</td>
+<td>Group 360 front/tabletop views, photos, and student work process
+traces.</td>
+<td>Record time range, task segment, material involved, visible action,
+repetition, stopping/returning, group/student code, and evidence
+source.</td>
+<td>Teacher labels for whether an action is typical, unusual,
+preference-like, avoidance-like, help-seeking, or task-driven.</td>
+</tr>
+<tr>
+<td>RQ2: Traceable semantic descriptions</td>
+<td>Multimodal expression, candidate semantic description, source link,
+uncertainty, possible alternative meanings.</td>
+<td>Video/audio segment, photo, student work reference, or field-note
+episode tied to the observed expression.</td>
+<td>Separate observed action/expression, candidate description, evidence
+link, confidence/limit, and teacher follow-up question.</td>
+<td>Teacher explanation only when it helps interpret meaning; teacher
+interpretation must remain separate from direct observation.</td>
+</tr>
+<tr>
+<td>RQ3: Educator interpretation</td>
+<td>Teacher label, classroom routine, learner history known to the
+teacher, support response, misread risk.</td>
+<td>Teacher debrief/interview, teacher behavior labels, selected video
+clips, and field-note follow-up questions.</td>
+<td>Record teacher support and the exact uncertainty that requires
+educator interpretation.</td>
+<td>Teacher explanation of classroom meaning, support needs, behavior
+label, or why a researcher might misread the moment.</td>
+</tr>
+<tr>
+<td>RQ4: Salience of semantic descriptions</td>
+<td>Recurrence across sources, recurrence across sessions, consistency
+or contradiction, framework relevance.</td>
+<td>Repeated field-note/video/work/interview links across the June
+session sequence.</td>
+<td>Mark whether a semantic description appears once, across multiple
+evidence sources, or across multiple sessions.</td>
+<td>Teacher confirmation, disagreement, or refinement across sessions;
+mark when evidence is too thin for salience claims.</td>
+</tr>
+</tbody>
+</table>
+<p>Evidence-source segment codes:</p>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr>
+<th>Segment code</th>
+<th>Source column</th>
+<th>Meaning / exact source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V1</td>
+<td>Recorded videos</td>
+<td>Group 360 tabletop/top-down clip showing hand-material action,
+material placement, number placement, or work position.</td>
+</tr>
+<tr>
+<td>V2</td>
+<td>Recorded videos</td>
+<td>Group 360 front/side clip showing body orientation, reaching,
+visible expression, peer action, or teacher proximity.</td>
+</tr>
+<tr>
+<td>V3</td>
+<td>Recorded videos</td>
+<td>DV overview clip showing teacher instruction, whole-class rhythm,
+transitions, task-stage context, or support delivery.</td>
+</tr>
+<tr>
+<td>V4</td>
+<td>Recorded videos</td>
+<td>Audio track within the video file when speech, refusal, request,
+teacher prompt, or peer talk is needed.</td>
+</tr>
+<tr>
+<td>W1</td>
+<td>Student work / photos</td>
+<td>Work ID <code>W##</code>, final or in-process clock artifact, and
+linked work-photo file.</td>
+</tr>
+<tr>
+<td>W2</td>
+<td>Student work / photos</td>
+<td>Visible artifact feature: material used, number layout, clock-hand
+placement, orientation, completion state.</td>
+</tr>
+<tr>
+<td>W3</td>
+<td>Student work / photos</td>
+<td>Process trace visible in the artifact: repair, replacement, repeated
+placement, removed material, or changed number/hand position.</td>
+</tr>
+<tr>
+<td>L1</td>
+<td>Teacher labeling</td>
+<td>Material-response label: typical, unusual, preference-like,
+avoidance-like, task-driven, help-seeking, distracting, or
+exploration-supporting.</td>
+</tr>
+<tr>
+<td>L2</td>
+<td>Teacher labeling</td>
+<td>Expression/need label: like, refuse, continue, need help, done,
+thinking, uncomfortable, or uncertain.</td>
+</tr>
+<tr>
+<td>L3</td>
+<td>Teacher labeling</td>
+<td>Support/access label: prompt, wait, demonstration, physical
+assistance, material replacement, simplification, redirection, or
+support effect.</td>
+</tr>
+<tr>
+<td>L4</td>
+<td>Teacher labeling</td>
+<td>Misread or boundary label: easily misunderstood action, discomfort,
+distress, consent/recording concern, or do-not-interpret-yet.</td>
+</tr>
+<tr>
+<td>L5</td>
+<td>Teacher labeling</td>
+<td>Salience/stability label: repeated, strong, weak, source-conflicted,
+session-specific, or framework candidate.</td>
+</tr>
+</tbody>
+</table>
+<p>Source-separated sub-RQ evidence matrix:</p>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+</colgroup>
+<thead>
+<tr>
+<th>Sub-RQ element ID</th>
+<th>Sub-evidence segment to capture</th>
+<th>Field-note anchor</th>
+<th>Recorded videos as direct evidence</th>
+<th>Student work / photos as direct evidence</th>
+<th>Teacher labeling as context evidence</th>
+<th>Interview script anchors as context evidence</th>
+<th>Analysis use / boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RQ1.1 Material selection and change</td>
+<td>Offered, selected, accepted, rejected, switched, returned-to, or
+avoided material.</td>
+<td>Material encounter; observable action.</td>
+<td>V1 material selected/moved; V2 reach/accept/reject.</td>
+<td>W2 material visible in artifact; W3 material replaced/removed.</td>
+<td>L1 material-response label; L2 preference/refusal/help-seeking
+label.</td>
+<td><code>I2_material_exploration_control</code>;
+<code>I5_keep_add_remove_material</code>.</td>
+<td>Material-choice pattern; do not infer preference from selection
+alone.</td>
+</tr>
+<tr>
+<td>RQ1.2 Touch and manipulation type</td>
+<td>Tap, press, rub, pinch, roll, squeeze, hold, cut, draw, paste,
+place, remove, repair, rotate, or pause.</td>
+<td>Touch sequence; observable action.</td>
+<td>V1 hand-material action; V4 verbal marker if needed.</td>
+<td>W2 action result; W3 repair/change trace.</td>
+<td>L1 typical/unusual action; L3 support-linked action.</td>
+<td><code>I3_touch_sequence_roll_pinch_press_repeat_stay_still</code>;
+<code>I3_attention_focus_action_expression_sound_material_work</code>.</td>
+<td>Touch-action vocabulary; describe action before meaning.</td>
+</tr>
+<tr>
+<td>RQ1.3 Task execution pattern</td>
+<td>Repeat, persist, return, stop, pause, refuse, or avoid a
+material/task step.</td>
+<td>Touch sequence; expression/communication.</td>
+<td>V1 repeat/persist/stop sequence; V2 withdrawal/return.</td>
+<td>W3 repeated/removed/unfinished trace; W1/W2 changed artifact
+state.</td>
+<td>L1 task-driven/avoidance label; L2 continue/refuse/help label.</td>
+<td><code>I3_judgment_basis_like_resist_help_thinking</code>;
+<code>I6_expression_like_refuse_continue_help_done</code>.</td>
+<td>Separate exploration, difficulty, help-seeking, refusal,
+uncertainty, and possible distress.</td>
+</tr>
+<tr>
+<td>RQ1.4 Pair or individual variation</td>
+<td>Individual, shared, imitated, negotiated, parallel, or peer-shaped
+action.</td>
+<td>Peer/pair interaction; group/student code.</td>
+<td>V1 shared/parallel work; V2 peer watching/helping/turn-taking.</td>
+<td>W1 shared/individual work ID; W3 shared-work change trace.</td>
+<td>L3 peer/support context; L1 material-response difference.</td>
+<td><code>I1_student_smooth_challenge</code>;
+<code>I2_salient_student_moment</code>.</td>
+<td>Pair/student variation note; do not rank students or diagnose
+differences.</td>
+</tr>
+<tr>
+<td>RQ2.1 Multimodal expression before interpretation</td>
+<td>Visible/heard action, expression, gesture, speech, orientation,
+silence, or object handover before meaning is assigned.</td>
+<td>Observable action; expression/communication; interpretation
+limit.</td>
+<td>V1 material/work action; V2 expression/orientation.</td>
+<td>W3 artifact change tied to expression.</td>
+<td>L2 expression/need label only after direct observation; L4
+uncertainty label.</td>
+<td><code>I3_first_noticed_cue</code>;
+<code>I6_nonverbal_expression</code>.</td>
+<td>Evidence-linked description row separating observation from
+interpretation.</td>
+</tr>
+<tr>
+<td>RQ2.2 Candidate semantic description</td>
+<td>Candidate description of tactile experience generated from
+multimodal evidence.</td>
+<td>Candidate description; source link; confidence/limit.</td>
+<td>V1/V2 clip supporting the description; V4 speech/request if
+present.</td>
+<td>W2/W3 artifact evidence supporting the description.</td>
+<td>L1/L2 teacher label that supports or challenges the candidate
+description.</td>
+<td><code>I2_material_interest_preference</code>;
+<code>I6_expression_like_refuse_continue_help_done</code>.</td>
+<td>Candidate semantic vocabulary; avoid adult-only inference.</td>
+</tr>
+<tr>
+<td>RQ2.3 Evidence link and uncertainty</td>
+<td>File, time range, work ID, photo, field note, interview segment, and
+uncertainty for each claim.</td>
+<td>Episode ID; time range; evidence source; alternative
+explanation.</td>
+<td>V file name/timestamp; camera position.</td>
+<td>W1 work ID/photo file; W3 trace linked to episode.</td>
+<td>L4 uncertainty label; L1-L3 alternative label if provided.</td>
+<td><code>I3_misread_risk</code>; <code>I7_observation_gaps</code>.</td>
+<td>Claims without links go to the unsupported-claim log.</td>
+</tr>
+<tr>
+<td>RQ2.4 Alternative meanings / unsupported claim</td>
+<td>Possible alternative meanings and what cannot yet be
+interpreted.</td>
+<td>Interpretation limit; teacher follow-up question.</td>
+<td>V ambiguity/missing angle; V4 unclear audio.</td>
+<td>W2/W3 unresolved artifact meaning.</td>
+<td>L4 misread/boundary label.</td>
+<td><code>I3_misread_risk</code>; <code>I7_observation_gaps</code>.</td>
+<td>Keep claim limited or unresolved when evidence remains
+ambiguous.</td>
+</tr>
+<tr>
+<td>RQ3.1 Teacher interpretation and classroom label</td>
+<td>Teacher explanation of behavior, support need, classroom meaning, or
+possible learner expression.</td>
+<td>Teacher follow-up question; evidence source.</td>
+<td>Selected V clip as label prompt.</td>
+<td>W work evidence as label prompt.</td>
+<td>L1 material label; L2/L3 expression or support label.</td>
+<td><code>I3_judgment_basis_like_resist_help_thinking</code>;
+<code>I6_expression_like_refuse_continue_help_done</code>.</td>
+<td>Teacher label is contextual evidence, not learner self-report.</td>
+</tr>
+<tr>
+<td>RQ3.2 Educator contextual knowledge</td>
+<td>Classroom routine, learner history known to teachers, typicality,
+and support needs.</td>
+<td>Support/response; task stage; follow-up question.</td>
+<td>V3 routine/instruction; V4 teacher prompt.</td>
+<td>W3 artifact state explained by support.</td>
+<td>L3 support/access label; L4 routine-related boundary.</td>
+<td><code>I1_task_fit_class_constraints</code>;
+<code>I3_teacher_response_prompt_assist_close_wait_demo_replace</code>.</td>
+<td>Contextual interpretation layer; do not replace observed
+evidence.</td>
+</tr>
+<tr>
+<td>RQ3.3 Teacher response and support decision</td>
+<td>What support was given and why the teacher chose it.</td>
+<td>Teacher support/response; before/after action.</td>
+<td>V3 support delivery; V1 before/after action.</td>
+<td>W3 support-related change; W1/W2 completion state.</td>
+<td>L3 support effect; L2 need label.</td>
+<td><code>I3_teacher_response_prompt_assist_close_wait_demo_replace</code>;
+<code>I7_support_changes</code>.</td>
+<td>Do not treat adult support as independent learner evidence.</td>
+</tr>
+<tr>
+<td>RQ3.4 Misread risk and interpretation boundary</td>
+<td>Actions that may be misread, ethically sensitive, or outside
+approved data-use scope.</td>
+<td>Pause/withdrawal/distress; consent boundary.</td>
+<td>V use only after scope check; V2 distress cue if allowed.</td>
+<td>W use only after consent check.</td>
+<td>L4 boundary label; L2 discomfort/refusal label.</td>
+<td><code>I3_misread_risk</code>;
+<code>I6_nonverbal_expression</code>.</td>
+<td>Do not code as preference or salience without confirmation.</td>
+</tr>
+<tr>
+<td>RQ4.1 Cross-source recurrence</td>
+<td>Candidate description appears across more than one evidence
+source.</td>
+<td>Repeated code; evidence-source count.</td>
+<td>V clip plus another source; V4 if expression repeats.</td>
+<td>W2/W3 artifact support for the same description.</td>
+<td>L5 strong/weak/source-conflicted label.</td>
+<td><code>I3_moment_by_moment_recall</code>;
+<code>I6_nonverbal_expression</code>.</td>
+<td>Preliminary salience only; one source is insufficient.</td>
+</tr>
+<tr>
+<td>RQ4.2 Cross-session salience and stability</td>
+<td>Candidate description recurs, changes, or disappears across multiple
+sessions.</td>
+<td>Session ID; repeated description; change note.</td>
+<td>V evidence across sessions.</td>
+<td>W evidence across sessions.</td>
+<td>L5 repeated/session-specific/source-conflicted label.</td>
+<td><code>I7_observation_gaps</code>; later-session teacher
+follow-up.</td>
+<td>Requires multiple sessions before making salience/stability
+claims.</td>
+</tr>
+<tr>
+<td>RQ4.3 Framework implication</td>
+<td>Description is stable enough to inform the Touch-to-Meaning
+framework or design vocabulary.</td>
+<td>Framework memo; evidence link; limitation.</td>
+<td>V examples selected for framework memo.</td>
+<td>W examples selected for framework memo.</td>
+<td>L5 framework-candidate label; L4 boundary if unstable.</td>
+<td><code>I7_next_adjustment</code>;
+<code>I7_material_changes</code>.</td>
+<td>Framework contribution remains provisional until cross-session
+support is coded.</td>
+</tr>
+</tbody>
+</table>
+<p>Core units that must appear in the later matrix:</p>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr>
+<th>Unit</th>
+<th>Why it matters</th>
+<th>RQ links</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Episode ID, time range, session, task segment, group/pair/student
+code</td>
+<td>Makes every claim traceable back to a concrete moment.</td>
+<td>RQ1, RQ2, RQ3, RQ4</td>
+</tr>
+<tr>
+<td>Material or artifact involved</td>
+<td>Connects touch/action to the material environment.</td>
+<td>RQ1, RQ2</td>
+</tr>
+<tr>
+<td>Visible action or expression</td>
+<td>Keeps coding grounded before interpretation.</td>
+<td>RQ1, RQ2, RQ3, RQ4</td>
+</tr>
+<tr>
+<td>Teacher support and teacher label</td>
+<td>Explains classroom meaning and interpretation boundaries.</td>
+<td>RQ3; support for RQ2/RQ4</td>
+</tr>
+<tr>
+<td>Repeated evidence across sources or sessions</td>
+<td>Separates single-episode description from salience/stability
+claims.</td>
+<td>RQ4</td>
+</tr>
+<tr>
+<td>Evidence link and confidence/limit</td>
+<td>Prevents unsupported claims.</td>
+<td>RQ2, RQ3, RQ4</td>
+</tr>
+</tbody>
+</table>
+<h3 id="analysis-layers-not-standalone-claims-yet">4.2.2 Analysis
+Layers, Not Standalone Claims Yet</h3>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Use in this protocol</th>
+<th>Boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Touch-to-Meaning framework</td>
+<td>Built after initial coding as a synthesis output linking material
+properties, learner actions, semantic descriptions, educator
+interpretation, and design implications.</td>
+<td>Do not claim a stable framework until RQ1-RQ4 evidence is
+organized.</td>
+</tr>
+<tr>
+<td>Clock/time learning task</td>
+<td>Used as the structured activity context in which tactile/material
+interaction becomes observable.</td>
+<td>Do not treat clock/time learning improvement as a primary RQ in this
+workshop.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="domain-specific-subquestion-about-clocktime-learning">4.3
+Domain-Specific Subquestion About Clock/Time Learning</h3>
+<p>Do not make a broad main RQ such as “What is the relationship between
+tactile experience and abstract number sense/time perception?” unless
+the study has enough sessions and learning assessment evidence to
+support that claim.</p>
+<p>For this workshop, use a narrower task-context subquestion:</p>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr>
+<th>Subquestion</th>
+<th>Placement</th>
+<th>Evidence needed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>How do tactile-material handcraft actions make students’ engagement
+with clock numbers and time representation observable during the
+activity?</td>
+<td>Analytic subquestion under RQ1, RQ2, and RQ3; contextual evidence
+for RQ4 if descriptions recur across sessions.</td>
+<td>Group 360 video, field notes, student work, teacher behavior labels,
+teacher interview, and clock/time task codes.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rq4-salience-boundary">4.4 RQ4 Salience Boundary</h3>
+<p>RQ4 asks how salient and stable semantic descriptions of tactile
+experience are across multiple sessions. A single 30-minute workshop can
+only generate candidate descriptions and test whether the evidence
+structure can support later salience claims.</p>
+<ul>
+<li>A semantic description is more salient if it appears across multiple
+evidence sources, such as observed action, student expression, teacher
+labels, teacher interpretation, and student work context.</li>
+<li>A semantic description is more stable if it recurs across multiple
+sessions without depending on one ambiguous adult inference.</li>
+<li>A semantic description is less stable if it appears only once, only
+through adult inference, or only through ambiguous video evidence.</li>
+<li>Testing salience and stability requires the later June sessions and
+should be written as a provisional finding until repeated-session
+evidence is coded.</li>
+</ul>
+<h2 id="study-design-overview">5. Study Design Overview</h2>
+<h3 id="design-type">5.1 Design Type</h3>
+<p>Observation-based classroom workshop using a traditional clock/time
+handcraft activity. The methods emphasis is multimodal observation and
+RQ-data-results mapping, not intervention efficacy testing.</p>
+<h3 id="phase-structure">5.2 Phase Structure</h3>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Purpose</th>
+<th>Participants</th>
+<th>Output</th>
+<th>Can protocol adapt after this phase?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phase 0: RQ-data validation</td>
+<td>Check whether RQs, workshop activity, instruments, and expected
+analysis outputs align before coding.</td>
+<td>Research team</td>
+<td>RQ-data mapping matrix and analysis plan.</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Phase 1: Observation-based clock handcraft workshop</td>
+<td>Observe paired student participation in a traditional handcraft
+activity about clocks, numbers, and time.</td>
+<td>8 students in 4 pairs; 1 main teacher; 3 assistant teachers; 3
+researchers</td>
+<td>Field notes, video, photos, audio, student work, initial observation
+records.</td>
+<td>Limited</td>
+</tr>
+<tr>
+<td>Phase 2: Teacher interview / debrief</td>
+<td>Collect teacher interpretation of participation, classroom context,
+support strategies, and notable moments.</td>
+<td>3 teachers <code>[TO CONFIRM: which three]</code></td>
+<td>Teacher interview audio/notes and interpretation memos.</td>
+<td>Yes, for analysis framing</td>
+</tr>
+<tr>
+<td>Phase 3: Data organization and coding</td>
+<td>Segment workshop records and code participation, handcraft
+interaction, clock/time learning actions, and teacher-supported
+interpretation.</td>
+<td>Research team</td>
+<td>Codebook, coded dataset, evidence matrix.</td>
+<td>Yes, with audit trail</td>
+</tr>
+<tr>
+<td>Phase 4: RQ-data-results mapping</td>
+<td>Check whether each result claim is supported by specific data
+sources and whether each RQ has sufficient evidence.</td>
+<td>Research team</td>
+<td>RQ-data-results matrix and paper methods notes.</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h3 id="adaptation-rules">5.3 Adaptation Rules</h3>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Adaptation type</th>
+<th>Allowed during study?</th>
+<th>Who approves?</th>
+<th>Documentation required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Removing an unsafe or distressing material</td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Adding a replacement material</td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Changing task instructions or handcraft steps</td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Shortening or stopping a learner session</td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Changing activity topic</td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Changing data collection method</td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="participants-and-setting">6. Participants and Setting</h2>
+<h3 id="participant-groups">6.1 Participant Groups</h3>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Group</th>
+<th>Target number</th>
+<th>Inclusion criteria</th>
+<th>Exclusion / caution criteria</th>
+<th>Recruitment route</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Learners</td>
+<td>8 students, arranged as 4 pairs</td>
+<td>Enrolled in the participating class/workshop; able to participate in
+the handcraft session with usual supports.
+<code>[TO CONFIRM]</code></td>
+<td>Any student for whom the activity, recording setup, or materials are
+not approved or appropriate. <code>[TO CONFIRM]</code></td>
+<td>Partner school / class arrangement. <code>[TO CONFIRM]</code></td>
+</tr>
+<tr>
+<td>Main teacher</td>
+<td>1</td>
+<td>Leads or supports the clock/time handcraft activity.
+<code>[TO CONFIRM]</code></td>
+<td><code>[TO FILL]</code></td>
+<td>Partner school</td>
+</tr>
+<tr>
+<td>Assistant teachers</td>
+<td>3</td>
+<td>Provide classroom and pair-level support during the workshop.
+<code>[TO CONFIRM]</code></td>
+<td><code>[TO FILL]</code></td>
+<td>Partner school</td>
+</tr>
+<tr>
+<td>Researchers</td>
+<td>3 on-site</td>
+<td>Set up recording, take field notes, observe pair-level interaction,
+and conduct/debrief teacher interview.</td>
+<td><code>[TO FILL]</code></td>
+<td>Research team</td>
+</tr>
+</tbody>
+</table>
+<h3 id="learner-profile-template">6.2 Learner Profile Template</h3>
+<p>Use this to support design adaptation, not diagnosis or ability
+ranking.</p>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Profile field</th>
+<th>Required?</th>
+<th>Source</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Participant code</td>
+<td>Yes</td>
+<td>Research team</td>
+<td>No real name in analysis files.</td>
+</tr>
+<tr>
+<td>Age range / grade</td>
+<td><code>[TO CONFIRM]</code></td>
+<td>School/caregiver</td>
+<td></td>
+</tr>
+<tr>
+<td>Communication mode</td>
+<td><code>[TO CONFIRM]</code></td>
+<td>Educator/caregiver/learner</td>
+<td>Speech, AAC, gesture, drawing, pointing, object choice, other.</td>
+</tr>
+<tr>
+<td>Sensory access notes</td>
+<td><code>[TO CONFIRM]</code></td>
+<td>Educator/caregiver/learner</td>
+<td>Known seeking/avoidance, overload signals, preferred supports.</td>
+</tr>
+<tr>
+<td>Tactile sensitivity notes</td>
+<td><code>[TO CONFIRM]</code></td>
+<td>Educator/caregiver/learner</td>
+<td>Materials to avoid, opt-in materials, cleaning/allergy notes.</td>
+</tr>
+<tr>
+<td>Fine-motor access</td>
+<td><code>[TO CONFIRM]</code></td>
+<td>Educator/caregiver/observation</td>
+<td>Grip, reach, attach/detach, two-hand use, fatigue.</td>
+</tr>
+<tr>
+<td>Gross-motor/spatial comfort</td>
+<td><code>[TO CONFIRM]</code></td>
+<td>Educator/caregiver/observation</td>
+<td>Sitting/standing, reaching, table arrangement, pair-work
+access.</td>
+</tr>
+<tr>
+<td>Attention and predictability needs</td>
+<td><code>[TO CONFIRM]</code></td>
+<td>Educator/caregiver/observation</td>
+<td>Preview, routine, breaks, transitions.</td>
+</tr>
+<tr>
+<td>Support routines</td>
+<td><code>[TO CONFIRM]</code></td>
+<td>Educator/caregiver</td>
+<td>Prompts, co-regulation, familiar objects, break strategy.</td>
+</tr>
+<tr>
+<td>Opt-out / distress signals</td>
+<td>Yes</td>
+<td>Educator/caregiver/learner</td>
+<td>Must be honored.</td>
+</tr>
+<tr>
+<td>Learner preferences stated by learner</td>
+<td>Yes when available</td>
+<td>Learner</td>
+<td>Separate from adult interpretation.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="setting">6.3 Setting</h3>
+<p><code>[TO FILL: room type, classroom layout, table arrangement, noise level, break area, storage and cleaning plan.]</code></p>
+<p>Confirmed recording setup for this workshop:</p>
+<ul>
+<li>Four student pairs work in parallel.</li>
+<li>Four group 360 cameras are used in total.</li>
+<li>Each pair/group has one 360 camera at the current tabletop camera
+position. Each 360 camera can support both front-view and
+top-down/tabletop review during analysis, depending on camera placement
+and exported view.</li>
+<li>Audio, photos, field notes, teacher interview, and student work are
+part of the data package.</li>
+<li>Camera placement and consent/assent procedures still need exact
+school/ethics wording.</li>
+</ul>
+<h2 id="materials-prototype-and-activity">7. Materials, Prototype, and
+Activity</h2>
+<h3 id="learning-activity-anchor">7.1 Learning Activity Anchor</h3>
+<p>Understanding clocks, numbers, and time through a traditional
+handcraft workshop.</p>
+<p>Workshop task: students make a “beautiful clock” through a
+traditional handcraft activity. Students are divided into three task
+levels based on ability:</p>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Level</th>
+<th>Difficulty</th>
+<th>Clock-making task focus</th>
+<th>Support assumption</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>Highest</td>
+<td>Student completes the most open-ended version: selects materials,
+composes the clock face, places or marks number points, and
+creates/positions the clock hands with minimal prompting.</td>
+<td>Teacher support mainly for instruction clarification, safety, and
+time management.</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Medium</td>
+<td>Student completes a partially scaffolded version: chooses among
+prepared options, places key numbers or number points, decorates the
+clock face, and positions hands with some guidance.</td>
+<td>Teacher support may include modeling, step reminders, and material
+assistance.</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Highest support</td>
+<td>Student completes a simplified version: chooses or handles
+materials, decorates or attaches larger prepared components, and
+participates in number/time representation through supported
+action.</td>
+<td>Teacher support may include hand-over-hand only if normally used and
+ethically appropriate, plus simplified choices and repeated
+prompts.</td>
+</tr>
+</tbody>
+</table>
+<p>Expected output: each student or pair produces a handcraft clock
+artifact.
+<code>[TO CONFIRM: individual artifact or pair artifact]</code></p>
+<h3 id="handcraft-and-clock-materials">7.2 Handcraft and Clock
+Materials</h3>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr>
+<th>Material ID</th>
+<th>Material / component</th>
+<th>Relevant feature</th>
+<th>Intended role</th>
+<th>Safety/access notes</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M01</td>
+<td>Card-paper circle / clock-face base</td>
+<td>Shape, color, size, surface</td>
+<td>Clock face / dial base.</td>
+<td><code>[TO CONFIRM]</code></td>
+<td>Confirmed material family</td>
+</tr>
+<tr>
+<td>M02</td>
+<td>Colored pens</td>
+<td>Color, drawing pressure, mark-making</td>
+<td>Drawing decoration, number points, symbols, or time cues.</td>
+<td><code>[TO CONFIRM]</code></td>
+<td>Confirmed material family</td>
+</tr>
+<tr>
+<td>M03</td>
+<td>Clay</td>
+<td>Softness, pressure, shaping, stickiness</td>
+<td>Making number points, decorations, or raised tactile elements.</td>
+<td><code>[TO CONFIRM]</code></td>
+<td>Confirmed material family</td>
+</tr>
+<tr>
+<td>M04</td>
+<td>Felt / non-woven fabric</td>
+<td>Soft texture, cutting/placing, layering</td>
+<td>Clock-face decoration, number points, or tactile markers.</td>
+<td><code>[TO CONFIRM]</code></td>
+<td>Confirmed material family</td>
+</tr>
+<tr>
+<td>M05</td>
+<td>Clock hands</td>
+<td>Direction, rotation, pointer placement</td>
+<td>Representing time and hand position.</td>
+<td><code>[TO CONFIRM: material and attachment method]</code></td>
+<td>To confirm</td>
+</tr>
+<tr>
+<td>M06</td>
+<td>Adhesive / attachment material</td>
+<td>Stickiness, placement, repair</td>
+<td>Attaching numbers, markers, felt, clay, or hands.</td>
+<td><code>[TO CONFIRM]</code></td>
+<td>To confirm</td>
+</tr>
+</tbody>
+</table>
+<h3 id="control-tokens">7.3 Control Tokens</h3>
+<p>Not used in this workshop stage. Observers should not analyze token
+use, because no learner-facing control-token system is part of the
+traditional handcraft setup.</p>
+<p>Student requests, refusals, help-seeking, pauses, and disengagement
+should instead be recorded as naturally occurring classroom interaction
+and interpreted with teacher context.</p>
+<h3 id="prototype-probe-components">7.4 Prototype / Probe
+Components</h3>
+<p>Core components:</p>
+<ul>
+<li>Card-paper clock-face shapes, likely circular bases.</li>
+<li>Colored pens.</li>
+<li>Clay.</li>
+<li>Felt / non-woven fabric.</li>
+<li>Clock hands and attachment method. <code>[TO CONFIRM]</code></li>
+<li>Any templates, examples, or A/B/C worksheets used by the teacher.
+<code>[TO FILL]</code></li>
+<li>Table setup for four pairs.</li>
+<li>Group 360 camera labels and pair labels for four student pairs.</li>
+<li>Storage, cleaning, and reset procedure. <code>[TO FILL]</code></li>
+</ul>
+<h2 id="procedure-template">8. Procedure Template</h2>
+<h3 id="before-the-session">8.1 Before the Session</h3>
+<ul>
+<li><code>[TO FILL: consent/assent check]</code></li>
+<li><code>[TO FILL: material safety check]</code></li>
+<li><code>[TO FILL: room and table setup for four pairs]</code></li>
+<li><code>[TO FILL: four group 360-camera setup: one camera for each student pair/group]</code></li>
+<li><code>[TO FILL: audio recorder placement and photo protocol]</code></li>
+<li><code>[TO FILL: educator briefing]</code></li>
+<li><code>[TO FILL: learner profile/access notes review]</code></li>
+</ul>
+<h3 id="observation-based-clock-handcraft-workshop-procedure">8.2
+Observation-Based Clock Handcraft Workshop Procedure</h3>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 21%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr>
+<th>Step</th>
+<th style="text-align: right;">Time</th>
+<th>Activity</th>
+<th>Data collected</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align: right;"><code>[TO FILL]</code></td>
+<td>Room, table, and camera setup before students enter.</td>
+<td>Setup checklist; camera test notes.</td>
+<td>4 group 360 cameras total: 1 per pair/group.</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align: right;"><code>[TO FILL]</code></td>
+<td>Teacher introduces the clock/time handcraft activity.</td>
+<td>Video/audio; researcher field notes.</td>
+<td>Capture instructions and student orientation.</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align: right;"><code>[TO FILL]</code></td>
+<td>Students work in four pairs on the handcraft task.</td>
+<td>Pair-level video, photos, field notes, student work.</td>
+<td>Researchers observe without interrupting normal teacher support
+unless safety requires it.</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align: right;"><code>[TO FILL]</code></td>
+<td>Main teacher and assistant teachers support student
+participation.</td>
+<td>Teacher support events in field notes/video.</td>
+<td>Record prompts, demonstrations, material assistance, redirection,
+and peer/pair interaction.</td>
+</tr>
+<tr>
+<td>5</td>
+<td style="text-align: right;"><code>[TO FILL]</code></td>
+<td>Researcher captures still photos of materials, work-in-progress, and
+final student work if permitted.</td>
+<td>Photos; artifact notes.</td>
+<td>Avoid identifiable close-ups unless consent covers them.</td>
+</tr>
+<tr>
+<td>6</td>
+<td style="text-align: right;"><code>[TO FILL]</code></td>
+<td>Workshop close and student work collection/documentation.</td>
+<td>Final artifact photos/scans; field notes.</td>
+<td>Confirm whether original student work remains with school or is only
+photographed.</td>
+</tr>
+<tr>
+<td>7</td>
+<td style="text-align: right;"><code>[TO FILL]</code></td>
+<td>Teacher interview/debrief after the workshop.</td>
+<td>Interview audio/notes.</td>
+<td>Focus on teacher interpretation of observed participation, support,
+and clock/time understanding.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="thirty-minute-workshop-segment-labels">8.2.1 Thirty-Minute
+Workshop Segment Labels</h3>
+<p>Use printed bilingual labels at each segment transition to support
+later video editing and NVivo segmentation. Exact timing can shift
+slightly in practice, but the segment names should remain stable.</p>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 21%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr>
+<th>Segment code</th>
+<th>Printed segment name</th>
+<th style="text-align: right;">Target time</th>
+<th>Purpose</th>
+<th>Primary data focus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S1</td>
+<td>认识时钟 / Clock Warm-up</td>
+<td style="text-align: right;">0-4 min</td>
+<td>Teacher introduces the clock model, numbers, hands, and activity
+goal.</td>
+<td>Instruction, orientation, initial attention to clock/time
+concepts.</td>
+</tr>
+<tr>
+<td>S2</td>
+<td>选择材料 / Material Choice</td>
+<td style="text-align: right;">4-8 min</td>
+<td>Students choose or receive card-paper bases, colored pens, clay,
+felt, and other clock materials according to A/B/C task level.</td>
+<td>Material selection, touch/handling, preference-like actions, teacher
+scaffolding.</td>
+</tr>
+<tr>
+<td>S3</td>
+<td>制作钟面 / Clock Face Making</td>
+<td style="text-align: right;">8-14 min</td>
+<td>Students decorate or prepare the clock face.</td>
+<td>Mark-making, tactile/material interaction, pair coordination, task
+access.</td>
+</tr>
+<tr>
+<td>S4</td>
+<td>制作数字点 / Number Points</td>
+<td style="text-align: right;">14-20 min</td>
+<td>Students make, place, draw, or identify number positions on the
+clock face.</td>
+<td>Number representation, spatial placement, teacher prompts, material
+action.</td>
+</tr>
+<tr>
+<td>S5</td>
+<td>安装指针 / Clock Hands</td>
+<td style="text-align: right;">20-25 min</td>
+<td>Students create, attach, or position clock hands.</td>
+<td>Time representation, directionality, rotation/placement, fine-motor
+support.</td>
+</tr>
+<tr>
+<td>S6</td>
+<td>展示与整理 / Show, Document, and Close</td>
+<td style="text-align: right;">25-30 min</td>
+<td>Students show or finish the artifact; researchers document final
+work if permitted.</td>
+<td>Student work, verbal/nonverbal display, teacher interpretation,
+closure.</td>
+</tr>
+</tbody>
+</table>
+<p>Optional printed labels:</p>
+<pre><code>S1 认识时钟 / Clock Warm-up
+S2 选择材料 / Material Choice
+S3 制作钟面 / Clock Face Making
+S4 制作数字点 / Number Points
+S5 安装指针 / Clock Hands
+S6 展示与整理 / Show, Document, and Close</code></pre>
+<h3 id="pair-level-observation-focus">8.3 Pair-Level Observation
+Focus</h3>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Focus</th>
+<th>What to observe</th>
+<th>Primary data source</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clock/time task engagement</td>
+<td>How students attend to clock numbers, time representation, teacher
+instructions, and handcraft steps.</td>
+<td>Group 360 video, field notes, student work.</td>
+<td><code>[TO FILL: exact clock/time learning indicators]</code></td>
+</tr>
+<tr>
+<td>Material and handcraft interaction</td>
+<td>How students choose, touch, place, cut, paste, color, assemble, or
+modify materials.</td>
+<td>Group 360 video, photos, field notes.</td>
+<td>Separate tactile/material action from inferred preference.</td>
+</tr>
+<tr>
+<td>Pair interaction</td>
+<td>Turn-taking, shared work, imitation, assistance, conflict,
+negotiation, or parallel work.</td>
+<td>Group 360 video, audio, field notes.</td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Teacher support</td>
+<td>Main/assistant teacher prompts, demonstrations, physical assistance,
+emotional support, and redirection.</td>
+<td>Video/audio, field notes, teacher interview.</td>
+<td>Record teacher role without treating adult interpretation as learner
+voice.</td>
+</tr>
+<tr>
+<td>Student expression</td>
+<td>Speech, gesture, facial/body orientation, pointing, refusal,
+help-seeking, repeated action, or silence in context.</td>
+<td>Video/audio, field notes, teacher interview.</td>
+<td>Interpret cautiously and with teacher context.</td>
+</tr>
+<tr>
+<td>Student work</td>
+<td>Final and in-process clock/time artifact features.</td>
+<td>Photos, student work, field notes.</td>
+<td>Link artifact evidence to observed process where possible.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="pause-withdrawal-and-distress-protocol">8.4 Pause, Withdrawal,
+and Distress Protocol</h3>
+<p><code>[TO FILL: exact signs, adult roles, immediate actions, when to pause/stop observation for a student, how to document without pressuring the learner.]</code></p>
+<h2 id="data-sources-and-instruments">9. Data Sources and
+Instruments</h2>
+<h3 id="data-inventory">9.1 Data Inventory</h3>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr>
+<th>Data source</th>
+<th>Unit of analysis</th>
+<th>Collected by</th>
+<th>Format</th>
+<th>Required for which RQ?</th>
+<th>Consent needed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Researcher field notes</td>
+<td>Observation note / event / pair-level episode</td>
+<td>3 on-site researchers</td>
+<td>Written notes</td>
+<td>RQ1, RQ2, RQ3, RQ4</td>
+<td>Parent-signed consent; exact scope <code>[TO CONFIRM]</code></td>
+</tr>
+<tr>
+<td>Teacher interview</td>
+<td>Interview segment / interpretation statement</td>
+<td>Research team</td>
+<td>30-minute teacher interview; audio and/or notes</td>
+<td>Primary for RQ3; contextual for RQ1, RQ2, RQ4</td>
+<td>Teacher consent; parent consent if identifiable student references
+are retained <code>[TO CONFIRM]</code></td>
+</tr>
+<tr>
+<td>Group 360 video</td>
+<td>Pair-level handcraft and interaction episode</td>
+<td>Research team</td>
+<td>4 camera streams, one per pair/group, reviewed through front-view
+and top-down/tabletop views where possible</td>
+<td>RQ1, RQ2, RQ4; prompt source for RQ3</td>
+<td>Parent-signed consent; exact scope <code>[TO CONFIRM]</code></td>
+</tr>
+<tr>
+<td>Photos</td>
+<td>Material/work/artifact image</td>
+<td>Research team</td>
+<td>Photo files</td>
+<td>Supplementary for RQ1, RQ2, RQ4</td>
+<td>Parent-signed consent; exact scope <code>[TO CONFIRM]</code></td>
+</tr>
+<tr>
+<td>Audio</td>
+<td>Workshop audio / teacher interview audio</td>
+<td>Research team</td>
+<td>Audio files</td>
+<td>Supplementary for RQ2 and RQ3; contextual for RQ4</td>
+<td>Parent-signed consent for student audio; teacher consent for
+interview <code>[TO CONFIRM]</code></td>
+</tr>
+<tr>
+<td>Student work</td>
+<td>In-process or final handcraft clock artifact</td>
+<td>Students, documented by research team</td>
+<td>Original, photo, or scan <code>[TO CONFIRM]</code></td>
+<td>Supplementary for RQ1, RQ2, RQ4</td>
+<td>Parent-signed consent; exact scope <code>[TO CONFIRM]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="rq-data-mapping-matrix">9.2 RQ-Data Mapping Matrix</h3>
+<p>Use <code>Primary</code>, <code>Supplementary</code>,
+<code>Context</code>, or blank.</p>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+</colgroup>
+<thead>
+<tr>
+<th>RQ</th>
+<th>Field notes</th>
+<th>Teacher interview</th>
+<th>Group 360 video front/tabletop views</th>
+<th>Photos</th>
+<th>Audio</th>
+<th>Student work</th>
+<th>Analysis output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RQ1: tactile response patterns</td>
+<td>Primary</td>
+<td>Context</td>
+<td>Primary</td>
+<td>Supplementary</td>
+<td>Supplementary</td>
+<td>Supplementary</td>
+<td>Interaction-pattern codebook and pair-level pattern summary</td>
+</tr>
+<tr>
+<td>RQ2: traceable semantic descriptions</td>
+<td>Primary</td>
+<td>Supplementary</td>
+<td>Primary</td>
+<td>Supplementary</td>
+<td>Supplementary</td>
+<td>Supplementary</td>
+<td>Evidence-linked semantic description table</td>
+</tr>
+<tr>
+<td>RQ3: educator interpretation</td>
+<td>Primary</td>
+<td>Primary</td>
+<td>Context</td>
+<td>Context</td>
+<td>Primary for teacher interview</td>
+<td>Context</td>
+<td>Teacher-interpretation memo and response/support boundary notes</td>
+</tr>
+<tr>
+<td>RQ4: salience of semantic descriptions</td>
+<td>Primary across sessions</td>
+<td>Primary across sessions</td>
+<td>Primary across sessions</td>
+<td>Supplementary</td>
+<td>Supplementary</td>
+<td>Supplementary</td>
+<td>Salience/stability matrix and framework-candidate memo</td>
+</tr>
+</tbody>
+</table>
+<h3 id="field-notes-data-segment-to-rq-matrix">9.3 Field Notes Data
+Segment-to-RQ Matrix</h3>
+<p>Field notes should not try to transcribe the whole class. Each useful
+note should become a traceable segment that can later be linked to
+video, photos, student work, audio, or teacher interview. A segment can
+be a short moment, a task-stage interval, or a pair-level episode, but
+it must include enough context to support RQ-data-results mapping.</p>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr>
+<th>Field-note data segment</th>
+<th>What the observer records</th>
+<th>RQ1: tactile response patterns</th>
+<th>RQ2: semantic descriptions</th>
+<th>RQ3: educator interpretation</th>
+<th>RQ4: salience/stability</th>
+<th>Required links / follow-up</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Segment identity and traceability</td>
+<td>Episode ID, observer, time range, session, S1-S6 task segment,
+group/pair/student code, camera file or source, work ID if relevant,
+consent/recording status.</td>
+<td>Context</td>
+<td>Primary traceability</td>
+<td>Context</td>
+<td>Primary traceability</td>
+<td>Link to camera file, photo, audio, work ID, or consent note.</td>
+</tr>
+<tr>
+<td>Material encounter</td>
+<td>Material offered, selected, accepted, rejected, switched, returned
+to, avoided, or repeatedly chosen; visible material property.</td>
+<td>Primary</td>
+<td>Support</td>
+<td>Context</td>
+<td>Support if repeated</td>
+<td>Mark whether action is visible, field-note only, or needs teacher
+confirmation.</td>
+</tr>
+<tr>
+<td>Touch and manipulation sequence</td>
+<td>Observable action such as tap, press, rub, pinch, roll, squeeze,
+hold, cut, draw, paste, place, remove, repair, rotate, or pause;
+repetition, duration, persistence, and stopping point.</td>
+<td>Primary</td>
+<td>Primary when linked to expression</td>
+<td>Support</td>
+<td>Support if repeated</td>
+<td>Add video timestamp or note why video may not show it clearly.</td>
+</tr>
+<tr>
+<td>Student expression and communication</td>
+<td>Speech, gesture, pointing, gaze/orientation, body movement, object
+handover, help-seeking, refusal, silence in context, “done,” “continue,”
+“change,” “help,” “pause,” or “stop.”</td>
+<td>Context</td>
+<td>Primary</td>
+<td>Support</td>
+<td>Support if repeated</td>
+<td>Separate observed expression from inferred meaning; add teacher
+follow-up if ambiguous.</td>
+</tr>
+<tr>
+<td>Teacher support and response</td>
+<td>Prompt, demonstration, wait time, material assistance, physical
+help, redirection, emotional support, simplification, material
+replacement, or no support.</td>
+<td>Context</td>
+<td>Support</td>
+<td>Primary</td>
+<td>Context</td>
+<td>Note teacher role and whether support changed the student’s action
+or task access.</td>
+</tr>
+<tr>
+<td>Peer/pair interaction</td>
+<td>Shared work, parallel work, imitation, turn-taking, helping, taking
+material, resistance, conflict, negotiation, or watching peer.</td>
+<td>Support</td>
+<td>Context</td>
+<td>Context</td>
+<td>Support if repeated</td>
+<td>Link to group/pair code and note whether peer action affects
+material choice or task engagement.</td>
+</tr>
+<tr>
+<td>Clock/time task link</td>
+<td>Number placement, number-point making, missing-number completion,
+clock-face orientation, hand direction, hand rotation, time reading,
+daily-time reference, or unclear clock/time relation.</td>
+<td>Context</td>
+<td>Context</td>
+<td>Context</td>
+<td>Context if repeated</td>
+<td>Link to artifact/work ID and teacher judgment of task meaning where
+available.</td>
+</tr>
+<tr>
+<td>Student work / artifact state</td>
+<td>Work ID, in-process or final state, visible material features,
+number layout, hand placement, completion status, repair/change history,
+and photo file.</td>
+<td>Support</td>
+<td>Support</td>
+<td>Context</td>
+<td>Support if repeated</td>
+<td>Link student work photo to the relevant field-note segment and video
+time range.</td>
+</tr>
+<tr>
+<td>Pause, withdrawal, distress, or consent boundary</td>
+<td>Student leaves task, refuses material, stops participating, appears
+uncomfortable, recording is adjusted/stopped, or data use is
+uncertain.</td>
+<td>Context</td>
+<td>Interpretation boundary</td>
+<td>Primary boundary</td>
+<td>Boundary for salience claims</td>
+<td>Mark for consent/ethics check before analysis.</td>
+</tr>
+<tr>
+<td>Researcher interpretation limit and teacher follow-up</td>
+<td>What is uncertain, possible alternative explanations, what a
+researcher might misread, and the exact question to ask teachers after
+class.</td>
+<td>Support</td>
+<td>Primary</td>
+<td>Primary</td>
+<td>Primary if used for salience</td>
+<td>Must be linked to teacher interview, teacher label, or
+unsupported-claim log if used in results.</td>
+</tr>
+</tbody>
+</table>
+<p>Minimum useful field-note segment:</p>
+<pre><code>Episode ID + time range + task segment + group/student + observable action/expression + material/work involved + teacher/peer context + evidence link + RQ link + interpretation limit or teacher follow-up question.</code></pre>
+<h3 id="instrument-to-rq-check">9.4 Instrument-to-RQ Check</h3>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Instrument item / observation field</th>
+<th>RQ served</th>
+<th>Keep / revise / remove</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Segment identity and traceability</td>
+<td>RQ1, RQ2, RQ3, RQ4</td>
+<td>Keep</td>
+<td>Required for every field-note segment.</td>
+</tr>
+<tr>
+<td>Material encounter and touch/manipulation sequence</td>
+<td>RQ1, RQ2, RQ4</td>
+<td>Keep</td>
+<td>Core field-note evidence for tactile response patterns and semantic
+descriptions.</td>
+</tr>
+<tr>
+<td>Student expression and communication</td>
+<td>RQ2, RQ3, RQ4</td>
+<td>Keep</td>
+<td>Must separate visible expression from inferred meaning.</td>
+</tr>
+<tr>
+<td>Teacher support and response</td>
+<td>RQ3; support for RQ2/RQ4</td>
+<td>Keep</td>
+<td>Needed to interpret task access and classroom meaning.</td>
+</tr>
+<tr>
+<td>Clock/time task link and student work/artifact state</td>
+<td>Context for all RQs; support for RQ4 if repeated</td>
+<td>Keep</td>
+<td>Keeps the study anchored in the structured learning activity without
+making clock/time learning a primary RQ.</td>
+</tr>
+<tr>
+<td>Researcher interpretation limit and teacher follow-up</td>
+<td>RQ2, RQ3, RQ4</td>
+<td>Keep</td>
+<td>Required before using ambiguous notes in results.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="teacher-interview-and-contextual-interpretation">10. Teacher
+Interview and Contextual Interpretation</h2>
+<h3 id="interpretation-principle">10.1 Interpretation Principle</h3>
+<p>This workshop is observation based. Do not require learner interviews
+or post-hoc explanations unless they naturally occur within normal
+classroom interaction and are approved by the protocol. Teacher
+interview data should be used to contextualize observed participation,
+support strategies, classroom routines, and possible meanings of student
+actions. Teacher interpretation must remain analytically separate from
+directly observed student action and student-produced work.</p>
+<h3 id="teacher-interview-prompt-bank">10.2 Teacher Interview Prompt
+Bank</h3>
+<p>Use these after the workshop. The planned interview length is 30
+minutes, with three teachers participating.
+<code>[TO CONFIRM: which three teachers and whether the interview is group or individual.]</code></p>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+</colgroup>
+<thead>
+<tr>
+<th>Prompt purpose</th>
+<th>Candidate prompt</th>
+<th>Keep / revise / remove</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Activity fit</td>
+<td>“How did this clock/time handcraft activity fit the students’
+current learning level and classroom routine?”</td>
+<td><code>[TO CONFIRM]</code></td>
+</tr>
+<tr>
+<td>Level fit</td>
+<td>“Were the A/B/C task levels appropriate for the students? Which
+level was too easy, too hard, or useful?”</td>
+<td><code>[TO CONFIRM]</code></td>
+</tr>
+<tr>
+<td>Student participation</td>
+<td>“Which moments showed meaningful participation, even if the student
+was not completing the task in the expected way?”</td>
+<td><code>[TO CONFIRM]</code></td>
+</tr>
+<tr>
+<td>Clock/time understanding</td>
+<td>“What signs would you use to judge whether a student was engaging
+with numbers, clock position, or time concepts?”</td>
+<td><code>[TO CONFIRM]</code></td>
+</tr>
+<tr>
+<td>Material interaction</td>
+<td>“Were there material or handcraft steps that seemed to support or
+block participation?”</td>
+<td><code>[TO CONFIRM]</code></td>
+</tr>
+<tr>
+<td>Pair interaction</td>
+<td>“How did the student pairs work together, separately, imitate each
+other, or need teacher mediation?”</td>
+<td><code>[TO CONFIRM]</code></td>
+</tr>
+<tr>
+<td>Support strategies</td>
+<td>“What teacher prompts, demonstrations, or physical supports were
+important during the activity?”</td>
+<td><code>[TO CONFIRM]</code></td>
+</tr>
+<tr>
+<td>Semantic interpretation</td>
+<td>“When a student touched, avoided, repeated, changed, or persisted
+with a material, what classroom knowledge helped you interpret that
+action?”</td>
+<td><code>[TO CONFIRM]</code></td>
+</tr>
+<tr>
+<td>Behavior labeling</td>
+<td>“For selected video moments, how would you label the student’s
+behavior in classroom terms?”</td>
+<td><code>[TO CONFIRM]</code></td>
+</tr>
+<tr>
+<td>Learning through material action</td>
+<td>“Which actions seemed to help students stay engaged, regulate
+attention, or understand clock/time ideas?”</td>
+<td><code>[TO CONFIRM]</code></td>
+</tr>
+<tr>
+<td>Unexpected moments</td>
+<td>“Were there any student responses that you think researchers might
+misunderstand without classroom context?”</td>
+<td><code>[TO CONFIRM]</code></td>
+</tr>
+<tr>
+<td>Future revision</td>
+<td>“What should we change before the next clock/time or tactile
+handcraft activity?”</td>
+<td><code>[TO CONFIRM]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="teacher-interview-order-codes-and-node-draft">10.3 Teacher
+Interview Order Codes and Node Draft</h3>
+<p>This draft node structure is for coding the teacher interview before
+it is connected to the full RQ-data matrix. Use the ordered codes as
+interview-segment prefixes. Each teacher statement should link back to a
+concrete episode, task segment, group, student, material, work ID, or
+support moment whenever possible.</p>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Order code</th>
+<th>Interview section</th>
+<th>Coding keywords / node names</th>
+<th>RQ links</th>
+<th>Evidence produced</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I0</td>
+<td>Opening and positioning</td>
+<td><code>I0_opening_feeling</code></td>
+<td>Context for RQ1-RQ4</td>
+<td>Short class-level mood and interview-positioning memo.</td>
+</tr>
+<tr>
+<td>I1</td>
+<td>Overall review</td>
+<td><code>I1_overall_completion</code>; <code>I1_smooth_stage</code>;
+<code>I1_challenge_stage</code>;
+<code>I1_student_smooth_challenge</code>;
+<code>I1_task_fit_class_constraints</code></td>
+<td>RQ3; context for RQ1/RQ4</td>
+<td>Context memo for task difficulty, stage fit, and class flow.</td>
+</tr>
+<tr>
+<td>I2</td>
+<td>Concrete moment</td>
+<td><code>I2_salient_student_moment</code>;
+<code>I2_salient_task_moment</code>;
+<code>I2_material_exploration_control</code>;
+<code>I2_material_interest_preference</code>;
+<code>I2_hands_on_ability</code>;
+<code>I2_time_concept_integration</code></td>
+<td>RQ1, RQ2, RQ3, RQ4</td>
+<td>Candidate episode list for video review and coding.</td>
+</tr>
+<tr>
+<td>I3</td>
+<td>Moment-by-moment recall</td>
+<td><code>I3_moment_by_moment_recall</code>;
+<code>I3_first_noticed_cue</code>;
+<code>I3_attention_focus_action_expression_sound_material_work</code>;
+<code>I3_touch_sequence_roll_pinch_press_repeat_stay_still</code>;
+<code>I3_teacher_response_prompt_assist_close_wait_demo_replace</code>;
+<code>I3_judgment_basis_like_resist_help_thinking</code>;
+<code>I3_misread_risk</code></td>
+<td>RQ1, RQ2, RQ3, RQ4</td>
+<td>Core interpretation nodes, evidence-linked teacher labels, and later
+salience checks.</td>
+</tr>
+<tr>
+<td>I4</td>
+<td>Learning points</td>
+<td><code>I4_clock_knowledge_support</code>;
+<code>I4_understanding_level</code>;
+<code>I4_more_support_needed</code></td>
+<td>Context for all RQs</td>
+<td>Clock/time task-context interpretation and knowledge-score
+rationale.</td>
+</tr>
+<tr>
+<td>I5</td>
+<td>Materials and learning</td>
+<td><code>I5_popular_exploration_material</code>;
+<code>I5_distracting_material</code>;
+<code>I5_keep_add_remove_material</code>;
+<code>I5_safety_concern</code></td>
+<td>RQ1, RQ3, RQ4</td>
+<td>Material affordance, distraction, safety, and future material
+revision notes.</td>
+</tr>
+<tr>
+<td>I6</td>
+<td>Expression and participation</td>
+<td><code>I6_expression_like_refuse_continue_help_done</code>;
+<code>I6_nonverbal_expression</code></td>
+<td>RQ2, RQ3, RQ4</td>
+<td>Expression vocabulary and interpretation boundary notes.</td>
+</tr>
+<tr>
+<td>I7</td>
+<td>Suggestions and closing</td>
+<td><code>I7_next_adjustment</code>; <code>I7_support_changes</code>;
+<code>I7_material_changes</code>; <code>I7_observation_gaps</code></td>
+<td>RQ3, RQ4; support for RQ2</td>
+<td>Design revision memo, salience/stability check, and
+unsupported-claim check.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="prompts-to-avoid">10.4 Prompts to Avoid</h3>
+<p>Avoid prompts that ask teachers to diagnose students, rank students,
+infer internal states with certainty, or describe behavior as
+failure/noncompliance without context. Also avoid asking students direct
+“why” questions during the workshop unless the teacher considers the
+question normal, accessible, and non-pressuring in that classroom.</p>
+<h2 id="analysis-plan-template">11. Analysis Plan Template</h2>
+<h3 id="analysis-software-and-storage">11.1 Analysis Software and
+Storage</h3>
+<p>Primary qualitative analysis software: NVivo.</p>
+<p><code>[TO FILL: NVivo project naming, import structure, node hierarchy, media file storage location, backup plan, and export format for paper tables.]</code></p>
+<h3 id="episode-segmentation">11.2 Episode Segmentation</h3>
+<p><code>[TO FILL: what counts as the start and end of a workshop segment or pair-level event; how overlapping teacher support, pair interaction, and artifact-making events are handled.]</code></p>
+<h3 id="coding-layers">11.3 Coding Layers</h3>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Description</th>
+<th>Source</th>
+<th>Deductive or inductive?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clock/time task code</td>
+<td>Student actions linked to numbers, clock face, hands, sequence, or
+time meaning.</td>
+<td>Video, field notes, student work</td>
+<td>Deductive with additions</td>
+</tr>
+<tr>
+<td>Handcraft/material interaction code</td>
+<td>Cutting, coloring, placing, assembling, touching, modifying,
+refusing, or seeking help with materials.</td>
+<td>Group 360 video, photos, field notes</td>
+<td>Deductive with additions</td>
+</tr>
+<tr>
+<td>Pair interaction code</td>
+<td>Turn-taking, shared construction, imitation, parallel work,
+conflict, negotiation, or peer assistance.</td>
+<td>Group 360 video, audio, field notes</td>
+<td>Inductive with seed categories</td>
+</tr>
+<tr>
+<td>Teacher support code</td>
+<td>Prompts, demonstrations, physical assistance, emotional support,
+redirection, or task simplification.</td>
+<td>Video/audio, field notes, teacher interview</td>
+<td>Deductive with additions</td>
+</tr>
+<tr>
+<td>Teacher behavior-label code</td>
+<td>Teacher-provided labels for selected student behaviors during video
+review or interview.</td>
+<td>Teacher interview, selected video moments</td>
+<td>Inductive/contextual</td>
+</tr>
+<tr>
+<td>Student expression/context code</td>
+<td>Speech, gesture, orientation, help-seeking, refusal, repetition,
+affective display, or silence in context.</td>
+<td>Video/audio, field notes</td>
+<td>Inductive/contextual</td>
+</tr>
+<tr>
+<td>Artifact feature code</td>
+<td>Features of the final or in-process clock/time handcraft
+product.</td>
+<td>Student work, photos</td>
+<td>Deductive with additions</td>
+</tr>
+<tr>
+<td>Teacher interpretation code</td>
+<td>Teacher explanations of student participation, learning, support
+needs, or contextual meaning.</td>
+<td>Teacher interview</td>
+<td>Inductive/contextual</td>
+</tr>
+<tr>
+<td>Evidence strength / RQ fit</td>
+<td>Whether a coded result provides primary, supplementary, or
+contextual evidence for an RQ.</td>
+<td>Coded dataset and RQ-data-results matrix</td>
+<td>Analytic</td>
+</tr>
+</tbody>
+</table>
+<h3 id="qualitative-analysis-workflow">11.4 Qualitative Analysis
+Workflow</h3>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Step</th>
+<th>Procedure</th>
+<th>Output</th>
+<th>Quality check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Familiarization</td>
+<td><code>[TO FILL]</code></td>
+<td>Memos</td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Workshop segmentation</td>
+<td><code>[TO FILL: define segment boundaries by time, pair, task step, teacher support event, or artifact event]</code></td>
+<td>Segment index</td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Multimodal coding</td>
+<td><code>[TO FILL]</code></td>
+<td>Coded video/notes/artifact table</td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Teacher interpretation coding</td>
+<td><code>[TO FILL]</code></td>
+<td>Teacher interpretation memo/table</td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Data triangulation</td>
+<td><code>[TO FILL: compare field notes, video, audio, photos, student work, and teacher interview]</code></td>
+<td>Evidence matrix</td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Theme / pattern development</td>
+<td><code>[TO FILL]</code></td>
+<td>Candidate themes or pattern types</td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>RQ narrative</td>
+<td><code>[TO FILL]</code></td>
+<td>Short answer per RQ</td>
+<td><code>[TO FILL]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="quantitative-or-structured-metrics-if-used">11.5 Quantitative or
+Structured Metrics, If Used</h3>
+<p>Do not add metrics unless they serve an RQ and can be interpreted
+without reducing learner experience to behavior alone.</p>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Source</th>
+<th>Meaning</th>
+<th>Limitation</th>
+<th>RQ served</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="rq-data-results-validation">12. RQ-Data-Results Validation</h2>
+<p>Use this before writing paper results. The goal is to check whether
+every result claim has visible support in the workshop dataset and
+whether every RQ has enough evidence.</p>
+<h3 id="validation-questions">12.1 Validation Questions</h3>
+<ul>
+<li>Does every RQ have at least one primary data source?</li>
+<li>Does every data source serve at least one RQ?</li>
+<li>Can the protocol move from raw workshop data to an RQ-relevant
+analytic claim?</li>
+<li>Are learner expression, educator interpretation, and researcher
+observation kept separate?</li>
+<li>Do field notes, videos, photos, audio, teacher interview, and
+student work triangulate or contradict each other?</li>
+<li>Which RQs can only be answered with contextual or supplementary
+evidence?</li>
+<li>Which planned result claims are not supported by the current
+workshop data?</li>
+</ul>
+<h3 id="validation-artifact-checklist">12.2 Validation Artifact
+Checklist</h3>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Artifact</th>
+<th>Required?</th>
+<th>Owner</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RQ-data mapping matrix</td>
+<td>Yes</td>
+<td><code>[TO FILL]</code></td>
+<td>Draft</td>
+</tr>
+<tr>
+<td>Workshop data inventory</td>
+<td>Yes</td>
+<td><code>[TO FILL]</code></td>
+<td>Draft</td>
+</tr>
+<tr>
+<td>Pair-level segment index</td>
+<td>Yes</td>
+<td><code>[TO FILL]</code></td>
+<td>Draft</td>
+</tr>
+<tr>
+<td>Codebook seed</td>
+<td><code>[TO CONFIRM]</code></td>
+<td><code>[TO FILL]</code></td>
+<td>Draft</td>
+</tr>
+<tr>
+<td>RQ-data-results matrix</td>
+<td>Yes</td>
+<td><code>[TO FILL]</code></td>
+<td>Draft</td>
+</tr>
+<tr>
+<td>Unsupported-claim log</td>
+<td>Yes</td>
+<td><code>[TO FILL]</code></td>
+<td>Draft</td>
+</tr>
+<tr>
+<td>Revision memo</td>
+<td>Yes</td>
+<td><code>[TO FILL]</code></td>
+<td>Draft</td>
+</tr>
+</tbody>
+</table>
+<h3 id="no-llm-mock-data-rule">12.3 No LLM Mock Data Rule</h3>
+<p>No LLM-generated mock learner responses, personas, or synthetic
+episodes are used in this workshop stage. If a later paper section
+discusses protocol validation, it should refer to the real workshop data
+inventory, segmentation, coding, and RQ-data-results matrix.</p>
+<h2 id="ethics-consent-and-safeguards">13. Ethics, Consent, and
+Safeguards</h2>
+<h3 id="consent-and-assent">13.1 Consent and Assent</h3>
+<p>Parent/guardian consent has been signed for participating students.
+<code>[TO CONFIRM: exact scope of consent for video, audio, photos, student work, anonymized publication, and data retention.]</code></p>
+<p>Still to specify:</p>
+<ul>
+<li>School approval process.</li>
+<li>Learner assent or classroom assent procedure.</li>
+<li>Teacher consent for interview recording and quotation.</li>
+<li>Right to withdraw and what happens to already collected
+recordings.</li>
+<li>Who can stop observation or recording during the workshop.</li>
+</ul>
+<h3 id="risk-management">13.2 Risk Management</h3>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Mitigation</th>
+<th>Stop criterion</th>
+<th>Documentation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sensory overload</td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Material allergy / hygiene</td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Frustration with motor task</td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Camera/audio discomfort</td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Adult overinterpretation</td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Data privacy</td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="required-safeguards">13.3 Required Safeguards</h3>
+<ul>
+<li><code>[TO CONFIRM]</code> Teachers and researchers can pause or stop
+observation for any student if participation becomes uncomfortable or
+inappropriate.</li>
+<li><code>[TO CONFIRM]</code> No extra tactile, audio, or visual
+stimulation is added beyond the approved traditional handcraft workshop
+materials.</li>
+<li><code>[TO CONFIRM]</code> Camera/audio recording can be stopped or
+adjusted according to consent, assent, teacher judgment, or school
+policy.</li>
+<li><code>[TO CONFIRM]</code> Video/audio is never treated as sole
+evidence of learner understanding, comfort, or preference.</li>
+<li><code>[TO CONFIRM]</code> Learner refusal, silence, withdrawal,
+repetition, help-seeking, and off-task behavior are interpreted
+cautiously and with teacher context.</li>
+</ul>
+<h2 id="data-management">14. Data Management</h2>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr>
+<th>Data type</th>
+<th>Storage location</th>
+<th>File naming</th>
+<th>Identifiability</th>
+<th>Access</th>
+<th>Retention / deletion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Consent/assent files</td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td>Identifiable</td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Observation sheets</td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Video/audio</td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td>Identifiable</td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>Photos/artifacts</td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+</tr>
+<tr>
+<td>NVivo project and analysis tables</td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+<td>De-identified where possible</td>
+<td><code>[TO FILL]</code></td>
+<td><code>[TO FILL]</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="reporting-plan">15. Reporting Plan</h2>
+<table style="width:85%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>Audience</th>
+<th>Artifact</th>
+<th>Level of detail</th>
+<th>Language</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>School educators</td>
+<td><code>[TO FILL]</code></td>
+<td>Concise, practical, non-technical</td>
+<td><code>[TO FILL]</code></td>
+<td>Draft</td>
+</tr>
+<tr>
+<td>IRB / ethics</td>
+<td><code>[TO FILL]</code></td>
+<td>Full consent, risk, data handling</td>
+<td><code>[TO FILL]</code></td>
+<td>Draft</td>
+</tr>
+<tr>
+<td>Research team</td>
+<td><code>[TO FILL]</code></td>
+<td>Full protocol and analysis workflow</td>
+<td>English</td>
+<td>Draft</td>
+</tr>
+<tr>
+<td>CHI / academic paper</td>
+<td>Methods section / methods appendix with RQ-data-results mapping</td>
+<td>Methods and contribution framing</td>
+<td>English</td>
+<td>Draft</td>
+</tr>
+</tbody>
+</table>
+<h2 id="open-questions-for-filling-this-template">16. Open Questions for
+Filling This Template</h2>
+<p>Answer these before converting the scaffold into a full protocol.</p>
+<ol type="1">
+<li>Should the three working RQs in Section 4.2 be accepted as the
+current protocol RQs, with educator interpretation and framework
+synthesis kept as analysis layers?</li>
+<li>What are the exact A/B/C task sheets or teacher instructions for the
+clock-making activity?</li>
+<li>Should the six printed segment labels in Section 8.2.1 be used as-is
+for video editing, or renamed?</li>
+<li>What are the student age/grade range and any profile fields the
+school can ethically share?</li>
+<li>What exact signed consent scope governs video, audio, photos,
+student work, anonymized publication, and retention?</li>
+<li>Which three teachers will participate in the 30-minute interview,
+and will it be group or individual?</li>
+<li>What NVivo node structure should we use first: RQ-based,
+segment-based, or code-layer-based?</li>
+<li>What counts as enough evidence for each RQ: primary, supplementary,
+or contextual?</li>
+<li>Will original student work stay with the school, or can it be
+collected, scanned, or photographed only?</li>
+<li>Should the final methods template stay in English for the paper, or
+should a Chinese school-facing companion be created separately?</li>
+</ol>
+</body>
+</html>

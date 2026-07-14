@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Touch-to-Meaning Project Web</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#mainContent">Skip to content</a>
+
+    <div class="app-shell">
+      <aside class="side-rail" aria-label="Project sections">
+        <div class="brand-block">
+          <p class="eyebrow">Touch-to-Meaning</p>
+          <h1>Research Web</h1>
+          <p class="brand-note">Tactile-material workshops, research questions, educator interpretation, and cross-session analysis in one evidence base.</p>
+        </div>
+
+        <nav class="section-nav" id="sectionNav" aria-label="Primary">
+          <button class="nav-item" type="button" data-section="frame" aria-current="page">
+            <span class="nav-index">01</span>
+            <span class="nav-copy">
+              <span class="nav-label">Frame</span>
+              <span class="nav-deck">RQ map / learner profile</span>
+            </span>
+          </button>
+          <button class="nav-item" type="button" data-section="workshop">
+            <span class="nav-index">02</span>
+            <span class="nav-copy">
+              <span class="nav-label">Workshop</span>
+              <span class="nav-deck">Study plan / source files</span>
+            </span>
+          </button>
+          <button class="nav-item" type="button" data-section="evidence">
+            <span class="nav-index">03</span>
+            <span class="nav-copy">
+              <span class="nav-label">Evidence</span>
+              <span class="nav-deck">Archive / media trace</span>
+            </span>
+          </button>
+          <button class="nav-item" type="button" data-section="method">
+            <span class="nav-index">04</span>
+            <span class="nav-copy">
+              <span class="nav-label">Method</span>
+              <span class="nav-deck">Lit review / framework</span>
+            </span>
+          </button>
+          <button class="nav-item" type="button" data-section="analysis">
+            <span class="nav-index">05</span>
+            <span class="nav-copy">
+              <span class="nav-label">Analysis</span>
+              <span class="nav-deck">Workflow / key episodes</span>
+            </span>
+          </button>
+          <button class="nav-item" type="button" data-section="log">
+            <span class="nav-index">06</span>
+            <span class="nav-copy">
+              <span class="nav-label">Log</span>
+              <span class="nav-deck">Meetings / journal</span>
+            </span>
+          </button>
+        </nav>
+
+        <div class="rail-status">
+          <p class="eyebrow">Local archive mode</p>
+          <strong>Raw media stays external</strong>
+          <span>Run the local server to preview mounted-drive photos and videos.</span>
+        </div>
+      </aside>
+
+      <main class="main-frame" id="mainContent">
+        <header class="topbar">
+          <div class="topbar-copy">
+            <p class="eyebrow" id="activeWorkshopEyebrow">Multi-workshop evidence base</p>
+            <h2 id="viewTitle">Frame</h2>
+            <p class="topbar-note">Workshop evidence is linked to research questions, participant traces, educator interpretation, and analysis boundaries.</p>
+          </div>
+          <label class="workshop-picker">
+            <span>Workshop</span>
+            <select id="workshopSelect" autocomplete="off"></select>
+          </label>
+        </header>
+
+        <section class="section-panel" data-panel="rq" aria-labelledby="rqHeading">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Canonical research frame</p>
+              <h3 id="rqHeading">Research questions and data mapping</h3>
+            </div>
+            <label class="search-field">
+              <span>Search mapping</span>
+              <input id="matrixSearch" type="search" placeholder="field notes, teacher, artifact" autocomplete="off" />
+            </label>
+          </div>
+
+          <section class="rq-concept-panel" aria-labelledby="rqConceptHeading">
+            <div class="table-heading">
+              <div>
+                <p class="eyebrow">Concept diagram</p>
+                <h4 id="rqConceptHeading">Research focus and RQ trace map</h4>
+              </div>
+              <a class="ghost-link compact" href="../figures/touch_to_meaning_concept_diagram.png" target="_blank" rel="noreferrer">Open image</a>
+            </div>
+            <figure class="rq-concept-figure">
+              <img
+                src="../figures/touch_to_meaning_concept_diagram.png"
+                alt="Touch-to-Meaning concept diagram mapping four research modules to RQ1, RQ2, RQ3, and follow-up validation."
+                loading="lazy"
+              />
+              <figcaption>Trace map linking learning activity, learner interaction profile, observable evidence, and educator interpretation to the current RQ structure.</figcaption>
+            </figure>
+          </section>
+
+          <div class="rq-list" id="rqList"></div>
+
+          <section class="table-panel" aria-labelledby="mappingHeading">
+            <div class="table-heading">
+              <div>
+                <p class="eyebrow">Data contract</p>
+                <h4 id="mappingHeading">RQ-data mapping matrix</h4>
+              </div>
+              <div class="status-pill" id="matrixStatus">0 sources visible</div>
+            </div>
+            <div class="table-scroll">
+              <table class="data-table" id="mappingTable"></table>
+            </div>
+          </section>
+
+          <section class="table-panel blank-panel" aria-labelledby="personaHeading">
+            <div class="table-heading">
+              <div>
+                <p class="eyebrow">Learner profile panel</p>
+                <h4 id="personaHeading">Learner/persona cards</h4>
+              </div>
+              <span class="status-pill">3 cards</span>
+            </div>
+            <div class="persona-grid" id="personaPanel"></div>
+          </section>
+        </section>
+
+        <section class="section-panel" data-panel="study" aria-labelledby="studyHeading" hidden>
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow" id="studyEyebrow">Selected workshop</p>
+              <h3 id="studyHeading">Workshop Study Design</h3>
+            </div>
+            <div class="subtabs" role="tablist" aria-label="Study design sub-tabs">
+              <button class="subtab" type="button" data-tab-target="study-overview" aria-selected="true">Overview</button>
+              <button class="subtab" type="button" data-tab-target="study-sources" aria-selected="false">Source Files</button>
+            </div>
+          </div>
+
+          <div class="tab-panel" data-tab-panel="study-overview">
+            <div class="study-layout">
+              <section class="figure-panel" aria-labelledby="classroomMapHeading">
+                <div class="table-heading">
+                  <div>
+                    <p class="eyebrow">Classroom map</p>
+                    <h4 id="classroomMapHeading">Spatial and task-flow plans</h4>
+                  </div>
+                </div>
+                <div class="figure-stack" id="workshopFigures"></div>
+              </section>
+
+              <section class="summary-panel" aria-labelledby="studySummaryHeading">
+                <p class="eyebrow">Session summary</p>
+                <h4 id="studySummaryHeading">Workshop summary</h4>
+                <p class="body-copy" id="studySummaryText"></p>
+                <dl class="fact-list" id="studyFacts"></dl>
+              </section>
+            </div>
+          </div>
+
+          <div class="tab-panel" data-tab-panel="study-sources" hidden>
+            <section class="doc-workspace" aria-labelledby="studySourceHeading">
+              <div class="doc-list-panel">
+                <p class="eyebrow">Final documents</p>
+                <h4 id="studySourceHeading">Source files</h4>
+                <div class="doc-button-list" id="studySourceList"></div>
+              </div>
+              <div class="doc-viewer-panel">
+                <div class="doc-viewer-header">
+                  <span class="status-pill" id="studyDocStatus">Select a document</span>
+                  <a class="ghost-link" id="studyDocOpen" href="#" target="_blank" rel="noreferrer">Open full view</a>
+                </div>
+                <iframe class="doc-frame" id="studyDocFrame" title="Study source document viewer"></iframe>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="section-panel" data-panel="archive" aria-labelledby="archiveHeading" hidden>
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Internal raw archive</p>
+              <h3 id="archiveHeading">Archived data</h3>
+              <p class="body-copy archive-root-line" id="archiveRootLine"></p>
+            </div>
+            <div class="subtabs" id="archiveTabs" role="tablist" aria-label="Archive sub-tabs"></div>
+          </div>
+
+          <div id="archiveContent"></div>
+        </section>
+
+        <section class="section-panel" data-panel="methods" aria-labelledby="methodsHeading" hidden>
+          <h3 id="methodsHeading" class="sr-only">Method and literature review</h3>
+
+          <div class="panel-heading method-heading">
+            <div>
+              <p class="eyebrow">Video analysis method base</p>
+              <h3>Literature review notes and framework placement</h3>
+            </div>
+          </div>
+
+          <section class="doc-workspace method-note-workspace" aria-labelledby="methodNoteHeading">
+            <div class="doc-list-panel method-reader-bar">
+              <div class="method-reader-title">
+                <p class="eyebrow">Polished source note</p>
+                <h4 id="methodNoteHeading">Video analysis method literature note</h4>
+              </div>
+              <div class="method-reader-controls">
+                <div class="doc-button-list method-note-tabs" id="methodNoteList"></div>
+                <span class="status-pill" id="methodNoteStatus">Select a note</span>
+                <a class="ghost-link" id="methodNoteOpen" href="#" target="_blank" rel="noreferrer">Open full view</a>
+                <a class="ghost-link compact" id="methodDocSourceOpen" href="../outputs/video_analysis_method_lit_review_note_polished_2026-06-11.docx">Open DOCX</a>
+                <a class="ghost-link compact" id="frameworkWorkbookOpen" href="../WorkshopJune2/outputs/framework_placement_table_2026-06-11.xlsx">Open XLSX</a>
+              </div>
+            </div>
+            <div class="doc-viewer-panel method-reader-panel">
+              <iframe class="doc-frame" id="methodNoteFrame" title="Video analysis Obsidian note viewer"></iframe>
+            </div>
+          </section>
+
+          <section class="table-panel framework-panel" aria-labelledby="frameworkHeading">
+            <div class="table-heading">
+              <div>
+                <p class="eyebrow">Framework placement</p>
+                <h4 id="frameworkHeading">Method anchors and citation links</h4>
+              </div>
+              <div class="framework-tools">
+                <label class="search-field compact-search">
+                  <span>Search framework</span>
+                  <input id="frameworkSearch" type="search" placeholder="Jefferson, Goodwin, engagement" autocomplete="off" />
+                </label>
+                <div class="status-pill" id="frameworkStatus">0 frameworks visible</div>
+              </div>
+            </div>
+            <div class="table-scroll framework-table-scroll">
+              <table class="data-table framework-table" id="frameworkTable"></table>
+            </div>
+            <div class="framework-source-notes" id="frameworkSourceNotes"></div>
+          </section>
+
+          <section class="summary-panel" aria-labelledby="readingTrackerHeading">
+            <div class="table-heading">
+              <div>
+                <p class="eyebrow">Reading tracking</p>
+                <h4 id="readingTrackerHeading">Collections and subcollections</h4>
+              </div>
+              <div class="status-pill" id="readingStatus">0 sources visible</div>
+            </div>
+            <div class="reading-filter-tabs" id="readingFilters" role="tablist" aria-label="Reading collection filters"></div>
+            <div class="reading-tracker" id="readingTracker"></div>
+          </section>
+        </section>
+
+        <section class="section-panel" data-panel="analysis" aria-labelledby="analysisHeading" hidden>
+          <div class="panel-heading analysis-heading">
+            <div>
+              <p class="eyebrow" id="analysisEyebrow">McNaughton-adapted workflow</p>
+              <h3 id="analysisHeading">Video Data Analysis Stage</h3>
+              <p class="body-copy" id="analysisSummary"></p>
+            </div>
+            <a class="ghost-link compact" id="analysisWorkbookOpen" href="../WorkshopJune2/outputs/video_analysis_workbook.xlsx" target="_blank" rel="noreferrer">Open workbook</a>
+          </div>
+
+          <section class="flow-panel analysis-flow-panel" aria-labelledby="analysisFlowHeading">
+            <div class="table-heading">
+              <div>
+                <p class="eyebrow">Structured workflow</p>
+                <h4 id="analysisFlowHeading">Five stages from log validation to RQ-linked themes</h4>
+              </div>
+              <span class="status-pill" id="analysisSourceLabel">5 stages</span>
+            </div>
+            <div class="analysis-flow" id="analysisFlow"></div>
+          </section>
+
+          <section class="summary-panel analysis-narrative-panel" aria-labelledby="analysisNarrativeHeading">
+            <div class="table-heading">
+              <div>
+                <p class="eyebrow" id="analysisNarrativeEyebrow">Pair-level event description</p>
+                <h4 id="analysisNarrativeHeading">Narrative summaries</h4>
+                <p class="body-copy" id="analysisNarrativeDescription"></p>
+              </div>
+              <span class="status-pill" id="analysisNarrativeStatus">0 summaries</span>
+            </div>
+            <div class="analysis-narrative-list" id="analysisNarratives"></div>
+          </section>
+
+          <section class="summary-panel analysis-guardrail-panel" aria-labelledby="analysisGuardrailHeading">
+            <p class="eyebrow">Analysis boundaries</p>
+            <h4 id="analysisGuardrailHeading">Consent and interpretation guardrails</h4>
+            <ul class="guardrail-list" id="analysisGuardrails"></ul>
+          </section>
+        </section>
+
+        <section class="section-panel" data-panel="insights" aria-labelledby="insightsHeading" hidden>
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Analysis memo space</p>
+              <h3 id="insightsHeading">Key Episodes</h3>
+            </div>
+            <div class="status-pill">Drafted from field notes and video memo</div>
+          </div>
+
+          <section class="summary-panel insight-key-panel" aria-labelledby="insightKeyHeading">
+            <p class="eyebrow">Thematic episodes</p>
+            <h4 id="insightKeyHeading">O1 Key Episodes from June 9</h4>
+            <div class="insight-list" id="insightGrid"></div>
+          </section>
+
+          <section class="summary-panel" aria-labelledby="insightDraftHeading">
+            <p class="eyebrow">Open memo</p>
+            <h4 id="insightDraftHeading">Unfinished analysis threads</h4>
+            <div class="memo-lines" id="memoLines"></div>
+          </section>
+        </section>
+
+        <section class="section-panel" data-panel="meetings" aria-labelledby="meetingsHeading" hidden>
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Project record</p>
+              <h3 id="meetingsHeading">Meeting Notes</h3>
+              <p class="body-copy">Dated records of mentor and supervisor discussions, decisions, and follow-up tasks.</p>
+            </div>
+            <div class="status-pill" id="meetingStatus">0 notes</div>
+          </div>
+
+          <div class="meeting-note-list" id="meetingNoteList"></div>
+        </section>
+
+        <section class="section-panel" data-panel="journal" aria-labelledby="journalHeading" hidden>
+          <div class="panel-heading journal-heading">
+            <div>
+              <p class="eyebrow">Research memo log</p>
+              <h3 id="journalHeading">Research Journal</h3>
+              <p class="body-copy">Capture working memos, evidence links, decisions, and next actions in a local project file.</p>
+            </div>
+            <div class="journal-heading-actions">
+              <span class="status-pill" id="journalStatus">Server not checked</span>
+              <button class="ghost-link compact" type="button" id="journalNewButton">New memo</button>
+            </div>
+          </div>
+
+          <div class="journal-server-note" id="journalServerNote" hidden>
+            <strong>Run the local server to save notes.</strong>
+            <span>Use <code>node project_web/server.mjs</code>, then open the local URL it prints.</span>
+          </div>
+
+          <div class="journal-workspace">
+            <section class="journal-list-panel" aria-labelledby="journalListHeading">
+              <div class="table-heading">
+                <div>
+                  <p class="eyebrow">Saved memos</p>
+                  <h4 id="journalListHeading">Journal entries</h4>
+                </div>
+                <span class="status-pill" id="journalCount">0 entries</span>
+              </div>
+              <div class="journal-list" id="journalList"></div>
+            </section>
+
+            <section class="journal-preview-panel" aria-labelledby="journalPreviewHeading">
+              <div class="journal-preview-shell" id="journalPreview">
+                <div class="journal-preview-empty">
+                  <p class="eyebrow">Selected memo</p>
+                  <h4 id="journalPreviewHeading">No memo selected</h4>
+                  <p>Select a saved memo or create a new one to review the full entry here.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="journal-editor-panel" aria-labelledby="journalEditorHeading">
+              <form class="journal-form" id="journalForm">
+                <input type="hidden" id="journalEntryId" />
+                <div class="journal-editor-head">
+                  <div>
+                    <p class="eyebrow">Memo editor</p>
+                    <h4 id="journalEditorHeading">Working research memo</h4>
+                  </div>
+                  <span class="status-pill" id="journalSaveState">Draft</span>
+                </div>
+
+                <div class="journal-field-grid">
+                  <label class="journal-field wide">
+                    <span>Title</span>
+                    <input id="journalTitle" name="title" type="text" maxlength="140" placeholder="e.g. June 16 coding memo" autocomplete="off" required />
+                  </label>
+                  <label class="journal-field">
+                    <span>Date</span>
+                    <input id="journalDate" name="date" type="date" required />
+                  </label>
+                  <label class="journal-field">
+                    <span>Linked RQ</span>
+                    <select id="journalRq" name="rq"></select>
+                  </label>
+                  <label class="journal-field">
+                    <span>Workshop</span>
+                    <select id="journalWorkshop" name="workshop"></select>
+                  </label>
+                </div>
+
+                <label class="journal-field">
+                  <span>Tags</span>
+                  <input id="journalTags" name="tags" type="text" placeholder="video analysis, teacher interpretation, RQ2" autocomplete="off" />
+                </label>
+
+                <label class="journal-field">
+                  <span>Memo</span>
+                  <textarea id="journalMemo" name="memo" rows="9" placeholder="Observation, interpretation boundary, evidence status, and why this matters." required></textarea>
+                </label>
+
+                <div class="journal-field-grid">
+                  <label class="journal-field">
+                    <span>Evidence links</span>
+                    <textarea id="journalEvidence" name="evidenceLinks" rows="5" placeholder="Label | path-or-url"></textarea>
+                  </label>
+                  <label class="journal-field">
+                    <span>Decisions</span>
+                    <textarea id="journalDecisions" name="decisions" rows="5" placeholder="One decision per line"></textarea>
+                  </label>
+                  <label class="journal-field">
+                    <span>Next actions</span>
+                    <textarea id="journalNextActions" name="nextActions" rows="5" placeholder="One action per line"></textarea>
+                  </label>
+                </div>
+
+                <div class="journal-form-actions">
+                  <button class="journal-primary-button" type="submit">Save memo</button>
+                  <button class="ghost-link compact" type="button" id="journalDeleteButton">Delete memo</button>
+                </div>
+              </form>
+            </section>
+          </div>
+        </section>
+
+        <footer class="site-footer" aria-label="Project source links">
+          <span>Source links</span>
+          <span>Thread Atelier (local only)</span>
+          <a href="../RQs_Vision/site/index.html">Original RQ Site</a>
+          <a href="../RQs_Vision/site/two_chi_gantt.html">Research Dashboard</a>
+        </footer>
+      </main>
+    </div>
+
+    <script src="./data/rqs.js"></script>
+    <script src="./data/workshops.js"></script>
+    <script src="./data/reading_tracker.js"></script>
+    <script src="./data/framework_placement.js"></script>
+    <script src="./data/method_notes.js"></script>
+    <script src="./data/analysis_workflow.js"></script>
+    <script src="./data/insights.js"></script>
+    <script src="./data/meeting_notes.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

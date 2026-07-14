@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hongni's Research Dashboard - Timeline Control</title>
+    <link rel="stylesheet" href="./two_chi_gantt.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#timeline">Skip to timeline</a>
+
+    <main class="app-shell">
+      <header class="page-header">
+        <div class="header-copy">
+          <p class="eyebrow">Research control page</p>
+          <h1>Hongni's Research Dashboard - Timeline Control</h1>
+          <p class="lede">
+            One local dashboard for coordinating Touch-to-Meaning, Ooze, and PQE/systematic-review work without mixing project evidence, deadlines, or next actions.
+          </p>
+        </div>
+        <nav class="utility-links" aria-label="Workspace utilities">
+          <a class="utility-link" href="file:///Users/vaporfish/dev/pro-manag/index.html">Thread Atelier</a>
+        </nav>
+      </header>
+
+      <section class="project-strip" aria-label="Project links">
+        <a class="project-link" data-project="tact" href="file:///Users/vaporfish/dev/proj-tact/project_web/index.html#rq">Touch-to-Meaning</a>
+        <a class="project-link" data-project="ooze" href="file:///Users/vaporfish/dev/Ooze/plan/4971_ooze_chi2027_summer_revision_plan.md">Ooze</a>
+        <a class="project-link" data-project="pqe" href="file:///Users/vaporfish/dev/PhDResearchJourney/plans/pqe_aug15_timeline_control_plan_20260608.md">PQE / Systematic Review</a>
+      </section>
+
+      <nav class="view-tabs" aria-label="Project filters">
+        <button type="button" class="view-tab is-active" data-filter="all">All processes</button>
+        <button type="button" class="view-tab" data-filter="tact">Touch-to-Meaning</button>
+        <button type="button" class="view-tab" data-filter="ooze">Ooze</button>
+        <button type="button" class="view-tab" data-filter="pqe">PQE / Systematic Review</button>
+      </nav>
+
+      <section class="timeline-section" id="timeline" aria-labelledby="timeline-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">June to September 2026</p>
+            <h2 id="timeline-title">Timeline control</h2>
+          </div>
+          <div class="legend" aria-label="Timeline legend">
+            <span><i class="legend-dot tact"></i>Touch-to-Meaning</span>
+            <span><i class="legend-dot ooze"></i>Ooze</span>
+            <span><i class="legend-dot pqe"></i>PQE / Systematic Review</span>
+            <span><i class="legend-dot deadline"></i>Deadline</span>
+          </div>
+        </div>
+
+        <div class="timeline-wrap" aria-label="Research dashboard timeline chart">
+          <div class="calendar" id="calendar" aria-hidden="true"></div>
+          <div class="today-line" aria-hidden="true"></div>
+          <div class="gantt-grid" id="ganttGrid"></div>
+        </div>
+      </section>
+
+      <section class="control-grid" aria-label="Control information">
+        <section class="milestone-panel" aria-labelledby="milestone-title">
+          <div class="section-heading compact">
+            <div>
+              <p class="eyebrow">Decision gates</p>
+              <h2 id="milestone-title">Milestone checks</h2>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Gate</th>
+                  <th>Date</th>
+                  <th>Pass condition</th>
+                </tr>
+              </thead>
+              <tbody id="milestoneRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="./two_chi_gantt.js"></script>
+  </body>
+</html>
