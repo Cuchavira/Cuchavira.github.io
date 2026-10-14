@@ -26,38 +26,38 @@
               <span class="nav-deck">RQ map / learner profile</span>
             </span>
           </button>
-          <button class="nav-item" type="button" data-section="workshop">
+          <button class="nav-item" type="button" data-section="study-design">
             <span class="nav-index">02</span>
             <span class="nav-copy">
-              <span class="nav-label">Workshop</span>
-              <span class="nav-deck">Study plan / source files</span>
+              <span class="nav-label">Study Design</span>
+              <span class="nav-deck">Session plan / source files</span>
             </span>
           </button>
-          <button class="nav-item" type="button" data-section="evidence">
+          <button class="nav-item" type="button" data-section="literature-review">
             <span class="nav-index">03</span>
             <span class="nav-copy">
-              <span class="nav-label">Evidence</span>
+              <span class="nav-label">Literature Review</span>
+              <span class="nav-deck">Related work library</span>
+            </span>
+          </button>
+          <button class="nav-item" type="button" data-section="data-collection">
+            <span class="nav-index">04</span>
+            <span class="nav-copy">
+              <span class="nav-label">Data Collection</span>
               <span class="nav-deck">Archive / media trace</span>
             </span>
           </button>
-          <button class="nav-item" type="button" data-section="method">
-            <span class="nav-index">04</span>
-            <span class="nav-copy">
-              <span class="nav-label">Method</span>
-              <span class="nav-deck">Lit review / framework</span>
-            </span>
-          </button>
-          <button class="nav-item" type="button" data-section="analysis">
+          <button class="nav-item" type="button" data-section="data-analysis">
             <span class="nav-index">05</span>
             <span class="nav-copy">
-              <span class="nav-label">Analysis</span>
-              <span class="nav-deck">Workflow / key episodes</span>
+              <span class="nav-label">Data Analysis</span>
+              <span class="nav-deck">Progress / coding / episodes</span>
             </span>
           </button>
-          <button class="nav-item" type="button" data-section="log">
+          <button class="nav-item" type="button" data-section="logs">
             <span class="nav-index">06</span>
             <span class="nav-copy">
-              <span class="nav-label">Log</span>
+              <span class="nav-label">Logs</span>
               <span class="nav-deck">Meetings / journal</span>
             </span>
           </button>
@@ -73,14 +73,27 @@
       <main class="main-frame" id="mainContent">
         <header class="topbar">
           <div class="topbar-copy">
-            <p class="eyebrow" id="activeWorkshopEyebrow">Multi-workshop evidence base</p>
+            <p class="eyebrow" id="activeWorkshopEyebrow">Touch-to-Meaning research base</p>
             <h2 id="viewTitle">Frame</h2>
-            <p class="topbar-note">Workshop evidence is linked to research questions, participant traces, educator interpretation, and analysis boundaries.</p>
+            <p class="topbar-note" id="topbarNote">A traceable evidence workflow from study design to analysis.</p>
           </div>
-          <label class="workshop-picker">
-            <span>Workshop</span>
-            <select id="workshopSelect" autocomplete="off"></select>
-          </label>
+          <div class="topbar-controls">
+            <label class="topbar-picker workshop-picker" id="workshopPicker" hidden>
+              <span>Workshop Date</span>
+              <select id="workshopSelect" autocomplete="off"></select>
+            </label>
+            <label class="topbar-picker" id="analysisTypePicker" hidden>
+              <span>Analysis Type</span>
+              <select id="analysisTypeSelect" autocomplete="off"></select>
+            </label>
+            <label class="topbar-picker" id="contentTypePicker" hidden>
+              <span>Content Type</span>
+              <select id="contentTypeSelect" autocomplete="off">
+                <option value="meetings">Meeting Notes</option>
+                <option value="journal">Journal / Memo</option>
+              </select>
+            </label>
+          </div>
         </header>
 
         <section class="section-panel" data-panel="rq" aria-labelledby="rqHeading">
@@ -143,8 +156,8 @@
         <section class="section-panel" data-panel="study" aria-labelledby="studyHeading" hidden>
           <div class="panel-heading">
             <div>
-              <p class="eyebrow" id="studyEyebrow">Selected workshop</p>
-              <h3 id="studyHeading">Workshop Study Design</h3>
+              <p class="eyebrow" id="studyEyebrow">Selected session</p>
+              <h3 id="studyHeading">Study Design</h3>
             </div>
             <div class="subtabs" role="tablist" aria-label="Study design sub-tabs">
               <button class="subtab" type="button" data-tab-target="study-overview" aria-selected="true">Overview</button>
@@ -166,7 +179,7 @@
 
               <section class="summary-panel" aria-labelledby="studySummaryHeading">
                 <p class="eyebrow">Session summary</p>
-                <h4 id="studySummaryHeading">Workshop summary</h4>
+                <h4 id="studySummaryHeading">Session summary</h4>
                 <p class="body-copy" id="studySummaryText"></p>
                 <dl class="fact-list" id="studyFacts"></dl>
               </section>
@@ -195,86 +208,122 @@
           <div class="panel-heading">
             <div>
               <p class="eyebrow">Internal raw archive</p>
-              <h3 id="archiveHeading">Archived data</h3>
+              <h3 id="archiveHeading">Data collection archive</h3>
               <p class="body-copy archive-root-line" id="archiveRootLine"></p>
             </div>
-            <div class="subtabs" id="archiveTabs" role="tablist" aria-label="Archive sub-tabs"></div>
+            <div class="archive-heading-tools">
+              <div class="subtabs" id="archiveTabs" role="tablist" aria-label="Archive sub-tabs"></div>
+            </div>
           </div>
 
           <div id="archiveContent"></div>
         </section>
 
         <section class="section-panel" data-panel="methods" aria-labelledby="methodsHeading" hidden>
-          <h3 id="methodsHeading" class="sr-only">Method and literature review</h3>
+          <h3 id="methodsHeading" class="sr-only">Literature review</h3>
 
           <div class="panel-heading method-heading">
             <div>
-              <p class="eyebrow">Video analysis method base</p>
-              <h3>Literature review notes and framework placement</h3>
+              <p class="eyebrow">Related work knowledge base</p>
+              <h3>Literature review library</h3>
+              <p class="body-copy">Curated related work across ND learning, materials and tangibles, and qualitative microanalysis. Combine category, reading status, and keyword filters to focus the list.</p>
             </div>
+            <div class="status-pill" id="literatureStatus" aria-live="polite">0 sources</div>
           </div>
 
-          <section class="doc-workspace method-note-workspace" aria-labelledby="methodNoteHeading">
-            <div class="doc-list-panel method-reader-bar">
-              <div class="method-reader-title">
-                <p class="eyebrow">Polished source note</p>
-                <h4 id="methodNoteHeading">Video analysis method literature note</h4>
-              </div>
-              <div class="method-reader-controls">
-                <div class="doc-button-list method-note-tabs" id="methodNoteList"></div>
-                <span class="status-pill" id="methodNoteStatus">Select a note</span>
-                <a class="ghost-link" id="methodNoteOpen" href="#" target="_blank" rel="noreferrer">Open full view</a>
-                <a class="ghost-link compact" id="methodDocSourceOpen" href="../outputs/video_analysis_method_lit_review_note_polished_2026-06-11.docx">Open DOCX</a>
-                <a class="ghost-link compact" id="frameworkWorkbookOpen" href="../WorkshopJune2/outputs/framework_placement_table_2026-06-11.xlsx">Open XLSX</a>
-              </div>
+          <section class="summary-panel literature-panel" aria-label="Related work reading library">
+            <div class="literature-filter-bar" aria-label="Reading list filters">
+              <label class="section-picker">
+                <span>Category</span>
+                <select id="researchCategorySelect" autocomplete="off"></select>
+              </label>
+              <label class="section-picker">
+                <span>Reading Status</span>
+                <select id="readingStatusSelect" autocomplete="off">
+                  <option value="all">All statuses</option>
+                  <option value="to-read">To Read</option>
+                  <option value="reading">Reading</option>
+                  <option value="completed">Completed</option>
+                  <option value="important">Important</option>
+                </select>
+              </label>
+              <label class="section-picker">
+                <span>Keyword Tag</span>
+                <select id="readingKeywordSelect" autocomplete="off">
+                  <option value="all">All keywords</option>
+                </select>
+              </label>
             </div>
-            <div class="doc-viewer-panel method-reader-panel">
-              <iframe class="doc-frame" id="methodNoteFrame" title="Video analysis Obsidian note viewer"></iframe>
-            </div>
+            <div class="literature-library" id="literatureLibrary"></div>
           </section>
 
-          <section class="table-panel framework-panel" aria-labelledby="frameworkHeading">
-            <div class="table-heading">
-              <div>
-                <p class="eyebrow">Framework placement</p>
-                <h4 id="frameworkHeading">Method anchors and citation links</h4>
-              </div>
-              <div class="framework-tools">
-                <label class="search-field compact-search">
-                  <span>Search framework</span>
-                  <input id="frameworkSearch" type="search" placeholder="Jefferson, Goodwin, engagement" autocomplete="off" />
-                </label>
-                <div class="status-pill" id="frameworkStatus">0 frameworks visible</div>
-              </div>
-            </div>
-            <div class="table-scroll framework-table-scroll">
-              <table class="data-table framework-table" id="frameworkTable"></table>
-            </div>
-            <div class="framework-source-notes" id="frameworkSourceNotes"></div>
-          </section>
+          <details class="supporting-notes">
+            <summary>Supporting method notes &amp; framework placement</summary>
 
-          <section class="summary-panel" aria-labelledby="readingTrackerHeading">
-            <div class="table-heading">
-              <div>
-                <p class="eyebrow">Reading tracking</p>
-                <h4 id="readingTrackerHeading">Collections and subcollections</h4>
+            <section class="doc-workspace method-note-workspace" aria-labelledby="methodNoteHeading">
+              <div class="doc-list-panel method-reader-bar">
+                <div class="method-reader-title">
+                  <p class="eyebrow">Polished source note</p>
+                  <h4 id="methodNoteHeading">Video analysis method literature note</h4>
+                </div>
+                <div class="method-reader-controls">
+                  <div class="doc-button-list method-note-tabs" id="methodNoteList"></div>
+                  <span class="status-pill" id="methodNoteStatus">Select a note</span>
+                  <a class="ghost-link" id="methodNoteOpen" href="#" target="_blank" rel="noreferrer">Open full view</a>
+                  <a class="ghost-link compact" id="methodDocSourceOpen" href="../outputs/video_analysis_method_lit_review_note_polished_2026-06-11.docx">Open DOCX</a>
+                  <a class="ghost-link compact" id="frameworkWorkbookOpen" href="../WorkshopJune2/outputs/framework_placement_table_2026-06-11.xlsx">Open XLSX</a>
+                </div>
               </div>
-              <div class="status-pill" id="readingStatus">0 sources visible</div>
-            </div>
-            <div class="reading-filter-tabs" id="readingFilters" role="tablist" aria-label="Reading collection filters"></div>
-            <div class="reading-tracker" id="readingTracker"></div>
-          </section>
+              <div class="doc-viewer-panel method-reader-panel">
+                <iframe class="doc-frame" id="methodNoteFrame" title="Video analysis Obsidian note viewer"></iframe>
+              </div>
+            </section>
+
+            <section class="table-panel framework-panel" aria-labelledby="frameworkHeading">
+              <div class="table-heading">
+                <div>
+                  <p class="eyebrow">Framework placement</p>
+                  <h4 id="frameworkHeading">Method anchors and citation links</h4>
+                </div>
+                <div class="framework-tools">
+                  <label class="search-field compact-search">
+                    <span>Search framework</span>
+                    <input id="frameworkSearch" type="search" placeholder="Jefferson, Goodwin, engagement" autocomplete="off" />
+                  </label>
+                  <div class="status-pill" id="frameworkStatus">0 frameworks visible</div>
+                </div>
+              </div>
+              <div class="table-scroll framework-table-scroll">
+                <table class="data-table framework-table" id="frameworkTable"></table>
+              </div>
+              <div class="framework-source-notes" id="frameworkSourceNotes"></div>
+            </section>
+          </details>
         </section>
 
         <section class="section-panel" data-panel="analysis" aria-labelledby="analysisHeading" hidden>
           <div class="panel-heading analysis-heading">
             <div>
-              <p class="eyebrow" id="analysisEyebrow">McNaughton-adapted workflow</p>
-              <h3 id="analysisHeading">Video Data Analysis Stage</h3>
+              <p class="eyebrow" id="analysisEyebrow">Project progress dashboard</p>
+              <h3 id="analysisHeading">Data analysis dashboard</h3>
               <p class="body-copy" id="analysisSummary"></p>
             </div>
             <a class="ghost-link compact" id="analysisWorkbookOpen" href="../WorkshopJune2/outputs/video_analysis_workbook.xlsx" target="_blank" rel="noreferrer">Open workbook</a>
           </div>
+
+          <section class="summary-panel progress-panel" aria-label="Analysis progress overview">
+            <div class="table-heading">
+              <div>
+                <p class="eyebrow">Progress overview</p>
+                <h4>Current analysis status</h4>
+              </div>
+            </div>
+            <div class="analysis-dashboard" id="analysisDashboard"></div>
+          </section>
+
+          <section class="summary-panel coder-panel" aria-label="Coder assignment">
+            <div class="coder-assignment" id="coderAssignment"></div>
+          </section>
 
           <section class="flow-panel analysis-flow-panel" aria-labelledby="analysisFlowHeading">
             <div class="table-heading">
@@ -309,15 +358,15 @@
         <section class="section-panel" data-panel="insights" aria-labelledby="insightsHeading" hidden>
           <div class="panel-heading">
             <div>
-              <p class="eyebrow">Analysis memo space</p>
-              <h3 id="insightsHeading">Key Episodes</h3>
+              <p class="eyebrow">Interview analysis</p>
+              <h3 id="insightsHeading">Interview codebook, evidence, and key episodes</h3>
             </div>
-            <div class="status-pill">Drafted from field notes and video memo</div>
+            <div class="status-pill">Interview-linked analytic memo</div>
           </div>
 
           <section class="summary-panel insight-key-panel" aria-labelledby="insightKeyHeading">
-            <p class="eyebrow">Thematic episodes</p>
-            <h4 id="insightKeyHeading">O1 Key Episodes from June 9</h4>
+            <p class="eyebrow">Current interview analysis</p>
+            <h4 id="insightKeyHeading">RQ-aligned codebook and interview evidence</h4>
             <div class="insight-list" id="insightGrid"></div>
           </section>
 
@@ -356,7 +405,7 @@
 
           <div class="journal-server-note" id="journalServerNote" hidden>
             <strong>Run the local server to save notes.</strong>
-            <span>Use <code>node project_web/server.mjs</code>, then open the local URL it prints.</span>
+            <span>Use <code>node website/project_web/server.mjs</code>, then open the local URL it prints.</span>
           </div>
 
           <div class="journal-workspace">
@@ -447,7 +496,7 @@
 
         <footer class="site-footer" aria-label="Project source links">
           <span>Source links</span>
-          <span>Thread Atelier (local only)</span>
+          <a href="https://hongni.org/">Thread Atelier</a>
           <a href="../RQs_Vision/site/index.html">Original RQ Site</a>
           <a href="../RQs_Vision/site/two_chi_gantt.html">Research Dashboard</a>
         </footer>
@@ -456,10 +505,13 @@
 
     <script src="./data/rqs.js"></script>
     <script src="./data/workshops.js"></script>
+    <script src="./data/video_coding_context_model.js"></script>
     <script src="./data/reading_tracker.js"></script>
+    <script src="./data/literature_review.js"></script>
     <script src="./data/framework_placement.js"></script>
     <script src="./data/method_notes.js"></script>
     <script src="./data/analysis_workflow.js"></script>
+    <script src="./data/analysis_progress.js"></script>
     <script src="./data/insights.js"></script>
     <script src="./data/meeting_notes.js"></script>
     <script src="./app.js"></script>

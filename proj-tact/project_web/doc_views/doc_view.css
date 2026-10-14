@@ -1,15 +1,15 @@
 :root {
   color-scheme: light;
-  --doc-bg: oklch(97.8% 0.008 235);
-  --doc-page: oklch(99.2% 0.005 235);
-  --doc-page-soft: oklch(95.6% 0.012 230);
-  --doc-ink: oklch(20% 0.026 248);
-  --doc-muted: oklch(42% 0.03 248);
-  --doc-faint: oklch(58% 0.03 245);
-  --doc-line: oklch(81% 0.024 225);
-  --doc-line-strong: oklch(58% 0.04 220);
-  --doc-accent: oklch(42% 0.1 188);
-  --doc-accent-soft: oklch(91.5% 0.048 188);
+  --doc-bg: oklch(96.5% 0.012 84);
+  --doc-page: oklch(99% 0.006 84);
+  --doc-page-soft: oklch(95% 0.018 84);
+  --doc-ink: oklch(28% 0.03 60);
+  --doc-muted: oklch(44% 0.032 58);
+  --doc-faint: oklch(56% 0.03 56);
+  --doc-line: oklch(84% 0.02 78);
+  --doc-line-strong: oklch(62% 0.035 66);
+  --doc-accent: oklch(52% 0.1 66);
+  --doc-accent-soft: oklch(92% 0.05 78);
 }
 
 html {

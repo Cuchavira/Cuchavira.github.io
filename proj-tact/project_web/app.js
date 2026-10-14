@@ -1,13 +1,32 @@
 const DATA = window.PROJECT_WEB_DATA || {};
 
 const sections = [
-  { id: "frame", label: "Frame", panels: ["rq"] },
-  { id: "workshop", label: "Workshop", panels: ["study"] },
-  { id: "evidence", label: "Evidence", panels: ["archive"] },
-  { id: "method", label: "Method", panels: ["methods"] },
-  { id: "analysis", label: "Analysis", panels: ["analysis", "insights"] },
-  { id: "log", label: "Log", panels: ["meetings", "journal"] }
+  { id: "frame", label: "Frame", panels: ["rq"], control: null },
+  { id: "study-design", label: "Study Design", panels: ["study"], control: "workshop" },
+  { id: "literature-review", label: "Literature Review", panels: ["methods"], control: null },
+  { id: "data-collection", label: "Data Collection", panels: ["archive"], control: null },
+  { id: "data-analysis", label: "Data Analysis", panels: ["analysis", "insights"], control: "analysis-type" },
+  { id: "logs", label: "Logs", panels: ["meetings", "journal"], control: "content-type" }
 ];
+
+// Keep analysis navigation declarative so future analysis types only need one
+// registry entry and one matching panel.
+const analysisViews = [
+  { id: "video-coding", label: "Video Coding", panel: "analysis" },
+  { id: "interview", label: "Interview", panel: "insights" }
+];
+
+// Back-compat for older section ids used in hashes/bookmarks before the
+// research-pipeline restructure. Panel ids stay stable, so trace buttons that
+// point at panels (study, archive, methods, ...) keep resolving via sectionForId.
+const sectionIdAliases = {
+  workshop: "study-design",
+  evidence: "data-collection",
+  method: "literature-review",
+  methods: "literature-review",
+  analysis: "data-analysis",
+  log: "logs"
+};
 
 const defaultSection = sections[0];
 
@@ -49,7 +68,11 @@ const state = {
   activeWorkshopId: initialWorkshopId,
   activeArchiveSectionId: "",
   activeArchiveGroups: {},
-  activeReadingFilter: DATA.readingFilters?.[0]?.id || "methodology",
+  activeResearchCategory: DATA.literatureReview?.sections?.[0]?.id || "nd-learning",
+  activeReadingStatus: "all",
+  activeReadingKeyword: "all",
+  activeAnalysisType: analysisViews[0].id,
+  activeLogContent: "meetings",
   journalEntries: [],
   activeJournalId: "",
   journalServerAvailable: false
@@ -58,13 +81,40 @@ const state = {
 const navButtons = Array.from(document.querySelectorAll("[data-section]"));
 const panels = Array.from(document.querySelectorAll("[data-panel]"));
 const viewTitle = document.querySelector("#viewTitle");
+const topbarNote = document.querySelector("#topbarNote");
 const matrixSearch = document.querySelector("#matrixSearch");
 const frameworkSearch = document.querySelector("#frameworkSearch");
 const workshopSelect = document.querySelector("#workshopSelect");
+const researchCategorySelect = document.querySelector("#researchCategorySelect");
+const readingStatusSelect = document.querySelector("#readingStatusSelect");
+const readingKeywordSelect = document.querySelector("#readingKeywordSelect");
+const analysisTypeSelect = document.querySelector("#analysisTypeSelect");
+const contentTypeSelect = document.querySelector("#contentTypeSelect");
 const activeWorkshopEyebrow = document.querySelector("#activeWorkshopEyebrow");
 const journalForm = document.querySelector("#journalForm");
 const journalNewButton = document.querySelector("#journalNewButton");
 const journalDeleteButton = document.querySelector("#journalDeleteButton");
+
+// Per-section topbar copy so the breadcrumb reads as a research pipeline
+// rather than a workshop-only evidence base on every page.
+const sectionEyebrows = {
+  frame: "Research framing",
+  "literature-review": "Related work library",
+  "data-collection": "Multi-session data archive",
+  "data-analysis": "Analysis progress dashboard",
+  logs: "Project record",
+  default: "Touch-to-Meaning research base"
+};
+
+const topbarNotes = {
+  frame: "Research questions, learner profiles, and the data mapping that frames the study.",
+  "study-design": "Session plans, spatial and task-flow maps, and the source files behind each workshop.",
+  "literature-review": "A curated related-work library across ND learning, materials and tangibles, and qualitative microanalysis.",
+  "data-collection": "Artifacts, 360 video, field notes, and interviews traced back to each session.",
+  "data-analysis": "Calibration progress, pilot reliability, the active codebook, and the workflow from logs to RQ-linked themes.",
+  logs: "Meeting notes and research memos across the project history.",
+  default: "A traceable evidence workflow from study design to analysis."
+};
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -353,7 +403,8 @@ function highlight(value) {
 }
 
 function sectionForId(sectionId) {
-  return sections.find((section) => section.id === sectionId || section.panels.includes(sectionId)) || defaultSection;
+  const resolved = sectionIdAliases[sectionId] || sectionId;
+  return sections.find((section) => section.id === resolved || section.panels.includes(resolved)) || defaultSection;
 }
 
 function setSection(sectionId, updateHash = true) {
@@ -364,10 +415,42 @@ function setSection(sectionId, updateHash = true) {
     button.setAttribute("aria-current", isActive ? "page" : "false");
   });
   panels.forEach((panel) => {
-    panel.hidden = !section.panels.includes(panel.dataset.panel);
+    panel.hidden = !isPanelVisible(section, panel.dataset.panel);
   });
   viewTitle.textContent = section.label;
+  renderTopbarControl(section);
   if (updateHash) history.replaceState(null, "", `#${state.activeSection}`);
+}
+
+// Sections with a view selector expose one main panel at a time.
+function isPanelVisible(section, panelId) {
+  if (!section.panels.includes(panelId)) return false;
+  if (section.control === "content-type") {
+    return panelId === state.activeLogContent;
+  }
+  if (section.control === "analysis-type") {
+    const activeView = analysisViews.find((view) => view.id === state.activeAnalysisType) || analysisViews[0];
+    return panelId === activeView.panel;
+  }
+  return true;
+}
+
+// Each section owns the topbar control that is meaningful for it. Only one
+// picker is visible at a time; sections with control === null show none.
+function renderTopbarControl(section) {
+  const pickers = {
+    "workshop": document.querySelector("#workshopPicker"),
+    "analysis-type": document.querySelector("#analysisTypePicker"),
+    "content-type": document.querySelector("#contentTypePicker")
+  };
+  Object.entries(pickers).forEach(([key, node]) => {
+    if (node) node.hidden = section.control !== key;
+  });
+  if (topbarNote) topbarNote.textContent = topbarNotes[section.id] || topbarNotes.default;
+  if (activeWorkshopEyebrow) {
+    activeWorkshopEyebrow.textContent =
+      sectionEyebrows[section.id] || sectionEyebrows.default;
+  }
 }
 
 function renderRqs() {
@@ -466,7 +549,9 @@ function renderWorkshopMeta() {
   const workshop = activeWorkshop();
   if (!workshop) return;
 
-  activeWorkshopEyebrow.textContent = `${workshop.shortLabel || workshop.label} evidence base`;
+  if (activeWorkshopEyebrow && state.activeSection === "study-design") {
+    activeWorkshopEyebrow.textContent = `${workshop.shortLabel || workshop.label} evidence base`;
+  }
   document.querySelector("#studyEyebrow").textContent = workshop.date || "Selected workshop";
   document.querySelector("#studyHeading").textContent = workshop.label;
   document.querySelector("#studySummaryHeading").textContent = workshop.activity || "Workshop summary";
@@ -928,77 +1013,194 @@ function renderFrameworkSourceNotes() {
   `;
 }
 
-function itemMatchesFilter(item, filterId) {
-  if (filterId === "methodology") return true;
-  if (filterId === "behavior-psych") return Boolean(item.statuses?.["behavior-psych"]);
-  return item.collections.includes(filterId);
-}
-
-function statusForItem(item) {
-  return item.statuses?.[state.activeReadingFilter] || item.statuses?.methodology || "Under review";
-}
-
-function statusClass(status) {
-  return status.toLowerCase().replaceAll(" ", "-");
-}
-
-function visibleReadingItems() {
-  return (DATA.readingTracker || []).filter((item) => itemMatchesFilter(item, state.activeReadingFilter));
-}
-
-function renderReadingFilters() {
-  const target = document.querySelector("#readingFilters");
-  target.innerHTML = (DATA.readingFilters || [])
-    .map((filter) => {
-      const count = (DATA.readingTracker || []).filter((item) => itemMatchesFilter(item, filter.id)).length;
-      return `
-        <button class="reading-filter" type="button" data-reading-filter="${escapeHtml(filter.id)}" aria-selected="${filter.id === state.activeReadingFilter ? "true" : "false"}">
-          ${escapeHtml(filter.label)} <span>${count}</span>
-        </button>
-      `;
-    })
-    .join("");
-
-  Array.from(target.querySelectorAll("button")).forEach((button) => {
-    button.addEventListener("click", () => {
-      state.activeReadingFilter = button.dataset.readingFilter;
-      renderReadingFilters();
-      renderReadingTracker();
-    });
-  });
-}
-
-function renderReadingTracker() {
-  const target = document.querySelector("#readingTracker");
-  const status = document.querySelector("#readingStatus");
-  const items = visibleReadingItems();
-  status.textContent = `${items.length} source${items.length === 1 ? "" : "s"} visible`;
-  target.innerHTML = items
-    .map((item) => {
-      const readingStatus = statusForItem(item);
-      return `
-        <article class="reading-card">
-          <div class="reading-card-header">
-            <div>
-              <h4>${escapeHtml(item.title)}</h4>
-              <p class="authors">${escapeHtml(item.authors)}</p>
-            </div>
-            <span class="read-status ${escapeHtml(statusClass(readingStatus))}">${escapeHtml(readingStatus)}</span>
-          </div>
-          <div class="reading-meta">
-            ${item.collectionLabels.map((label) => `<span class="label-token">${escapeHtml(label)}</span>`).join("")}
-            ${item.tags.map((tag) => `<span class="tag-token">${escapeHtml(tag)}</span>`).join("")}
-          </div>
-          <a class="ghost-link compact" href="zotero://select/library/items/${escapeHtml(item.zoteroKey)}">Open in Zotero</a>
-        </article>
-      `;
-    })
-    .join("");
-}
-
 function renderMethodNotes() {
   renderDocumentButtons(DATA.methodNotes || [], "#methodNoteList", "#methodNoteStatus", "#methodNoteFrame", "#methodNoteOpen");
 }
+
+// ---- Literature Review library (Task 2) --------------------------------
+
+function literatureSections() {
+  return DATA.literatureReview?.sections || [];
+}
+
+function activeLiteratureSection() {
+  const sections = literatureSections();
+  return sections.find((section) => section.id === state.activeResearchCategory) || sections[0] || null;
+}
+
+function renderResearchCategorySelect() {
+  if (!researchCategorySelect) return;
+  const sections = literatureSections();
+  researchCategorySelect.innerHTML = sections
+    .map(
+      (section) => `
+      <option value="${escapeHtml(section.id)}"${section.id === state.activeResearchCategory ? " selected" : ""}>
+        ${escapeHtml(section.label)}
+      </option>`
+    )
+    .join("");
+}
+
+function renderAnalysisTypeSelect() {
+  if (!analysisTypeSelect) return;
+  analysisTypeSelect.innerHTML = analysisViews
+    .map((view) => `<option value="${escapeHtml(view.id)}">${escapeHtml(view.label)}</option>`)
+    .join("");
+  analysisTypeSelect.value = state.activeAnalysisType;
+}
+
+function setResearchCategory(sectionId, updateSelect = false) {
+  if (!literatureSections().some((section) => section.id === sectionId)) return;
+  state.activeResearchCategory = sectionId;
+  state.activeReadingKeyword = "all";
+  if (updateSelect && researchCategorySelect) researchCategorySelect.value = sectionId;
+  renderLiteratureReview();
+}
+
+function readingStatusClass(status) {
+  return `status-${readingStatusKey(status)}`;
+}
+
+function readingStatusKey(status) {
+  const value = String(status || "").toLowerCase();
+  if (value === "to read" || value === "unread") return "to-read";
+  if (value === "completed") return "completed";
+  if (value === "important" || value === "intensive read") return "important";
+  return "reading";
+}
+
+function readingStatusLabel(status) {
+  const labels = { "to-read": "To Read", reading: "Reading", completed: "Completed", important: "Important" };
+  return labels[readingStatusKey(status)];
+}
+
+function readingKeywords(reading) {
+  return Array.from(new Set([...(reading?.tags || []), ...(reading?.keywords || [])]));
+}
+
+function activeReadingKeywords(section = activeLiteratureSection()) {
+  if (!section) return [];
+  return Array.from(
+    new Set((section.readings || []).flatMap(readingKeywords))
+  ).sort((left, right) => left.localeCompare(right));
+}
+
+function renderReadingKeywordSelect(section) {
+  if (!readingKeywordSelect) return;
+  const keywords = activeReadingKeywords(section);
+  if (state.activeReadingKeyword !== "all" && !keywords.includes(state.activeReadingKeyword)) {
+    state.activeReadingKeyword = "all";
+  }
+  readingKeywordSelect.innerHTML = [
+    `<option value="all">All keywords</option>`,
+    ...keywords.map((keyword) => `<option value="${escapeHtml(keyword)}">${escapeHtml(keyword)}</option>`)
+  ].join("");
+  readingKeywordSelect.value = state.activeReadingKeyword;
+}
+
+function visibleLiteratureReadings(section) {
+  return (section?.readings || []).filter((reading) => {
+    const matchesStatus = state.activeReadingStatus === "all" || readingStatusKey(reading.status) === state.activeReadingStatus;
+    const keywords = readingKeywords(reading);
+    const matchesKeyword = state.activeReadingKeyword === "all" || keywords.includes(state.activeReadingKeyword);
+    return matchesStatus && matchesKeyword;
+  });
+}
+
+function iconMarkup(type) {
+  if (type === "zotero") {
+    return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12l-9 16h10" /></svg>`;
+  }
+  return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 5h5v5M19 5l-8 8M18 13v6H5V6h6" /></svg>`;
+}
+
+function renderLiteratureReading(reading) {
+  const meta = [
+    reading.year ? `${escapeHtml(String(reading.year))}` : "",
+    reading.venue ? `${escapeHtml(reading.venue)}` : ""
+  ]
+    .filter(Boolean)
+    .join(" · ");
+  const keywords = readingKeywords(reading)
+    .map((keyword) => `<span class="tag-token">${escapeHtml(keyword)}</span>`)
+    .join("");
+  const zoteroLink = reading.zoteroKey
+    ? `<a class="reference-icon-button" href="zotero://select/library/items/${escapeHtml(reading.zoteroKey)}" aria-label="Open in Zotero" title="Open in Zotero">${iconMarkup("zotero")}</a>`
+    : "";
+  const doiHref = reading.doi ? `https://doi.org/${reading.doi}` : reading.publicationUrl || "";
+  const doiLink = doiHref
+    ? `<a class="reference-icon-button" href="${escapeHtml(doiHref)}" target="_blank" rel="noreferrer" aria-label="Open DOI or publication" title="Open DOI or publication">${iconMarkup("external")}</a>`
+    : "";
+  return `
+    <article class="reading-entry">
+      <details>
+        <summary>
+          <div class="reading-entry-head">
+            <h5>${escapeHtml(reading.title)}</h5>
+            <p class="authors">${escapeHtml(reading.authors)}${meta ? ` — ${meta}` : ""}</p>
+          </div>
+          <div class="reading-entry-actions">
+            <span class="read-status ${readingStatusClass(reading.status)}">${escapeHtml(readingStatusLabel(reading.status))}</span>
+            <span class="reference-actions">${zoteroLink}${doiLink}</span>
+          </div>
+        </summary>
+        <div class="reading-entry-body">
+          ${reading.relevance ? `<p class="reading-relevance"><strong>Relevance.</strong> ${escapeHtml(reading.relevance)}</p>` : ""}
+          ${keywords ? `<div class="reading-meta">${keywords}</div>` : ""}
+        </div>
+      </details>
+    </article>
+  `;
+}
+
+function renderLiteratureReview() {
+  const section = activeLiteratureSection();
+  const host = document.querySelector("#literatureLibrary");
+  if (!host) return;
+  const status = document.querySelector("#literatureStatus");
+
+  if (!section) {
+    host.innerHTML = "";
+    if (status) status.textContent = "0 sources";
+    return;
+  }
+
+  renderReadingKeywordSelect(section);
+  const visibleReadings = visibleLiteratureReadings(section);
+  if (status) status.textContent = `${visibleReadings.length} of ${section.readings?.length || 0} sources`;
+
+  host.innerHTML = `
+    <div class="lit-overview">
+      <p class="lit-tagline">${escapeHtml(section.tagline || "")}</p>
+      <div class="lit-overview-grid">
+        <section class="lit-block">
+          <h5>What prior work foregrounds</h5>
+          <ul>${(section.priorWork || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+        </section>
+        <section class="lit-block">
+          <h5>Gap for Touch-to-Meaning</h5>
+          <ul>${(section.gap || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+        </section>
+      </div>
+      ${section.anchors ? `<p class="lit-anchors"><strong>Anchors.</strong> ${escapeHtml(section.anchors)}</p>` : ""}
+    </div>
+    <div class="lit-reading-list">
+      <div class="table-heading">
+        <div>
+          <p class="eyebrow">Reading list</p>
+          <h4>${escapeHtml(section.title)}</h4>
+        </div>
+        <span class="status-pill">${countLabel(visibleReadings.length, "reading")}</span>
+      </div>
+      <div class="reading-entry-list">
+        ${visibleReadings.length
+          ? visibleReadings.map(renderLiteratureReading).join("")
+          : `<p class="empty-note">No readings match this category, status, and keyword combination.</p>`}
+      </div>
+    </div>
+  `;
+}
+
 
 function renderNarrativeWritingPrompt(prompt) {
   if (!prompt) return "";
@@ -1072,11 +1274,446 @@ function renderNarrativeEntry(entry) {
   `;
 }
 
+// ---- Data Analysis dashboard (Task 4) ----------------------------------
+
+const STATUS_LABELS = { completed: "Completed", "in-progress": "In progress", pending: "Pending" };
+
+function renderPilotIrr(pilot) {
+  if (!pilot) return "";
+
+  const coverage = (pilot.coverage || [])
+    .map(
+      (item) => `
+      <article class="evidence-metric">
+        <strong>${escapeHtml(item.value)}</strong>
+        <span>${escapeHtml(item.label)}</span>
+      </article>`
+    )
+    .join("");
+
+  const videoRows = (pilot.videos || [])
+    .map(
+      (video) => `
+      <tr>
+        <td><code>${escapeHtml(video.id)}</code></td>
+        <td>${escapeHtml(String(video.episodes))}</td>
+        <td><span class="status-chip completed">Complete</span></td>
+      </tr>`
+    )
+    .join("");
+
+  const pairwise = (pilot.pairwise || [])
+    .map(
+      (item) => `
+      <article class="pairwise-card">
+        <span>${escapeHtml(item.pair)}</span>
+        <strong>${escapeHtml(item.agreement)}</strong>
+      </article>`
+    )
+    .join("");
+
+  const dimensionRows = (pilot.dimensions || [])
+    .map(
+      (dimension) => `
+      <tr>
+        <th scope="row">${escapeHtml(dimension.name)}</th>
+        <td>${escapeHtml(String(dimension.n))}</td>
+        <td>${escapeHtml(dimension.unanimous)}</td>
+        <td>${escapeHtml(dimension.fleiss)}</td>
+        <td>${escapeHtml(dimension.alpha)}</td>
+      </tr>`
+    )
+    .join("");
+
+  const notes = (pilot.notes || []).map((note) => `<li>${escapeHtml(note)}</li>`).join("");
+
+  const metricMethod = pilot.metricMethod;
+  const metricRules = (metricMethod?.rules || [])
+    .map(
+      (rule) => `
+        <article class="evidence-subsection">
+          <p class="eyebrow">${escapeHtml(rule.label)}</p>
+          <h5>${escapeHtml(rule.value)}</h5>
+          <p class="micro-note">${escapeHtml(rule.detail)}</p>
+        </article>`
+    )
+    .join("");
+
+  return `
+    <section class="analysis-evidence-block pilot-irr-block" aria-labelledby="pilotIrrHeading">
+      <div class="table-heading">
+        <div>
+          <p class="eyebrow">${escapeHtml(pilot.eyebrow)}</p>
+          <h4 id="pilotIrrHeading">${escapeHtml(pilot.title)}</h4>
+          <p class="body-copy">${escapeHtml(pilot.summary)}</p>
+        </div>
+        <span class="status-pill">${escapeHtml(pilot.sourceLabel)}</span>
+      </div>
+      <div class="evidence-metric-grid">${coverage}</div>
+      <div class="pilot-detail-grid">
+        <section class="evidence-subsection" aria-labelledby="pilotCoverageHeading">
+          <div class="subsection-heading">
+            <h5 id="pilotCoverageHeading">Completed video coverage</h5>
+            <span>61 episodes total</span>
+          </div>
+          <div class="table-scroll">
+            <table class="data-table compact-evidence-table">
+              <thead><tr><th>Video</th><th>Episodes</th><th>Status</th></tr></thead>
+              <tbody>${videoRows}</tbody>
+            </table>
+          </div>
+        </section>
+        <section class="evidence-subsection" aria-labelledby="pairwiseHeading">
+          <div class="subsection-heading">
+            <h5 id="pairwiseHeading">Pairwise exact agreement</h5>
+            <span>684 valid decisions per pair</span>
+          </div>
+          <div class="pairwise-grid">${pairwise}</div>
+          <p class="micro-note">Overall three-coder unanimity: 260/684 decisions (38.0%).</p>
+        </section>
+      </div>
+      ${metricMethod ? `
+      <section class="evidence-subsection" aria-labelledby="irrMethodHeading">
+        <div class="subsection-heading">
+          <div>
+            <h5 id="irrMethodHeading">${escapeHtml(metricMethod.title)}</h5>
+            <p class="micro-note">${escapeHtml(metricMethod.summary)}</p>
+          </div>
+          <span>Pre-specified rule</span>
+        </div>
+        <div class="pilot-detail-grid metric-method-grid">${metricRules}</div>
+      </section>` : ""}
+      <section class="evidence-subsection" aria-labelledby="dimensionIrrHeading">
+        <div class="subsection-heading">
+          <h5 id="dimensionIrrHeading">Dimension-level three-coder reliability</h5>
+          <span>Nominal coefficients</span>
+        </div>
+        <div class="table-scroll">
+          <table class="data-table irr-table">
+            <thead>
+              <tr><th>Dimension</th><th>n</th><th>Unanimous</th><th>Fleiss κ</th><th>Krippendorff α</th></tr>
+            </thead>
+            <tbody>${dimensionRows}</tbody>
+          </table>
+        </div>
+      </section>
+      <aside class="calibration-note" aria-label="Pilot interpretation boundaries">
+        <p class="eyebrow">Interpretation boundaries</p>
+        <ul>${notes}</ul>
+      </aside>
+    </section>`;
+}
+
+function renderCalibrationRound(round) {
+  if (!round) return "";
+
+  const coverage = (round.coverage || [])
+    .map((item) => `
+      <article class="evidence-metric">
+        <strong>${escapeHtml(item.value)}</strong>
+        <span>${escapeHtml(item.label)}</span>
+      </article>`)
+    .join("");
+
+  const caseRows = (round.cases || [])
+    .map((item) => `
+      <tr>
+        <td><code>${escapeHtml(item.id)}</code></td>
+        <td>${escapeHtml(String(item.episodes))}</td>
+        <td><span class="status-chip completed">Included</span></td>
+      </tr>`)
+    .join("");
+
+  const dimensionRows = (round.dimensions || [])
+    .map((item) => `
+      <tr>
+        <th scope="row">${escapeHtml(item.name)}</th>
+        <td>${escapeHtml(String(item.n))}</td>
+        <td>${escapeHtml(item.exact)}</td>
+        <td>${escapeHtml(item.fleiss)}</td>
+        <td>${escapeHtml(item.r13)}</td>
+        <td>${escapeHtml(item.r14)}</td>
+        <td>${escapeHtml(item.r34)}</td>
+      </tr>`)
+    .join("");
+
+  const notes = (round.notes || []).map((note) => `<li>${escapeHtml(note)}</li>`).join("");
+  const overall = round.overall || {};
+
+  return `
+    <section class="analysis-evidence-block pilot-irr-block" aria-labelledby="calibrationRound2Heading">
+      <div class="table-heading">
+        <div>
+          <p class="eyebrow">${escapeHtml(round.eyebrow)}</p>
+          <h4 id="calibrationRound2Heading">${escapeHtml(round.title)}</h4>
+          <p class="body-copy">${escapeHtml(round.summary)}</p>
+        </div>
+        <span class="status-pill">${escapeHtml(round.sourceLabel)}</span>
+      </div>
+      <div class="evidence-metric-grid">${coverage}</div>
+      <section class="evidence-subsection" aria-labelledby="round2CoverageHeading">
+        <div class="subsection-heading">
+          <h5 id="round2CoverageHeading">Included calibration cases</h5>
+          <span>R1 · R3 · R4</span>
+        </div>
+        <div class="table-scroll">
+          <table class="data-table compact-evidence-table">
+            <thead><tr><th>Case</th><th>Episode skeletons</th><th>Status</th></tr></thead>
+            <tbody>${caseRows}</tbody>
+          </table>
+        </div>
+      </section>
+      <section class="evidence-subsection" aria-labelledby="round2OverallHeading">
+        <div class="subsection-heading">
+          <h5 id="round2OverallHeading">Overall agreement · six retained tiers</h5>
+          <span>R1 · R3 · R4</span>
+        </div>
+        <div class="table-scroll">
+          <table class="data-table irr-table">
+            <thead><tr><th>n</th><th>Exact</th><th>Mean pairwise</th><th>Fleiss κ</th><th>R1-R3 κ</th><th>R1-R4 κ</th><th>R3-R4 κ</th></tr></thead>
+            <tbody><tr><td>${escapeHtml(String(overall.n))}</td><td>${escapeHtml(overall.exact)}</td><td>${escapeHtml(overall.pairwiseAgreement)}</td><td>${escapeHtml(overall.fleiss)}</td><td>${escapeHtml(overall.r13)}</td><td>${escapeHtml(overall.r14)}</td><td>${escapeHtml(overall.r34)}</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+      <section class="evidence-subsection" aria-labelledby="round2ReducedHeading">
+        <div class="subsection-heading">
+          <div>
+            <h5 id="round2ReducedHeading">Agreement by retained tier</h5>
+            <p class="micro-note">All six tiers are single-code nominal tiers.</p>
+          </div>
+          <span>Six retained tiers · 43 values</span>
+        </div>
+        <div class="table-scroll">
+          <table class="data-table irr-table">
+            <thead><tr><th>Tier</th><th>n</th><th>Exact</th><th>Fleiss κ</th><th>R1-R3 κ</th><th>R1-R4 κ</th><th>R3-R4 κ</th></tr></thead>
+            <tbody>${dimensionRows}</tbody>
+          </table>
+        </div>
+      </section>
+      <aside class="calibration-note" aria-label="R2-excluded round interpretation boundaries">
+        <p class="eyebrow">Interpretation boundaries</p>
+        <ul>${notes}</ul>
+      </aside>
+    </section>`;
+}
+
+function renderCodebookStructure(codebook) {
+  if (!codebook) return "";
+
+  const tierGroups = (codebook.tierGroups || [])
+    .map(
+      (group) => `
+      <article class="tier-group-card">
+        <div class="subsection-heading">
+          <h5>${escapeHtml(group.label)}</h5>
+          <span>${escapeHtml(String(group.tiers?.length || 0))} tiers</span>
+        </div>
+        <ul class="tier-list">
+          ${(group.tiers || [])
+            .map(
+              (tier) => `
+              <li>
+                <code>${escapeHtml(tier.id)}</code>
+                <span>${escapeHtml(tier.detail)}</span>
+              </li>`
+            )
+            .join("")}
+        </ul>
+      </article>`
+    )
+    .join("");
+
+  const dimensions = (codebook.dimensions || [])
+    .map(
+      (dimension) => `
+      <article class="codebook-dimension-card">
+        <div class="subsection-heading">
+          <div>
+            <h5>${escapeHtml(dimension.name)}</h5>
+            <code>${escapeHtml(dimension.tier)}</code>
+          </div>
+          <span>${escapeHtml(String(dimension.values?.length || 0))} values</span>
+        </div>
+        <ul class="codebook-value-list">
+          ${(dimension.values || [])
+            .map(
+              ([code, label]) => `
+              <li>
+                <code>${escapeHtml(code)}</code>
+                <span>${escapeHtml(label)}</span>
+              </li>`
+            )
+            .join("")}
+        </ul>
+      </article>`
+    )
+    .join("");
+
+  return `
+    <section class="analysis-evidence-block codebook-structure-block" aria-labelledby="codebookStructureHeading">
+      <div class="table-heading">
+        <div>
+          <p class="eyebrow">${escapeHtml(codebook.eyebrow)}</p>
+          <h4 id="codebookStructureHeading">${escapeHtml(codebook.title)}</h4>
+          <p class="body-copy">${escapeHtml(codebook.summary)}</p>
+        </div>
+        <span class="status-pill">${escapeHtml(codebook.sourceLabel)}</span>
+      </div>
+      <div class="codebook-fact-row" aria-label="Codebook inventory">
+        <span class="corpus-chip"><strong>14</strong> ELAN tiers</span>
+        <span class="corpus-chip"><strong>8</strong> controlled vocabularies</span>
+        <span class="corpus-chip"><strong>62</strong> controlled values</span>
+      </div>
+      <div class="tier-group-grid">${tierGroups}</div>
+      <div class="codebook-elements-heading">
+        <p class="eyebrow">Controlled-vocabulary elements</p>
+        <h5>Eight coded dimensions and their RC4 values</h5>
+      </div>
+      <div class="codebook-dimension-grid">${dimensions}</div>
+    </section>`;
+}
+
+function renderAnalysisProgress() {
+  const data = DATA.analysisProgress;
+  const host = document.querySelector("#analysisDashboard");
+  if (!host || !data) return;
+
+  const tasks = data.tasks || [];
+  const counts = {
+    completed: tasks.filter((task) => task.status === "completed").length,
+    "in-progress": tasks.filter((task) => task.status === "in-progress").length,
+    pending: tasks.filter((task) => task.status === "pending").length
+  };
+  const total = tasks.length || 1;
+  // In-progress work counts as half toward overall completion.
+  const percent = Math.round(((counts.completed + counts["in-progress"] * 0.5) / total) * 100);
+
+  const summaryCards = [
+    { key: "completed", label: "Completed" },
+    { key: "in-progress", label: "In progress" },
+    { key: "pending", label: "Pending" }
+  ]
+    .map(
+      (card) => `
+      <article class="progress-card ${card.key}">
+        <span class="progress-card-count">${counts[card.key]}</span>
+        <span class="progress-card-label">${card.label}</span>
+      </article>`
+    )
+    .join("");
+
+  const taskChips = tasks
+    .map(
+      (task) => `
+      <article class="progress-task">
+        <div class="progress-task-head">
+          <h5>${escapeHtml(task.title)}</h5>
+          <span class="status-chip ${task.status}">${STATUS_LABELS[task.status] || task.status}</span>
+        </div>
+        <p>${escapeHtml(task.detail)}</p>
+      </article>`
+    )
+    .join("");
+
+  const milestones = (data.milestones || [])
+    .map(
+      (milestone) => `
+      <li class="milestone ${milestone.status}">
+        <span class="milestone-dot" aria-hidden="true"></span>
+        <span class="milestone-id">${escapeHtml(milestone.id)}</span>
+        <span class="milestone-label">${escapeHtml(milestone.label)}</span>
+        <span class="milestone-status">${STATUS_LABELS[milestone.status] || milestone.status}</span>
+      </li>`
+    )
+    .join("");
+
+  host.innerHTML = `
+    <div class="progress-overview-head">
+      <div>
+        <p class="eyebrow">Status as of ${escapeHtml(data.statusDate || "")}</p>
+        <h5 class="progress-phase-title">${escapeHtml(data.phase || "")}</h5>
+        <p class="body-copy">${escapeHtml(data.headline || "")}</p>
+      </div>
+      <div class="progress-ring" style="--progress:${percent}" role="img" aria-label="Overall completion ${percent} percent">
+        <span class="progress-ring-value">${percent}%</span>
+        <span class="progress-ring-label">Overall</span>
+      </div>
+    </div>
+    <div class="progress-card-row">${summaryCards}</div>
+    <div class="progress-bar" role="img" aria-label="Overall completion ${percent} percent">
+      <span class="progress-bar-fill" style="width:${percent}%"></span>
+    </div>
+    <div class="progress-task-grid">${taskChips}</div>
+    <div class="milestone-timeline-wrap">
+      <p class="eyebrow">Readiness gate timeline</p>
+      <ol class="milestone-timeline">${milestones}</ol>
+    </div>
+    ${renderPilotIrr(data.pilotIrr)}
+    ${renderCalibrationRound(data.calibrationRound2)}
+    ${renderCodebookStructure(data.codebook)}
+  `;
+}
+
+function renderCoderAssignment() {
+  const data = DATA.analysisProgress?.coderAssignment;
+  const host = document.querySelector("#coderAssignment");
+  if (!host || !data) return;
+
+  const corpus = data.corpus || {};
+  const corpusCount = corpus.codingUnits || corpus.videos || 0;
+  const unitLabel = corpus.unitLabel || "videos";
+  const coders = (data.coders || [])
+    .map(
+      (coder) => `
+      <article class="coder-card">
+        <div class="coder-card-head">
+          <span class="coder-code">${escapeHtml(coder.code)}</span>
+          <div>
+            <h5>${escapeHtml(coder.name)}</h5>
+            <p class="coder-role">${escapeHtml(coder.role)}</p>
+          </div>
+          <span class="status-pill">${escapeHtml(String(coder.assignedVideos))} ${escapeHtml(unitLabel)}</span>
+        </div>
+        <ul class="coder-responsibilities">
+          ${(coder.responsibilities || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+        </ul>
+        <dl class="coder-meta">
+          <div><dt>Sessions</dt><dd>${escapeHtml(coder.sessions)}</dd></div>
+          <div><dt>Overlap</dt><dd>${escapeHtml(coder.pairs)}</dd></div>
+        </dl>
+      </article>`
+    )
+    .join("");
+
+  const heatmap = data.heatmap || {};
+
+  host.innerHTML = `
+    <div class="table-heading">
+      <div>
+        <p class="eyebrow">${escapeHtml(data.eyebrow || "Coding workflow")}</p>
+        <h4>${escapeHtml(data.title || "Coder assignment")}</h4>
+        <p class="body-copy">${escapeHtml(data.summary || "")}</p>
+      </div>
+      <span class="status-pill">${escapeHtml(String(corpusCount))} ${escapeHtml(unitLabel)}</span>
+    </div>
+    <div class="coder-corpus-row">
+      ${corpus.sourceVideos ? `<span class="corpus-chip"><strong>${escapeHtml(String(corpus.sourceVideos))}</strong> source videos</span>` : ""}
+      <span class="corpus-chip"><strong>${escapeHtml(String(corpusCount))}</strong> ${escapeHtml(unitLabel)}</span>
+      <span class="corpus-chip"><strong>${escapeHtml(String(corpus.doubleCoded || 0))}</strong> double-coded</span>
+      <span class="corpus-chip"><strong>${escapeHtml(String(corpus.tripleCoded || 0))}</strong> triple-coded</span>
+      <span class="corpus-chip">Min <strong>${escapeHtml(String(corpus.minCodersPerVideo || 0))}</strong> coders/${corpus.codingUnits ? "unit" : "video"}</span>
+    </div>
+    <div class="coder-card-grid">${coders}</div>
+    <figure class="coder-heatmap">
+      <img src="${escapeHtml(heatmap.src || "")}" alt="${escapeHtml(heatmap.alt || "Coder assignment heatmap")}" loading="lazy" />
+      <figcaption>${escapeHtml(heatmap.caption || "")}</figcaption>
+    </figure>
+  `;
+}
+
 function renderAnalysisWorkflow() {
   const workflow = DATA.analysisWorkflow || { stages: [], guardrails: [] };
   const narrativeSummaries = workflow.narrativeSummaries || { entries: [] };
-  const heading = document.querySelector("#analysisHeading");
-  const eyebrow = document.querySelector("#analysisEyebrow");
   const summary = document.querySelector("#analysisSummary");
   const workbookOpen = document.querySelector("#analysisWorkbookOpen");
   const sourceLabel = document.querySelector("#analysisSourceLabel");
@@ -1090,8 +1727,8 @@ function renderAnalysisWorkflow() {
 
   if (!flow || !guardrails) return;
 
-  if (heading) heading.textContent = workflow.title || "Video Data Analysis Stage";
-  if (eyebrow) eyebrow.textContent = workflow.eyebrow || "McNaughton-adapted workflow";
+  // The top-level analysis heading is now owned by the progress dashboard;
+  // the workflow summary is shown as supporting context above the stage flow.
   if (summary) summary.textContent = workflow.summary || "";
   if (workbookOpen && workflow.workbookHref) workbookOpen.href = workflow.workbookHref;
   if (sourceLabel) sourceLabel.textContent = workflow.sourceLabel || `${workflow.stages.length} stages`;
@@ -1137,8 +1774,60 @@ function renderSubEpisode(item) {
   `;
 }
 
+function renderInterviewCodebook() {
+  const codebook = DATA.interviewCodebook;
+  if (!codebook) return "";
+
+  const facts = (codebook.facts || [])
+    .map(
+      (fact) => `
+      <span class="corpus-chip">
+        <strong>${escapeHtml(fact.value)}</strong> ${escapeHtml(fact.label)}
+      </span>`
+    )
+    .join("");
+
+  const domains = (codebook.domains || [])
+    .map(
+      (domain) => `
+      <article class="interview-codebook-domain">
+        <div class="interview-codebook-domain-head">
+          <div>
+            <h5>${escapeHtml(domain.title)}</h5>
+            <code>${escapeHtml(domain.id)}</code>
+          </div>
+          <span>${escapeHtml(domain.rq)}</span>
+        </div>
+        <p class="body-copy">${escapeHtml(domain.detail)}</p>
+      </article>`
+    )
+    .join("");
+
+  return `
+    <section class="interview-codebook-block" aria-labelledby="interviewCodebookHeading">
+      <div class="table-heading">
+        <div>
+          <p class="eyebrow">${escapeHtml(codebook.eyebrow)}</p>
+          <h4 id="interviewCodebookHeading">${escapeHtml(codebook.title)}</h4>
+          <p class="body-copy">${escapeHtml(codebook.summary)}</p>
+        </div>
+        <span class="status-pill">${escapeHtml(codebook.sourceLabel)}</span>
+      </div>
+      <div class="interview-codebook-facts" aria-label="Interview codebook inventory">${facts}</div>
+      <div class="interview-codebook-heading">
+        <p class="eyebrow">Top-level code families</p>
+        <h5>Five domains aligned with RQ1–RQ4</h5>
+      </div>
+      <div class="interview-codebook-grid">${domains}</div>
+      <aside class="interview-codebook-boundary" aria-label="Interview codebook evidence boundaries">
+        <p class="eyebrow">Evidence and interpretation boundaries</p>
+        <ul>${(codebook.guardrails || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+      </aside>
+    </section>`;
+}
+
 function renderInsights() {
-  document.querySelector("#insightGrid").innerHTML = (DATA.insights || [])
+  document.querySelector("#insightGrid").innerHTML = `${renderInterviewCodebook()}${(DATA.insights || [])
     .map((item) => `
       <article class="insight-card large" id="${escapeHtml(item.id || `insight-${item.number}`)}">
         <div class="insight-number">${escapeHtml(item.number)}</div>
@@ -1154,7 +1843,7 @@ function renderInsights() {
         </div>
       </article>
     `)
-    .join("");
+    .join("")}`;
 
   document.querySelector("#memoLines").innerHTML = (DATA.memoLines || [])
     .map((line) => `<p>${escapeHtml(line)}</p>`)
@@ -1192,54 +1881,60 @@ function renderMeetingNotes() {
   list.innerHTML = notes
     .map((note) => `
       <article class="meeting-card" id="${escapeHtml(note.id)}">
-        <div class="meeting-card-header">
-          <div>
-            <p class="eyebrow">${escapeHtml(note.eyebrow || "Meeting note")}</p>
-            <h4>${escapeHtml(note.title)}</h4>
-          </div>
-          <time class="status-pill" datetime="${escapeHtml(note.date)}">${escapeHtml(note.date)}</time>
-        </div>
-        <p class="meeting-summary">${escapeHtml(note.summary)}</p>
-        <dl class="meeting-meta">
-          <div>
-            <dt>Participants</dt>
-            <dd>${escapeHtml((note.participants || []).join(", "))}</dd>
-          </div>
-        </dl>
-        ${renderLinkList(note.sourceLinks)}
+        <details class="meeting-details">
+          <summary class="meeting-card-header">
+            <div class="meeting-card-headline">
+              <p class="eyebrow">${escapeHtml(note.eyebrow || "Meeting note")}</p>
+              <h4>${escapeHtml(note.title)}</h4>
+              <p class="meeting-metaline">
+                <time datetime="${escapeHtml(note.date)}">${escapeHtml(note.date)}</time>
+                ${(note.participants || []).length ? `<span aria-hidden="true">·</span><span>${escapeHtml((note.participants || []).join(", "))}</span>` : ""}
+              </p>
+            </div>
+            <span class="meeting-toggle" aria-hidden="true">
+              <span class="meeting-toggle-expand">Expand</span>
+              <span class="meeting-toggle-collapse">Collapse</span>
+            </span>
+          </summary>
 
-        <section class="meeting-section" aria-label="Key decisions">
-          <h5>Key Decisions</h5>
-          ${renderTextList(note.decisions)}
-        </section>
+          <div class="meeting-body">
+            <p class="meeting-summary">${escapeHtml(note.summary)}</p>
+            ${renderLinkList(note.sourceLinks)}
 
-        <section class="meeting-section" aria-label="Discussion summary">
-          <h5>Discussion Summary</h5>
-          <div class="meeting-discussion-grid">
-            ${(note.discussion || [])
-              .map((item) => `
-                <article>
-                  <strong>${escapeHtml(item.title)}</strong>
-                  <p>${escapeHtml(item.text)}</p>
-                </article>
-              `)
-              .join("")}
-          </div>
-        </section>
+            <section class="meeting-section" aria-label="Key decisions">
+              <h5>Key Decisions</h5>
+              ${renderTextList(note.decisions)}
+            </section>
 
-        <section class="meeting-section" aria-label="Action items">
-          <h5>Action Items</h5>
-          <div class="meeting-action-grid">
-            ${(note.actionGroups || [])
-              .map((group) => `
-                <article>
-                  <strong>${escapeHtml(group.title)}</strong>
-                  ${renderTextList(group.items)}
-                </article>
-              `)
-              .join("")}
+            <section class="meeting-section" aria-label="Discussion summary">
+              <h5>Discussion Summary</h5>
+              <div class="meeting-discussion-grid">
+                ${(note.discussion || [])
+                  .map((item) => `
+                    <article>
+                      <strong>${escapeHtml(item.title)}</strong>
+                      <p>${escapeHtml(item.text)}</p>
+                    </article>
+                  `)
+                  .join("")}
+              </div>
+            </section>
+
+            <section class="meeting-section" aria-label="Action items">
+              <h5>Action Items</h5>
+              <div class="meeting-action-grid">
+                ${(note.actionGroups || [])
+                  .map((group) => `
+                    <article>
+                      <strong>${escapeHtml(group.title)}</strong>
+                      ${renderTextList(group.items)}
+                    </article>
+                  `)
+                  .join("")}
+              </div>
+            </section>
           </div>
-        </section>
+        </details>
       </article>
     `)
     .join("");
@@ -1672,6 +2367,41 @@ function attachEvents() {
     setWorkshop(event.target.value);
   });
 
+  researchCategorySelect?.addEventListener("change", (event) => {
+    setResearchCategory(event.target.value);
+  });
+
+  readingStatusSelect?.addEventListener("change", (event) => {
+    state.activeReadingStatus = event.target.value;
+    renderLiteratureReview();
+  });
+
+  readingKeywordSelect?.addEventListener("change", (event) => {
+    state.activeReadingKeyword = event.target.value;
+    renderLiteratureReview();
+  });
+
+  analysisTypeSelect?.addEventListener("change", (event) => {
+    if (!analysisViews.some((view) => view.id === event.target.value)) return;
+    state.activeAnalysisType = event.target.value;
+    const section = sectionForId(state.activeSection);
+    panels.forEach((panel) => {
+      panel.hidden = !isPanelVisible(section, panel.dataset.panel);
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (event.target.closest(".reference-icon-button")) event.stopPropagation();
+  });
+
+  contentTypeSelect?.addEventListener("change", (event) => {
+    state.activeLogContent = event.target.value;
+    const section = sectionForId(state.activeSection);
+    panels.forEach((panel) => {
+      panel.hidden = !isPanelVisible(section, panel.dataset.panel);
+    });
+  });
+
   journalForm?.addEventListener("submit", saveJournalEntry);
   journalNewButton?.addEventListener("click", resetJournalForm);
   journalDeleteButton?.addEventListener("click", deleteJournalEntry);
@@ -1707,9 +2437,12 @@ function init() {
   renderWorkshopScopedContent();
   renderFrameworkTable();
   renderFrameworkSourceNotes();
-  renderReadingFilters();
-  renderReadingTracker();
+  renderResearchCategorySelect();
+  renderAnalysisTypeSelect();
+  renderLiteratureReview();
   renderMethodNotes();
+  renderAnalysisProgress();
+  renderCoderAssignment();
   renderAnalysisWorkflow();
   renderInsights();
   renderMeetingNotes();

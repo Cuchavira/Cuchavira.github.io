@@ -72,6 +72,66 @@ const june9InterviewMaterialSafetyTraces = [
   }
 ];
 
+window.PROJECT_WEB_DATA.interviewCodebook = {
+  eyebrow: "Interview thematic analysis",
+  title: "RQ-aligned interview codebook v0.2",
+  sourceLabel: "Pilot-ready · 13 Aug 2026",
+  summary:
+    "The Chinese working codebook organizes four post-class teacher interviews and one life-teacher interview. It contains 49 provisional substantive codes across five domains, plus six evidence-quality flags and five evidence-link states. The architecture is ready for a 20% dual-coding pilot and is not yet frozen as v1.0.",
+  facts: [
+    { value: "5", label: "interviews" },
+    { value: "49", label: "substantive codes" },
+    { value: "92 / 460", label: "pilot units" },
+    { value: "20%", label: "dual-coding sample" },
+    { value: "6", label: "quality flags" },
+    { value: "5", label: "evidence states" }
+  ],
+  domains: [
+    {
+      id: "A01–A10",
+      title: "Reported learner–material patterns",
+      rq: "RQ1 · contextual interview evidence",
+      detail:
+        "Teacher-reported material approach, selection, repeated tactile action, multisensory exploration, task participation or departure, learner-led sequence changes, and peer observation. Learner-behavior claims require linked observational evidence for promotion beyond teacher report."
+    },
+    {
+      id: "B01–B08",
+      title: "Teacher-proposed semantic interpretations",
+      rq: "RQ2 contextual evidence · RQ3",
+      detail:
+        "Preference, comfort or regulation, task engagement, accessibility difficulty, communication, agency, bounded learning inference, and participant-expressed uncertainty or competing meanings. Actions are kept separate from interpretations."
+    },
+    {
+      id: "C01–C11",
+      title: "Educator interpretive knowledge",
+      rq: "RQ3 · primary interview evidence",
+      detail:
+        "Prior learner history, prerequisite knowledge, action and communication capabilities, current context, material affordances, safety, classroom routines, resources, life-care knowledge, and role or interprofessional boundaries."
+    },
+    {
+      id: "D01–D14",
+      title: "Educator response and orchestration",
+      rq: "RQ3 · primary interview evidence",
+      detail:
+        "Waiting and observation, prompts, demonstration, physical assistance, task and material adaptation, interest integration, reinforcement, differentiation, safety substitution, learner choice, grouping, adult attention, and real-time protective monitoring."
+    },
+    {
+      id: "E01–E06",
+      title: "Recurrence, change, and framework value",
+      rq: "RQ4 · contextual interview evidence",
+      detail:
+        "Repeated learner–material relations, changes in learner action or educator practice, contextual contradiction, participant-cited cross-source evidence, and bounded framework or design implications. Recurrence and stability remain provisional until cross-session and cross-source checks."
+    }
+  ],
+  guardrails: [
+    "Interviews are primary evidence for educator interpretation, knowledge, decisions, and reported responses under RQ3.",
+    "RQ1, RQ2, and RQ4 claims remain teacher-reported or contextual until linked to eligible video, field-note, photo, artifact, or assessment evidence.",
+    "Researcher prompts do not count as teacher findings without explicit confirmation, qualification, rejection, or elaboration.",
+    "The date-unknown life-teacher interview has mixed speaker labels; named attribution and key quotation require audio verification.",
+    "The five domains are code families for pilot calibration, not finalized themes or evidence of thematic saturation."
+  ]
+};
+
 function june9FieldNoteTrace(sourceTitle) {
   return {
     section: "archive",

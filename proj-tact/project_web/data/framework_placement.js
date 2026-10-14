@@ -163,7 +163,7 @@ window.PROJECT_WEB_DATA.frameworkPlacement = {
     },
     {
       "item": "Source table",
-      "value": "WorkshopJune2/plan/classroom_relation_framework_matrix_2026-06-07.md, Section 4: Framework Placement"
+      "value": "study/workshop-sessions/WorkshopJune2/plan/classroom_relation_framework_matrix_2026-06-07.md, Section 4: Framework Placement"
     },
     {
       "item": "Row boundary",
