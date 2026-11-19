@@ -219,4 +219,91 @@ window.PROJECT_WEB_DATA.insights = [
   }
 ];
 
-window.PROJECT_WEB_DATA.memoLines = [];
+// Current manuscript structure; the earlier codebook and episode memos above
+// remain available only in the explicitly labeled historical section.
+window.PROJECT_WEB_DATA.findings = [
+  {
+    id: "finding-materials",
+    number: "1",
+    rq: "RQ1",
+    title: "Materials as Situated Resources",
+    text: "Materials take on different functions depending on the learner, activity, and situation. Educators' accounts of material choices and interpretations also contribute to RQ2.",
+    subsections: [
+      {
+        title: "1.1 Multiple Functions of Materials",
+        points: [
+          "Task mediator: Materials organize concrete operations such as cutting, folding, drawing, gluing, and shaping.",
+          "Sensory exploration: Accounts describe pressing, touching, listening, and mouth contact. Comfort or regulation remains an educator interpretation.",
+          "Communication: Showing, sharing, and drawing attention to material work provide occasions for interaction. Recipient attention and response still require video review.",
+          "Interest-linked resources: Educators incorporate reported interests in clay, coloring, or pens into activities. Reported interest does not establish motivation or reinforcement effectiveness."
+        ]
+      },
+      {
+        title: "1.2 Matching Materials to Learning Activities",
+        points: [
+          "Educators describe adapting tasks around learners' abilities, available support, and reported interests—for example, adding coloring elements or incorporating clay into moon-making.",
+          "These accounts specify proposed or reported adaptations; their effects on participation remain to be established."
+        ]
+      },
+      {
+        title: "1.3 Representing Time Concepts",
+        points: [
+          "Clocks and daily-schedule posters make numerals, spatial arrangements, and activity–time relationships visible.",
+          "The artifacts document representations. They do not independently establish who completed each step or what a learner understood."
+        ]
+      }
+    ]
+  },
+  {
+    id: "finding-responses",
+    number: "2",
+    rq: "RQ2",
+    title: "Interpreted Response & Participation",
+    text: "Educators describe interpreting material actions and adjusting their responses. Linked video is needed to establish the response and what became possible next.",
+    subsections: [
+      {
+        title: "2.1 Task Support Adaptation",
+        points: [
+          "Reported adjustments address specific obstacles while leaving work for the learner—for example, marking key clock positions or lifting a tape corner.",
+          "A contrasting pilot record describes an educator completing the task. The subsequent participation opportunities require further examination."
+        ]
+      },
+      {
+        title: "2.2 Attention & Presence",
+        points: [
+          "Accounts include allowing repeated clay pressing, responding to requests for attention, and providing individual attention.",
+          "Whether presence or assistance changes subsequent participation opportunities still requires linked video analysis. Proximity alone does not establish facilitation."
+        ]
+      }
+    ]
+  },
+  {
+    id: "finding-conditions",
+    number: "3",
+    rq: "RQ3",
+    title: "Material Participation Across ND Classroom Conditions",
+    text: "Educators' accounts situate participation within changing tasks, material access, and educator or peer availability in the studied neurodivergent classroom.",
+    subsections: [
+      {
+        title: "3.1 Material Engagement Across Tasks",
+        points: [
+          "Educators describe similar material actions being organized differently across activities. Reported interests and reward value can vary over time.",
+          "Safety decisions can change which materials and operations remain available. Recurring engagement trajectories and causal effects have not been established."
+        ]
+      },
+      {
+        title: "3.2 Educator & Peer Availability",
+        points: [
+          "Educators describe staffing and shared attention as constraints on which activities they can support. Peer work provides examples for looking and imitation.",
+          "The current evidence does not establish that peer support replaces educator support or improves social skills. Exact interaction sequences remain to be verified."
+        ]
+      }
+    ]
+  }
+];
+
+window.PROJECT_WEB_DATA.memoLines = [
+  "Verify interview audio, speaker attribution, and flagged passages before publication-level quotation.",
+  "Link reported adjustments, attention, peer responses, and material traces to exact video episodes and subsequent participation opportunities.",
+  "Complete production video analysis and systematic cross-session comparison, including contradictions and negative cases, before promoting whole-study findings."
+];

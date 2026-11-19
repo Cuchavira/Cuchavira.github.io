@@ -2264,6 +2264,44 @@ textarea:disabled {
   list-style-position: outside;
 }
 
+.finding-subsections {
+  display: grid;
+  gap: 22px;
+  margin: 20px 0 0;
+  padding-left: 1.25rem;
+}
+
+.finding-subsections h5 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.finding-subsections ul {
+  display: grid;
+  gap: 8px;
+  padding-left: 1.25rem;
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  #insightGrid .insight-card.large {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 14px;
+  }
+
+  #insightGrid .insight-number {
+    display: none;
+  }
+
+  .finding-subsections,
+  .finding-subsections ul {
+    padding-left: 1rem;
+  }
+}
+
 .sub-episode {
   padding: 10px 0 10px 2px;
 }

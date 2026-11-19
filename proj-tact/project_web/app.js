@@ -13,7 +13,7 @@ const sections = [
 // registry entry and one matching panel.
 const analysisViews = [
   { id: "video-coding", label: "Video Coding", panel: "analysis" },
-  { id: "interview", label: "Interview", panel: "insights" }
+  { id: "interview", label: "Findings", panel: "insights" }
 ];
 
 // Back-compat for older section ids used in hashes/bookmarks before the
@@ -25,6 +25,7 @@ const sectionIdAliases = {
   method: "literature-review",
   methods: "literature-review",
   analysis: "data-analysis",
+  findings: "data-analysis",
   log: "logs"
 };
 
@@ -409,6 +410,10 @@ function sectionForId(sectionId) {
 
 function setSection(sectionId, updateHash = true) {
   const section = sectionForId(sectionId);
+  if (sectionId === "findings" || sectionId === "insights") {
+    state.activeAnalysisType = "interview";
+    renderAnalysisTypeSelect();
+  }
   state.activeSection = section.id;
   navButtons.forEach((button) => {
     const isActive = button.dataset.section === state.activeSection;
@@ -419,7 +424,10 @@ function setSection(sectionId, updateHash = true) {
   });
   viewTitle.textContent = section.label;
   renderTopbarControl(section);
-  if (updateHash) history.replaceState(null, "", `#${state.activeSection}`);
+  if (updateHash) {
+    const route = section.id === "data-analysis" && state.activeAnalysisType === "interview" ? "findings" : section.id;
+    history.replaceState(null, "", `#${route}`);
+  }
 }
 
 // Sections with a view selector expose one main panel at a time.
@@ -473,7 +481,7 @@ function getVisibleMatrixRows() {
   const query = state.matrixQuery.trim().toLowerCase();
   if (!query) return rows;
   return rows.filter((row) =>
-    [row.source, row.rq1, row.rq2, row.rq3, row.followUp]
+    [row.source, row.rq1, row.rq2, row.rq3]
       .join(" ")
       .toLowerCase()
       .includes(query)
@@ -492,7 +500,6 @@ function renderMappingTable() {
         <th>RQ1</th>
         <th>RQ2</th>
         <th>RQ3</th>
-        <th>Follow-up</th>
       </tr>
     </thead>
     <tbody>
@@ -503,7 +510,6 @@ function renderMappingTable() {
             <td>${highlight(row.rq1)}</td>
             <td>${highlight(row.rq2)}</td>
             <td>${highlight(row.rq3)}</td>
-            <td>${highlight(row.followUp)}</td>
           </tr>
         `)
         .join("")}
@@ -1827,7 +1833,23 @@ function renderInterviewCodebook() {
 }
 
 function renderInsights() {
-  document.querySelector("#insightGrid").innerHTML = `${renderInterviewCodebook()}${(DATA.insights || [])
+  const findings = DATA.findings || [];
+  document.querySelector("#insightGrid").innerHTML = findings.map((item) => `
+    <article class="insight-card large" id="${escapeHtml(item.id)}" aria-labelledby="${escapeHtml(item.id)}-heading">
+      <div class="insight-number" aria-hidden="true">${escapeHtml(item.number)}</div>
+      <div>
+        <p class="eyebrow">Finding ${escapeHtml(item.number)} · ${escapeHtml(item.rq)} · Candidate</p>
+        <h4 id="${escapeHtml(item.id)}-heading">${escapeHtml(item.title)}</h4>
+        <p>${escapeHtml(item.text)}</p>
+        <ul class="finding-subsections">${item.subsections.map((subsection) => `
+          <li>
+            <h5>${escapeHtml(subsection.title)}</h5>
+            ${renderTextList(subsection.points)}
+          </li>`).join("")}</ul>
+      </div>
+    </article>`).join("");
+
+  document.querySelector("#historicalInsights").innerHTML = `${renderInterviewCodebook()}${(DATA.insights || [])
     .map((item) => `
       <article class="insight-card large" id="${escapeHtml(item.id || `insight-${item.number}`)}">
         <div class="insight-number">${escapeHtml(item.number)}</div>
@@ -2384,10 +2406,7 @@ function attachEvents() {
   analysisTypeSelect?.addEventListener("change", (event) => {
     if (!analysisViews.some((view) => view.id === event.target.value)) return;
     state.activeAnalysisType = event.target.value;
-    const section = sectionForId(state.activeSection);
-    panels.forEach((panel) => {
-      panel.hidden = !isPanelVisible(section, panel.dataset.panel);
-    });
+    setSection(state.activeSection);
   });
 
   document.addEventListener("click", (event) => {
